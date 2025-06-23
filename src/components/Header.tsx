@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
-import { LOGO } from '../constants/path';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import { LOGO } from "../constants/path";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,33 +14,34 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'About', path: '/about' },
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "About", path: "/about" },
     // { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Brands', path: '/brands' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Brands", path: "/brands" },
+    { name: "Contact", path: "/contact" },
   ];
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHomePage
-        ? 'bg-white/55 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
-        : ' dark:bg-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || !isHomePage
+          ? "bg-white/55 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
+          : " dark:bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-1">
+        <div className="flex justify-between items-center py-3">
           <div className="flex-shrink-0">
-            <Link to="/">
+            {/* <Link to="/">
               <div className="w-14 aspect-square rounded-full overflow-hidden flex items-center justify-center bg-gray-800 shadow-md">
                 <img
                   src={LOGO}
@@ -48,6 +49,11 @@ const Header: React.FC = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
+            </Link> */}
+            <Link to="/">
+                <span className="text-gray-900 dark:text-teal-400 text-l font-semibold text-center leading-none p-2">
+                  Agrawal Ply Decor
+                </span>
             </Link>
           </div>
           {/* Desktop Navigation */}
@@ -56,12 +62,13 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium transition-colors duration-300 relative ${location.pathname === item.path
-                  ? 'text-teal-600 dark:text-teal-400'
-                  : isScrolled || !isHomePage
-                    ? 'text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400'
-                    : 'text-white hover:text-teal-400 drop-shadow-md'
-                  }`}
+                className={`font-medium transition-colors duration-300 relative ${
+                  location.pathname === item.path
+                    ? "text-teal-600 dark:text-teal-400"
+                    : isScrolled || !isHomePage
+                    ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                    : "text-white hover:text-teal-400 drop-shadow-md"
+                }`}
               >
                 {item.name}
                 {location.pathname === item.path && (
@@ -80,12 +87,17 @@ const Header: React.FC = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`transition-colors duration-300 ${isScrolled || !isHomePage
-                ? 'text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400'
-                : 'text-white hover:text-teal-400 drop-shadow-md'
-                }`}
+              className={`transition-colors duration-300 ${
+                isScrolled || !isHomePage
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : "text-white hover:text-teal-400 drop-shadow-md"
+              }`}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -100,10 +112,11 @@ const Header: React.FC = () => {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block w-full text-left transition-colors duration-200 py-2 font-medium ${location.pathname === item.path
-                  ? 'text-teal-600 dark:text-teal-400'
-                  : 'text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400'
-                  }`}
+                className={`block w-full text-left transition-colors duration-200 py-2 font-medium ${
+                  location.pathname === item.path
+                    ? "text-teal-600 dark:text-teal-400"
+                    : "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                }`}
               >
                 {item.name}
               </Link>

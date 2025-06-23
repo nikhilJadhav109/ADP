@@ -1,138 +1,240 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, CheckCircle } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  MessageCircle,
+  CheckCircle,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { CONTACT_INFO, LOCATION, MAP_LINK } from "../constants/path";
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    budget: '',
-    timeline: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    message: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission feedback
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   console.log('Form submitted:', formData);
-  //   setIsSubmitted(true);
-  //   setTimeout(() => {
-  //     setIsSubmitted(false);
-  //     setFormData({
-  //       name: '',
-  //       email: '',
-  //       phone: '',
-  //       projectType: '',
-  //       budget: '',
-  //       timeline: '',
-  //       message: ''
-  //     });
-  //   }, 3000);
-  // };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      console.log("Form submitted:", formData);
+      setIsSubmitted(true);
+      // Clear form data after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        projectType: "",
+        budget: "",
+        timeline: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      // Optionally, show an error message to the user
+    } finally {
+      setIsSubmitting(false);
+      // Keep success message visible for a bit longer, then potentially hide if needed
+      // Or let the user navigate away
+    }
+  };
 
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone',
-      details: ['+91-9876543210', '+91-9876543211'],
-      action: 'tel:+91-9876543210'
+      title: "Phone",
+      details: [CONTACT_INFO.PHONE_NUMBER_1, CONTACT_INFO.PHONE_NUMBER_2],
+      action: `tel:${CONTACT_INFO.PHONE_NUMBER_1}`,
     },
     {
       icon: Mail,
-      title: 'Email',
-      details: ['info@agrawalplydecor.com', 'projects@agrawalplydecor.com'],
-      action: 'mailto:info@agrawalplydecor.com'
+      title: "Email",
+      details: [CONTACT_INFO.EMAIL],
+      action: `mailto:${CONTACT_INFO.EMAIL}`,
     },
     {
       icon: MapPin,
-      title: 'Address',
-      details: ['123 Design Street', 'Interior City, IC 12345'],
-      action: 'https://maps.google.com'
+      title: "Address",
+      details: [CONTACT_INFO.ADDRESS_LINE_1,CONTACT_INFO.ADDRESS_LINE_2],
+      action: {MAP_LINK},
     },
     {
       icon: Clock,
-      title: 'Working Hours',
-      details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sun: 10:00 AM - 4:00 PM'],
-      action: null
-    }
+      title: "Working Hours",
+      details: ["Mon - Sat: 9:00 AM - 7:00 PM", "Sun: 10:00 AM - 4:00 PM"],
+      action: null,
+    },
   ];
 
-  const offices = [
-    {
-      city: 'Mumbai',
-      address: '123 Design Street, Bandra West, Mumbai - 400050',
-      phone: '+91-9876543210',
-      email: 'mumbai@agrawalplydecor.com'
+  // Framer Motion variants
+  const heroVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
     },
-    {
-      city: 'Delhi',
-      address: '456 Interior Avenue, Connaught Place, New Delhi - 110001',
-      phone: '+91-9876543211',
-      email: 'delhi@agrawalplydecor.com'
+  };
+
+  const sectionHeaderVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
     },
-    {
-      city: 'Bangalore',
-      address: '789 Decor Lane, Koramangala, Bangalore - 560034',
-      phone: '+91-9876543212',
-      email: 'bangalore@agrawalplydecor.com'
-    }
-  ];
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const formFieldVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const buttonVariants = {
+    rest: { scale: 1, boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
+    hover: { scale: 1.03, boxShadow: "0px 6px 10px rgba(0, 0, 0, 0.15)" },
+    tap: { scale: 0.97 },
+    submit: {
+      scale: [1, 1.05, 1],
+      rotate: [0, 5, -5, 0],
+      transition: { duration: 0.8, ease: "easeInOut" },
+    },
+  };
+
+  const successMessageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-500">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <motion.h1
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight"
+            initial="hidden"
+            animate="visible"
+            variants={heroVariants}
+          >
             Get In <span className="text-teal-400">Touch</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to transform your space? Let's discuss your project and bring your vision to life. Contact us today for a consultation.
-          </p>
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-light"
+            initial="hidden"
+            animate="visible"
+            variants={heroVariants}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+          >
+            Ready to transform your space? Let's discuss your project and bring
+            your vision to life. Connect with us for a personalized
+            consultation.
+          </motion.p>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-16 sm:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Information */}
             <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Let's Start a Conversation</h2>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={sectionHeaderVariants}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                  Let's Start a Conversation
+                </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
-                  Whether you're planning a complete home renovation, designing a new office space, or just need some design advice, we're here to help. Our team of experts is ready to turn your ideas into reality.
+                  Whether you're planning a complete home renovation, designing
+                  a new office space, or just seeking expert design advice, our
+                  dedicated team is here to assist you. We're passionate about
+                  turning your ideas into breathtaking realities.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Contact Details */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div
+                className="grid sm:grid-cols-2 gap-6"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              >
                 {contactInfo.map((info, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                    className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-2 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700"
+                    variants={cardVariants}
                   >
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <div className="flex items-start ">
+                      <div className="w-10 h-10 bg-teal-100 dark:bg-teal-900/40 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 shadow-inner">
                         <info.icon className="w-6 h-6 text-teal-600 dark:text-teal-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h4>
+                        <h4 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
+                          {info.title}
+                        </h4>
                         {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-gray-600 dark:text-gray-300 text-sm">
+                          <p
+                            key={detailIndex}
+                            className="text-gray-600 dark:text-gray-300 text-sm"
+                          >
                             {info.action && detailIndex === 0 ? (
                               <a
                                 href={info.action}
-                                className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200"
+                                target={
+                                  info.title === "Address" ? "_blank" : "_self"
+                                } // Open map in new tab
+                                rel="noopener noreferrer"
+                                className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 underline-offset-2 hover:underline"
                               >
                                 {detail}
                               </a>
@@ -143,76 +245,125 @@ const ContactPage: React.FC = () => {
                         ))}
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Quick Actions */}
-              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-2xl p-6 border border-teal-100 dark:border-teal-800">
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">Need Immediate Assistance?</h4>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">Our design consultants are available to discuss your project requirements.</p>
-                <div className="flex gap-3">
-                  <a
+              <motion.div
+                className="bg-teal-50 dark:bg-teal-900/20 rounded-2xl p-6 border border-teal-100 dark:border-teal-800 shadow-md"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={cardVariants}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-2">
+                  Need Immediate Assistance?
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Our design consultants are available to discuss your project
+                  requirements and answer any urgent questions you may have.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <motion.a
                     href="tel:+91-9876543210"
-                    className="bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center"
+                    className="bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
-                  </a>
-                  <a
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Us Now
+                  </motion.a>
+                  <motion.a
                     href="https://wa.me/919876543210"
-                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    WhatsApp
-                  </a>
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    WhatsApp Us
+                  </motion.a>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8">
+            <motion.div
+              className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={cardVariants}
+              transition={{ delay: 0.1, duration: 0.7 }}
+            >
               {!isSubmitted ? (
                 <>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Us a Message</h3>
-                  <form className="space-y-6" action="https://formsubmit.co/38711a72e270fdb5e66efa77c70d7089" method="POST">
-                    <input type="hidden" name="_template" value="table"></input>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                          placeholder="Your full name"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-                    </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                    Send Us a Message
+                  </h3>
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    {/* Add hidden fields for FormSubmit.co for better integration */}
+                    <input type="hidden" name="_template" value="table" />
+                    <input
+                      type="hidden"
+                      name="_subject"
+                      value="New Contact Form Submission from Website"
+                    />
+                    {/* Re-enable this if you want to use FormSubmit.co's redirect feature
+                    <input type="hidden" name="_next" value="https://yourdomain.com/contact?success=true" />
+                    */}
+
+                    <motion.div variants={formFieldVariants}>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                        placeholder="Your full name"
+                      />
+                    </motion.div>
+                    <motion.div
+                      variants={formFieldVariants}
+                      transition={{ delay: 0.1 }}
+                    >
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Email Address <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                        placeholder="your@email.com"
+                      />
+                    </motion.div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <motion.div
+                        variants={formFieldVariants}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <label
+                          htmlFor="phone"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
                           Phone Number
                         </label>
                         <input
@@ -221,12 +372,18 @@ const ContactPage: React.FC = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                           placeholder="+91-9876543210"
                         />
-                      </div>
-                      <div>
-                        <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      </motion.div>
+                      <motion.div
+                        variants={formFieldVariants}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <label
+                          htmlFor="projectType"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
                           Project Type
                         </label>
                         <select
@@ -234,21 +391,32 @@ const ContactPage: React.FC = () => {
                           name="projectType"
                           value={formData.projectType}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          required
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                         >
                           <option value="">Select project type</option>
-                          <option value="residential">Residential Design</option>
+                          <option value="residential">
+                            Residential Design
+                          </option>
                           <option value="commercial">Commercial Space</option>
                           <option value="luxury">Luxury Home</option>
-                          <option value="consultation">Design Consultation</option>
+                          <option value="consultation">
+                            Design Consultation
+                          </option>
                           <option value="other">Other</option>
                         </select>
-                      </div>
+                      </motion.div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      <motion.div
+                        variants={formFieldVariants}
+                        transition={{ delay: 0.4 }}
+                      >
+                        <label
+                          htmlFor="budget"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
                           Budget Range
                         </label>
                         <select
@@ -256,7 +424,7 @@ const ContactPage: React.FC = () => {
                           name="budget"
                           value={formData.budget}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                         >
                           <option value="">Select budget range</option>
                           <option value="under-5">Under ₹5 Lakhs</option>
@@ -265,9 +433,15 @@ const ContactPage: React.FC = () => {
                           <option value="25-50">₹25 - 50 Lakhs</option>
                           <option value="above-50">Above ₹50 Lakhs</option>
                         </select>
-                      </div>
-                      <div>
-                        <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      </motion.div>
+                      <motion.div
+                        variants={formFieldVariants}
+                        transition={{ delay: 0.5 }}
+                      >
+                        <label
+                          htmlFor="timeline"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
                           Timeline
                         </label>
                         <select
@@ -275,100 +449,154 @@ const ContactPage: React.FC = () => {
                           name="timeline"
                           value={formData.timeline}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                         >
                           <option value="">Select timeline</option>
-                          <option value="immediate">Immediate (1-2 months)</option>
+                          <option value="immediate">
+                            Immediate (1-2 months)
+                          </option>
                           <option value="short">Short term (3-6 months)</option>
-                          <option value="medium">Medium term (6-12 months)</option>
+                          <option value="medium">
+                            Medium term (6-12 months)
+                          </option>
                           <option value="long">Long term (1+ years)</option>
                         </select>
-                      </div>
+                      </motion.div>
                     </div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Project Details *
+                    <motion.div
+                      variants={formFieldVariants}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Project Details <span className="text-red-500">*</span>
                       </label>
                       <textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        required
                         rows={5}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                         placeholder="Tell us about your project, specific requirements, style preferences, and any other details that would help us understand your vision..."
                       ></textarea>
-                    </div>
+                    </motion.div>
 
-                    <button
+                    <motion.button
                       type="submit"
-                      className="w-full bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center"
+                      className="w-full bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      animate={isSubmitting ? "submit" : "rest"} // Animate on submit
+                      disabled={isSubmitting} // Disable button during submission
                     >
-                      <Send className="w-5 h-5 mr-2" />
-                      Send Message
-                    </button>
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" />
+                          Send Message
+                        </>
+                      )}
+                    </motion.button>
                   </form>
                 </>
               ) : (
-                <div className="text-center py-12">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Message Sent Successfully!</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    Thank you for your inquiry. We'll get back to you within 24 hours to discuss your project.
+                <motion.div
+                  className="text-center py-12 bg-white dark:bg-gray-800 rounded-3xl"
+                  initial="hidden"
+                  animate="visible"
+                  variants={successMessageVariants}
+                >
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4 animate-bounce-in" />{" "}
+                  {/* Added bounce-in for extra flair */}
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    Message Sent Successfully!
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 px-4">
+                    Thank you for your inquiry. We've received your message and
+                    will get back to you within 24 business hours to discuss
+                    your project.
                   </p>
                   <div className="flex gap-3 justify-center">
-                    <a
+                    <motion.a
                       href="tel:+91-9876543210"
-                      className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center"
+                      className="bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center shadow-md hover:shadow-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <Phone className="w-4 h-4 mr-2" />
+                      <Phone className="w-5 h-5 mr-2" />
                       Call Now
-                    </a>
+                    </motion.a>
                   </div>
-                </div>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Office Locations */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      {/* Map Section */}
+      <section className="py-16 sm:py-24 bg-gray-100 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Offices</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Visit us at any of our locations or schedule a consultation at your convenience.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {offices.map((office, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{office.city} Office</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300 text-sm">{office.address}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0" />
-                    <a href={`tel:${office.phone}`} className="text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 text-sm transition-colors duration-200">
-                      {office.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0" />
-                    <a href={`mailto:${office.email}`} className="text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 text-sm transition-colors duration-200">
-                      {office.email}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={sectionHeaderVariants}
+          >
+            Find Our <span className="text-teal-600">Location</span>
+          </motion.h2>
+          <motion.div
+            className="relative overflow-hidden rounded-3xl shadow-2xl aspect-w-16 aspect-h-9"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            }}
+            viewport={{ once: true, amount: 0.1 }}
+            style={{ minHeight: "400px" }} // Ensure a minimum height for the map
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.851204360001!2d73.90868613031786!3d18.450845940102138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb255da48447%3A0x45a26649ef046df8!2sAgrawal%20Ply%20Decor!5e0!3m2!1sen!2sin!4v1750698235313!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Our Location in Pune"
+              className="absolute inset-0 w-full h-full"
+            ></iframe>
+          </motion.div>
         </div>
       </section>
     </div>
