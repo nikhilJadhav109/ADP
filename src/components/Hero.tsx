@@ -79,8 +79,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Your Vision, Our Expertise
-          <span className="block text-teal-400 font-semibold">Seamless Turnkey Interior Solutions.</span>
+          Your Vision, Our Expertise <span className="block text-teal-400 font-semibold">Seamless Turnkey Interior Solutions.</span>
         </motion.div>
 
         <motion.p
@@ -89,7 +88,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          From Concept to Keys, We Handle Every Detail for Your Dream Space. Trusted choice for end-to-end interior design and custom modular solutions.
+          From Concept to Keys, We Handle Every Detail for Your Dream Space. Trusted choice for end-to-end interior design and custom modular furniture solutions.
         </motion.p>
 
         <motion.div

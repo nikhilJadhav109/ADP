@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MessageCircle, ArrowUp, Phone } from 'lucide-react';
 
 const FloatingButtons: React.FC = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const navigate = useNavigate();
-
+  const location = useLocation(); 
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 300);
@@ -25,7 +25,15 @@ const FloatingButtons: React.FC = () => {
   const handleEnquireNow = () => {
     navigate('/contact');
   };
+  const pagesToHideButton = [
+    '/contact',
+  ];
 
+  const shouldHideButton = pagesToHideButton.includes(location.pathname);
+
+  if (shouldHideButton) {
+    return null; // Don't render anything
+  }
   return (
     <>
       {/* WhatsApp Button */}

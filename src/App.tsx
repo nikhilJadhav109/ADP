@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import LoadingScreen from './components/LoadingScreen';
-import Header from './components/Header';
-import FloatingButtons from './components/FloatingButtons';
-import Footer from './components/Footer';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import LoadingScreen from "./components/LoadingScreen";
+import Header from "./components/Header";
+import FloatingButtons from "./components/FloatingButtons";
+import Footer from "./components/Footer";
 
 // Page Components
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import PortfolioPage from './pages/PortfolioPage';
-import AboutPage from './pages/AboutPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import BrandsPage from './pages/BrandsPage';
-import ContactPage from './pages/ContactPage';
-import Intro from './components/Intro';
+import HomePage from "./pages/HomePage";
+import ServicesPage from "./pages/ServicesPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import AboutPage from "./pages/AboutPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
+import BrandsPage from "./pages/BrandsPage";
+import ContactPage from "./pages/ContactPage";
+import Intro from "./components/Intro";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,7 @@ function App() {
         <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
           <Header />
           <main>
+              <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/introduction" element={<Intro />} />

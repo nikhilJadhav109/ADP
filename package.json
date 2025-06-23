@@ -15,7 +15,8 @@
     "motion": "^12.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "vite-react-typescript-starter": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

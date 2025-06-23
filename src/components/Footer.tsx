@@ -1,23 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+import { FACEBOOK_LINK, INSTAGRAM_LINK } from "../constants/path";
 
 const Footer: React.FC = () => {
   const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' }
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const services = [
-    'Residential Design',
-    'Commercial Spaces',
-    'Luxury Interiors',
-    'Office Design',
-    'Turnkey Solutions',
-    'Design Consultation'
+    "Residential Design",
+    "Commercial Spaces",
+    "Luxury Interiors",
+    "Office Design",
+    "Turnkey Solutions",
+    "Design Consultation",
   ];
 
   return (
@@ -32,20 +41,23 @@ const Footer: React.FC = () => {
               </h3>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transforming spaces into extraordinary experiences through innovative design and exceptional craftsmanship for over 15 years.
+              Transforming spaces into extraordinary experiences through
+              innovative design and exceptional craftsmanship for over 15 years.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a
+                href={FACEBOOK_LINK}
+                className="text-gray-400 hover:text-teal-400 transition-colors duration-200"
+                target="_blank"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a
+                href={INSTAGRAM_LINK}
+                className="text-gray-400 hover:text-teal-400 transition-colors duration-200"
+                target="_blank"
+              >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
-                <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -72,7 +84,10 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Our Services</h4>
             <ul className="space-y-2">
               {services.map((service, index) => (
-                <li key={index} className="text-gray-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer">
+                <li
+                  key={index}
+                  className="text-gray-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer"
+                >
                   {service}
                 </li>
               ))}
@@ -84,22 +99,28 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <a
-                href="tel:+91-9876543210"
+                href="tel:+91-9823069099"
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
               >
                 <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
-                <span>+91-9876543210</span>
+                <span>+91-9823069099 / +91-8459758065 </span>
               </a>
               <a
-                href="mailto:info@agrawalplydecor.com"
+                href="mailto:agrawalplydecor@gmail.com"
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
               >
                 <Mail className="w-4 h-4 mr-3 flex-shrink-0" />
-                <span>info@agrawalplydecor.com</span>
+                <span>agrawalplydecor@gmail.com</span>
               </a>
               <div className="flex items-start text-gray-300">
                 <MapPin className="w-4 h-4 mr-3 flex-shrink-0 mt-1" />
-                <span>123 Design Street<br />Interior City, IC 12345</span>
+                <span>
+                  Sr 46/1/2
+                  <br />
+                  Near Orchids The International School,Sangam hospital Road,
+                  <br />
+                  Pisoli,Pune-411060
+                </span>
               </div>
             </div>
           </div>
@@ -112,13 +133,22 @@ const Footer: React.FC = () => {
               © 2024 Agrawal Ply Decor. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
+              >
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
+              >
                 Cookie Policy
               </a>
             </div>
