@@ -1,0 +1,132 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+
+const Footer: React.FC = () => {
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' }
+  ];
+
+  const services = [
+    'Residential Design',
+    'Commercial Spaces',
+    'Luxury Interiors',
+    'Office Design',
+    'Turnkey Solutions',
+    'Design Consultation'
+  ];
+
+  return (
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <Link to="/">
+              <h3 className="text-2xl font-bold mb-4">
+                Agrawal Ply <span className="text-teal-400">Decor</span>
+              </h3>
+            </Link>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              Transforming spaces into extraordinary experiences through innovative design and exceptional craftsmanship for over 15 years.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-300 hover:text-teal-400 transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Our Services</h4>
+            <ul className="space-y-2">
+              {services.map((service, index) => (
+                <li key={index} className="text-gray-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer">
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+            <div className="space-y-3">
+              <a
+                href="tel:+91-9876543210"
+                className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+              >
+                <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
+                <span>+91-9876543210</span>
+              </a>
+              <a
+                href="mailto:info@agrawalplydecor.com"
+                className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4 mr-3 flex-shrink-0" />
+                <span>info@agrawalplydecor.com</span>
+              </a>
+              <div className="flex items-start text-gray-300">
+                <MapPin className="w-4 h-4 mr-3 flex-shrink-0 mt-1" />
+                <span>123 Design Street<br />Interior City, IC 12345</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 dark:border-gray-700 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              © 2024 Agrawal Ply Decor. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200">
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
