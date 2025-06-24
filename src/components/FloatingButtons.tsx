@@ -51,18 +51,27 @@ const FloatingButtons: React.FC = () => {
 
       {/* Enquire Now Button */}
       <button
-        onClick={handleEnquireNow}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white p-3 rounded-l-full shadow-lg hover:shadow-xl transition-all duration-300 group "
-      >
-        <div className="flex items-center">
-          <Phone className="w-5 h-5 mr-2" />
-          <span className="font-medium text-sm">Enquire Now</span>
-        </div>
-        <span className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 dark:bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-          Get a Free Quote
-        </span>
-      </button>
+  onClick={handleEnquireNow}
+  className="fixed bottom-0 left-0 w-full z-40 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-2 shadow-lg flex items-center justify-center md:hidden"
+>
+  <Phone className="w-5 h-5 mr-2" />
+  <span className="font-medium text-sm">Enquire Now</span>
+</button>
 
+<button
+  onClick={handleEnquireNow}
+  className="hidden md:block fixed right-6 top-1/2 transform -translate-y-1/2 z-40 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white p-3 rounded-l-full shadow-lg hover:shadow-xl transition-all duration-300 group "
+>
+  <div className="flex items-center">
+    <Phone className="w-5 h-5 mr-2" />
+    {/* <span className="font-medium text-sm">Enquire Now</span> */}
+  </div>
+  <span
+    className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 dark:bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap"
+  >
+    Get a Free Quote
+  </span>
+</button>
       {/* Back to Top Button */}
       {showBackToTop && (
         <button
