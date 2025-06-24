@@ -1,6 +1,8 @@
 import React from "react";
 import { Home, Building, Wrench, ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { COMPANY_NAME, SERVICES_OG_IMAGE, SERVICES_PAGE_DESCRIPTION, SERVICES_PAGE_URL, SERVICES_SEO_KEYWORDS } from "../seo";
 
 const ServicesPage: React.FC = () => {
   const services = [
@@ -88,127 +90,155 @@ const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Our <span className="text-teal-400">Services</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive interior design solutions tailored to create spaces
-            that inspire, function beautifully, and reflect your unique style.
-          </p>
-        </div>
-      </section>
+    <>
+      <Helmet>
+        <title>{COMPANY_NAME} - Our Services in Pune</title> {/* More specific title for services */}
+        <meta name="description" content={SERVICES_PAGE_DESCRIPTION} />
+        <meta name="keywords" content={SERVICES_SEO_KEYWORDS} />
+        <link rel="canonical" href={SERVICES_PAGE_URL} />
 
-      {/* Services Detail */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-                }`}
-              >
-                <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <div className="w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-6">
-                    <service.icon className="w-8 h-8 text-teal-600 dark:text-teal-400" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center text-gray-700 dark:text-gray-300"
-                      >
-                        <CheckCircle className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="rounded-2xl shadow-xl w-full h-96 object-cover"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* Open Graph / Facebook / LinkedIn */}
+        <meta property="og:title" content={`${COMPANY_NAME} - Our Services in Pune`} />
+        <meta property="og:description" content={SERVICES_PAGE_DESCRIPTION} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SERVICES_PAGE_URL} />
+        <meta property="og:image" content={SERVICES_OG_IMAGE} />
+        <meta
+          property="og:image:alt"
+          content={`${COMPANY_NAME} Interior Design Services`}
+        />
+        <meta property="og:site_name" content={COMPANY_NAME} />
 
-      {/* Process Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Our Design{" "}
-              <span className="text-teal-600 dark:text-teal-400">Process</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              From initial consultation to final reveal, we follow a proven
-              process that ensures exceptional results every time.
+        {/* Local SEO specifics for services (reiterating location and services) */}
+        <meta name="geo.placename" content="Pune" />
+        <meta name="geo.region" content="IN-MH" />
+        {/* Keywords and description also support local SEO */}
+
+      </Helmet>
+      <div className="pt-20">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Our <span className="text-teal-400">Services</span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Comprehensive interior design solutions tailored to create spaces
+              that inspire, function beautifully, and reflect your unique style.
             </p>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {process.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-teal-600 dark:bg-teal-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {step.step}
+        {/* Services Detail */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="space-y-20">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className={`grid lg:grid-cols-2 gap-12 items-center ${
+                    index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+                  }`}
+                >
+                  <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                    <div className="w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-6">
+                      <service.icon className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-3">
+                      {service.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center text-gray-700 dark:text-gray-300"
+                        >
+                          <CheckCircle className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="rounded-2xl shadow-xl w-full h-96 object-cover"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  {step.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-teal-600 dark:bg-teal-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Transform Your Space?
-          </h2>
-          <p className="text-xl mb-8">
-            Let's discuss your project and bring your vision to life with our
-            expert design services.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center"
-            >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+        {/* Process Section */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Our Design{" "}
+                <span className="text-teal-600 dark:text-teal-400">
+                  Process
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                From initial consultation to final reveal, we follow a proven
+                process that ensures exceptional results every time.
+              </p>
+            </div>
 
-            <a
-              href="tel:+91-9876543210"
-              className="border-2 border-white text-white hover:bg-white hover:text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200"
-            >
-              Call Now
-            </a>
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {process.map((step, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-teal-600 dark:bg-teal-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                    {step.step}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-teal-600 dark:bg-teal-700 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Transform Your Space?
+            </h2>
+            <p className="text-xl mb-8">
+              Let's discuss your project and bring your vision to life with our
+              expert design services.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center"
+              >
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+
+              <a
+                href="tel:+91-9876543210"
+                className="border-2 border-white text-white hover:bg-white hover:text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200"
+              >
+                Call Now
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
