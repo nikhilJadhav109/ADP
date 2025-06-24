@@ -16,6 +16,7 @@ import BrandsPage from "./pages/BrandsPage";
 import ContactPage from "./pages/ContactPage";
 import Intro from "./components/Intro";
 import ScrollToTop from "./ScrollToTop";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,33 +33,37 @@ function App() {
   if (isLoading) {
     return (
       <ThemeProvider>
-        <LoadingScreen />
+        <HelmetProvider>
+          <LoadingScreen />
+        </HelmetProvider>
       </ThemeProvider>
     );
   }
 
   return (
     <ThemeProvider>
-      <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-          <Header />
-          <main>
+      <HelmetProvider>
+        <Router>
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <Header />
+            <main>
               <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/introduction" element={<Intro />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/brands" element={<BrandsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
-          <FloatingButtons />
-          <Footer />
-        </div>
-      </Router>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/introduction" element={<Intro />} />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/testimonials" element={<TestimonialsPage />} />
+                <Route path="/brands" element={<BrandsPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            </main>
+            <FloatingButtons />
+            <Footer />
+          </div>
+        </Router>
+      </HelmetProvider>
     </ThemeProvider>
   );
 }

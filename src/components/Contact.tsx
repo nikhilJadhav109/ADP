@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import ContactForm from './ContactForm';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    message: ''
-  });
 
-  const formFields: FieldConfiguration[] = [
+  const formFields = [
     {
       group: [
         {
@@ -92,37 +85,8 @@ const Contact: React.FC = () => {
     }
   ];
 
-  const handleFormSubmit = (data: Record<string, string>, event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Form submitted with data:', data);
-    // Handle custom form submission logic here
-  };
-
   const handleFieldChange = (fieldName: string, value: string, allData: Record<string, string>) => {
     console.log(`Field ${fieldName} changed to:`, value);
-    // Handle field change logic here
-  };
-
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-    alert('Thank you for your inquiry! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      message: ''
-    });
   };
 
   const contactInfo = [
@@ -233,100 +197,6 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Us a Message</h3>
-            {/* <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="+91-9876543210"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Project Type
-                  </label>
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  >
-                    <option value="">Select project type</option>
-                    <option value="residential">Residential Design</option>
-                    <option value="commercial">Commercial Space</option>
-                    <option value="luxury">Luxury Home</option>
-                    <option value="consultation">Design Consultation</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Project Details *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="Tell us about your project, timeline, budget range, and any specific requirements..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center"
-              >
-                <Send className="w-5 h-5 mr-2" />
-                Send Message
-              </button>
-            </form> */}
             <ContactForm
               title="Interior Design Consultation"
               description="Let's bring your vision to life. Fill out the form below and we'll get back to you soon."

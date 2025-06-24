@@ -1,6 +1,6 @@
 import React from "react";
 import { Home, Building, Wrench, ArrowRight, Star } from "lucide-react";
-import { motion, easeOut } from "framer-motion"; // easeInOut is not used, can remove if not needed
+import { motion, easeOut } from "framer-motion";
 
 const Services: React.FC = () => {
   const services = [
@@ -15,7 +15,7 @@ const Services: React.FC = () => {
         "Intelligent Lighting Solutions",
         "Expert Color Consultation",
       ],
-      badge: "Popular Choice", // Slightly more descriptive
+      badge: "Popular Choice",
     },
     {
       icon: Building,
