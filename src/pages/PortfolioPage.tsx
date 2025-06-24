@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Eye, ArrowUpRight, Calendar, MapPin, Search } from "lucide-react"; // Added Search icon for potential future use or just aesthetic
-import { motion } from "framer-motion";
+import { motion , easeOut ,Variants, Transition } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const PortfolioPage: React.FC = () => {
@@ -8,123 +8,115 @@ const PortfolioPage: React.FC = () => {
 
   const filters = ["All", "Residential", "Commercial", "Luxury Homes"];
 
-  const projects = [
+ const projects = [
     {
       id: 1,
-      title: "Modern Luxury Villa",
+      title: "Contemporary Luxe Living Room",
       category: "Luxury Homes",
-      location: "Mumbai, Maharashtra",
-      year: "2023",
-      image:
-        "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Hadapsar, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/luxuryhome1.jpeg",
       description:
-        "Contemporary design meets luxury living in this stunning 5-bedroom villa with panoramic city views.",
+        "An elegant luxury living space blending modern textures and lighting for an upscale lifestyle.",
       details:
-        "This project showcased our ability to blend modern aesthetics with traditional comfort, featuring custom-designed furniture, smart home integration, and sustainable materials throughout.",
+        "This villa project features 3D wall panels, ambient lighting, and a bespoke furniture layout that enhances comfort and visual appeal, creating an opulent yet cozy environment.",
     },
     {
       id: 2,
-      title: "Executive Office Suite",
+      title: "Modern Collaborative Workspace",
       category: "Commercial",
-      location: "Delhi, NCR",
-      year: "2023",
-      image:
-        "https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Baner, Pune, Maharashtra",
+      year: "2025",
+      image: "/portfolioImages/commercial1.jpeg",
       description:
-        "Sophisticated office design that enhances productivity and reflects corporate brand identity.",
+        "A minimalistic yet high-functioning office interior with natural tones and open design.",
       details:
-        "A complete transformation of a 10,000 sq ft corporate office space, incorporating biophilic design elements, flexible workspaces, and state-of-the-art technology integration.",
+        "Designed for a tech startup, this workspace includes collaborative areas, ergonomic furniture, and natural lighting, promoting productivity and creativity in a clean environment.",
     },
     {
       id: 3,
-      title: "Elegant Apartment",
+      title: "Stylish Urban Apartment Interior",
       category: "Residential",
-      location: "Bangalore, Karnataka",
-      year: "2023",
-      image:
-        "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Koregaon Park, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/residential2.jpeg",
       description:
-        "Maximizing space and style in this beautifully designed urban apartment.",
+        "A sleek, modern apartment design with sophisticated textures and luxurious accents.",
       details:
-        "Smart space planning and multi-functional furniture solutions transformed this compact 2BHK into a spacious, elegant home perfect for modern urban living.",
+        "This project features stone-textured walls, plush furnishings, and warm lighting to create a high-end look in a compact urban apartment. Custom storage and modern decor enhance functionality.",
     },
     {
       id: 4,
-      title: "Boutique Hotel Lobby",
+      title: "Elegant Hospitality Lobby",
       category: "Commercial",
-      location: "Goa",
-      year: "2022",
-      image:
-        "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Kalyani Nagar, Pune, Maharashtra",
+      year: "2023",
+      image: "/portfolioImages/commercial2.jpeg",
       description:
         "Creating memorable first impressions with luxurious hospitality design.",
       details:
-        "A stunning hotel lobby that captures the essence of coastal luxury, featuring locally sourced materials, custom lighting installations, and artwork from regional artists.",
+        "A modern hotel lobby crafted to evoke luxury and comfort, featuring pastel hues, statement lighting, and customized furnishings for a welcoming guest experience.",
     },
     {
       id: 5,
-      title: "Contemporary Home",
+      title: "Modern Kitchen Apartment",
       category: "Residential",
-      location: "Pune, Maharashtra",
+      location: "Aundh, Pune, Maharashtra",
       year: "2022",
-      image:
-        "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      image: "/portfolioImages/residential3.jpeg",
       description:
         "Clean lines and natural materials create a serene family environment.",
       details:
-        "This family home emphasizes connection with nature through large windows, natural materials, and an open-plan design that seamlessly integrates indoor and outdoor living.",
+        "This compact apartment kitchen blends soft blues with natural wood and marble finishes, combining smart cabinetry with modern appliances for elegant, space-saving functionality.",
     },
     {
       id: 6,
-      title: "Penthouse Paradise",
+      title: "Luxury White Living Space",
       category: "Luxury Homes",
-      location: "Mumbai, Maharashtra",
+      location: "Viman Nagar, Pune, Maharashtra",
       year: "2022",
-      image:
-        "https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      image: "/portfolioImages/luxuryhome2.jpeg",
       description:
-        "Sky-high luxury with panoramic city views and premium finishes.",
+        "Sky-high luxury with soft tones, panoramic windows, and refined finishes.",
       details:
-        "A breathtaking penthouse featuring floor-to-ceiling windows, custom Italian marble finishes, and a rooftop terrace with infinity pool overlooking the city skyline.",
+        "This open-plan living space boasts a light color palette, detailed molding, premium materials, and classic decor—creating an airy yet intimate setting for upscale family living.",
     },
     {
       id: 7,
-      title: "Minimalist Studio",
+      title: "Warm-Toned Bedroom Suite",
       category: "Residential",
-      location: "Chennai, Tamil Nadu",
-      year: "2023",
-      image:
-        "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Baner, Pune, Maharashtra",
+      year: "2025",
+      image: "/portfolioImages/residential4.jpeg",
       description:
-        "Efficient design maximizes functionality in a compact studio apartment.",
+        "Efficient design maximizes functionality with a cozy aesthetic.",
       details:
-        "Clever storage solutions and multi-purpose furniture create distinct living zones within a single space, proving that small can be both beautiful and functional.",
+        "This residential suite balances function and form with plush fabrics, layered lighting, and a calming color palette—offering the perfect retreat after a long day.",
     },
     {
       id: 8,
-      title: "Luxury Restaurant",
+      title: "Fine Dining Lounge",
       category: "Commercial",
-      location: "Hyderabad, Telangana",
-      year: "2023",
+      location: "Koregaon Park, Pune, Maharashtra",
+      year: "2022",
       image:
         "https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       description:
-        "Fine dining experience enhanced by sophisticated interior design.",
+        "Fine dining enhanced by rich textures and an intimate ambiance.",
       details:
-        "An upscale restaurant design that creates intimate dining experiences through strategic lighting, acoustic treatments, and luxurious material selections.",
+        "A luxurious restaurant interior featuring velvet upholstery, wooden ceilings, and custom chandeliers to elevate every dining moment into an experience of indulgence.",
     },
     {
       id: 9,
-      title: "Heritage Home Revival",
+      title: "Ambient Master Bedroom",
       category: "Luxury Homes",
-      location: "Jaipur, Rajasthan",
-      year: "2022",
-      image:
-        "https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Model Colony, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/residential5.jpeg",
       description:
-        "Restoring grandeur while adding modern amenities to a heritage property.",
+        "Warm elegance meets modern innovation in this luxury bedroom.",
       details:
-        "Careful restoration of a 100-year-old haveli, preserving original architectural elements while seamlessly integrating modern conveniences and luxury amenities.",
+        "This master bedroom uses indirect LED lighting, velvet headboards, and warm wood textures to create a moody, luxurious atmosphere ideal for unwinding in style.",
     },
   ];
 
@@ -134,13 +126,14 @@ const PortfolioPage: React.FC = () => {
       : projects.filter((project) => project.category === activeFilter);
 
   // Framer Motion variants
-  const heroVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
+  const heroVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.8, ease: easeOut },
+  },
   };
 
   const filterButtonVariants = {
@@ -156,36 +149,35 @@ const PortfolioPage: React.FC = () => {
     }),
   };
 
-  const projectCardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" },
-    },
+  const projectCardVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
+  },
   };
 
-  const imageOverlayVariants = {
+
+   const imageOverlayVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } },
+    visible: { opacity: 1, transition: { duration: 0.3, ease: easeOut } },
   };
 
-  const eyeButtonVariants = {
-    hidden: { scale: 0, opacity: 0 },
+  const eyeButtonVariants: Variants = {
+    hidden: { scale: 0 },
     visible: {
       scale: 1,
-      opacity: 1,
-      transition: { duration: 0.3, delay: 0.1 },
+      transition: { duration: 0.3, ease: easeOut },
     },
   };
 
-  const ctaVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const ctaVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: "easeOut" },
+      transition: { duration: 0.7, ease: easeOut },
     },
   };
   const MotionLink = motion(Link);

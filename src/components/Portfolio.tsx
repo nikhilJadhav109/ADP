@@ -7,61 +7,173 @@ const Portfolio: React.FC = () => {
   
   const filters = ['All', 'Residential', 'Commercial', 'Luxury Homes'];
   
+  // const projects = [
+  //   {
+  //     id: 1,
+  //     title: 'Modern Luxury Villa',
+  //     category: 'Luxury Homes',
+  //     image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Contemporary design meets luxury living in this stunning 5-bedroom villa.',
+  //     year: '2024',
+  //     location: 'Beverly Hills, CA'
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Executive Office Suite',
+  //     category: 'Commercial',
+  //     image: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Sophisticated office design that enhances productivity and brand image.',
+  //     year: '2024',
+  //     location: 'Manhattan, NY'
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Elegant Apartment',
+  //     category: 'Residential',
+  //     image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Maximizing space and style in this beautifully designed urban apartment.',
+  //     year: '2023',
+  //     location: 'Chicago, IL'
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Boutique Hotel Lobby',
+  //     category: 'Commercial',
+  //     image: 'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Creating memorable first impressions with luxurious hospitality design.',
+  //     year: '2024',
+  //     location: 'Miami, FL'
+  //   },
+  //   {
+  //     id: 5,
+  //     title: 'Contemporary Home',
+  //     category: 'Residential',
+  //     image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Clean lines and natural materials create a serene family environment.',
+  //     year: '2023',
+  //     location: 'Seattle, WA'
+  //   },
+  //   {
+  //     id: 6,
+  //     title: 'Penthouse Paradise',
+  //     category: 'Luxury Homes',
+  //     image: 'https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+  //     description: 'Sky-high luxury with panoramic city views and premium finishes.',
+  //     year: '2024',
+  //     location: 'San Francisco, CA'
+  //   }
+  // ];
+
   const projects = [
     {
       id: 1,
-      title: 'Modern Luxury Villa',
-      category: 'Luxury Homes',
-      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Contemporary design meets luxury living in this stunning 5-bedroom villa.',
-      year: '2024',
-      location: 'Beverly Hills, CA'
+      title: "Contemporary Luxe Living Room",
+      category: "Luxury Homes",
+      location: "Hadapsar, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/luxuryhome1.jpeg",
+      description:
+        "An elegant luxury living space blending modern textures and lighting for an upscale lifestyle.",
+      details:
+        "This villa project features 3D wall panels, ambient lighting, and a bespoke furniture layout that enhances comfort and visual appeal, creating an opulent yet cozy environment.",
     },
     {
       id: 2,
-      title: 'Executive Office Suite',
-      category: 'Commercial',
-      image: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Sophisticated office design that enhances productivity and brand image.',
-      year: '2024',
-      location: 'Manhattan, NY'
+      title: "Modern Collaborative Workspace",
+      category: "Commercial",
+      location: "Baner, Pune, Maharashtra",
+      year: "2025",
+      image: "/portfolioImages/commercial1.jpeg",
+      description:
+        "A minimalistic yet high-functioning office interior with natural tones and open design.",
+      details:
+        "Designed for a tech startup, this workspace includes collaborative areas, ergonomic furniture, and natural lighting, promoting productivity and creativity in a clean environment.",
     },
     {
       id: 3,
-      title: 'Elegant Apartment',
-      category: 'Residential',
-      image: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Maximizing space and style in this beautifully designed urban apartment.',
-      year: '2023',
-      location: 'Chicago, IL'
+      title: "Stylish Urban Apartment Interior",
+      category: "Residential",
+      location: "Koregaon Park, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/residential2.jpeg",
+      description:
+        "A sleek, modern apartment design with sophisticated textures and luxurious accents.",
+      details:
+        "This project features stone-textured walls, plush furnishings, and warm lighting to create a high-end look in a compact urban apartment. Custom storage and modern decor enhance functionality.",
     },
     {
       id: 4,
-      title: 'Boutique Hotel Lobby',
-      category: 'Commercial',
-      image: 'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Creating memorable first impressions with luxurious hospitality design.',
-      year: '2024',
-      location: 'Miami, FL'
+      title: "Elegant Hospitality Lobby",
+      category: "Commercial",
+      location: "Kalyani Nagar, Pune, Maharashtra",
+      year: "2023",
+      image: "/portfolioImages/commercial2.jpeg",
+      description:
+        "Creating memorable first impressions with luxurious hospitality design.",
+      details:
+        "A modern hotel lobby crafted to evoke luxury and comfort, featuring pastel hues, statement lighting, and customized furnishings for a welcoming guest experience.",
     },
     {
       id: 5,
-      title: 'Contemporary Home',
-      category: 'Residential',
-      image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Clean lines and natural materials create a serene family environment.',
-      year: '2023',
-      location: 'Seattle, WA'
+      title: "Modern Kitchen Apartment",
+      category: "Residential",
+      location: "Aundh, Pune, Maharashtra",
+      year: "2022",
+      image: "/portfolioImages/residential3.jpeg",
+      description:
+        "Clean lines and natural materials create a serene family environment.",
+      details:
+        "This compact apartment kitchen blends soft blues with natural wood and marble finishes, combining smart cabinetry with modern appliances for elegant, space-saving functionality.",
     },
     {
       id: 6,
-      title: 'Penthouse Paradise',
-      category: 'Luxury Homes',
-      image: 'https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      description: 'Sky-high luxury with panoramic city views and premium finishes.',
-      year: '2024',
-      location: 'San Francisco, CA'
-    }
+      title: "Luxury White Living Space",
+      category: "Luxury Homes",
+      location: "Viman Nagar, Pune, Maharashtra",
+      year: "2022",
+      image: "/portfolioImages/luxuryhome2.jpeg",
+      description:
+        "Sky-high luxury with soft tones, panoramic windows, and refined finishes.",
+      details:
+        "This open-plan living space boasts a light color palette, detailed molding, premium materials, and classic decor—creating an airy yet intimate setting for upscale family living.",
+    },
+    {
+      id: 7,
+      title: "Warm-Toned Bedroom Suite",
+      category: "Residential",
+      location: "Baner, Pune, Maharashtra",
+      year: "2025",
+      image: "/portfolioImages/residential4.jpeg",
+      description:
+        "Efficient design maximizes functionality with a cozy aesthetic.",
+      details:
+        "This residential suite balances function and form with plush fabrics, layered lighting, and a calming color palette—offering the perfect retreat after a long day.",
+    },
+    {
+      id: 8,
+      title: "Fine Dining Lounge",
+      category: "Commercial",
+      location: "Koregaon Park, Pune, Maharashtra",
+      year: "2022",
+      image:
+        "https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      description:
+        "Fine dining enhanced by rich textures and an intimate ambiance.",
+      details:
+        "A luxurious restaurant interior featuring velvet upholstery, wooden ceilings, and custom chandeliers to elevate every dining moment into an experience of indulgence.",
+    },
+    {
+      id: 9,
+      title: "Ambient Master Bedroom",
+      category: "Luxury Homes",
+      location: "Model Colony, Pune, Maharashtra",
+      year: "2024",
+      image: "/portfolioImages/residential5.jpeg",
+      description:
+        "Warm elegance meets modern innovation in this luxury bedroom.",
+      details:
+        "This master bedroom uses indirect LED lighting, velvet headboards, and warm wood textures to create a moody, luxurious atmosphere ideal for unwinding in style.",
+    },
   ];
 
   const filteredProjects = activeFilter === 'All' 
