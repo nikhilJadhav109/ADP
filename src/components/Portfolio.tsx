@@ -66,28 +66,29 @@ const Portfolio: React.FC = () => {
 
   const projects = [
     {
-      id: 1,
-      title: "Contemporary Luxe Living Room",
+      id: 1,   
+      title: "Ambient Master Bedroom",
       category: "Luxury Homes",
-      location: "Hadapsar, Pune, Maharashtra",
+      location: "Model Colony, Pune, Maharashtra",
       year: "2024",
-      image: "/portfolioImages/luxuryhome1.jpeg",
+      image: "/portfolioImages/residential5.jpeg",
       description:
-        "An elegant luxury living space blending modern textures and lighting for an upscale lifestyle.",
+        "Warm elegance meets modern innovation in this luxury bedroom.",
       details:
-        "This villa project features 3D wall panels, ambient lighting, and a bespoke furniture layout that enhances comfort and visual appeal, creating an opulent yet cozy environment.",
+        "This master bedroom uses indirect LED lighting, velvet headboards, and warm wood textures to create a moody, luxurious atmosphere ideal for unwinding in style.", 
     },
     {
       id: 2,
-      title: "Modern Collaborative Workspace",
+      title: "Fine Dining Lounge",
       category: "Commercial",
-      location: "Baner, Pune, Maharashtra",
-      year: "2025",
-      image: "/portfolioImages/commercial1.jpeg",
+      location: "Koregaon Park, Pune, Maharashtra",
+      year: "2022",
+      image:
+        "https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       description:
-        "A minimalistic yet high-functioning office interior with natural tones and open design.",
+        "Fine dining enhanced by rich textures and an intimate ambiance.",
       details:
-        "Designed for a tech startup, this workspace includes collaborative areas, ergonomic furniture, and natural lighting, promoting productivity and creativity in a clean environment.",
+        "A luxurious restaurant interior featuring velvet upholstery, wooden ceilings, and custom chandeliers to elevate every dining moment into an experience of indulgence.",
     },
     {
       id: 3,
@@ -151,28 +152,27 @@ const Portfolio: React.FC = () => {
     },
     {
       id: 8,
-      title: "Fine Dining Lounge",
+      title: "Modern Collaborative Workspace",
       category: "Commercial",
-      location: "Koregaon Park, Pune, Maharashtra",
-      year: "2022",
-      image:
-        "https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      location: "Baner, Pune, Maharashtra",
+      year: "2025",
+      image: "/portfolioImages/commercial1.jpeg",
       description:
-        "Fine dining enhanced by rich textures and an intimate ambiance.",
+        "A minimalistic yet high-functioning office interior with natural tones and open design.",
       details:
-        "A luxurious restaurant interior featuring velvet upholstery, wooden ceilings, and custom chandeliers to elevate every dining moment into an experience of indulgence.",
+        "Designed for a tech startup, this workspace includes collaborative areas, ergonomic furniture, and natural lighting, promoting productivity and creativity in a clean environment.",
     },
     {
       id: 9,
-      title: "Ambient Master Bedroom",
+      title: "Contemporary Luxe Living Room",
       category: "Luxury Homes",
-      location: "Model Colony, Pune, Maharashtra",
+      location: "Hadapsar, Pune, Maharashtra",
       year: "2024",
-      image: "/portfolioImages/residential5.jpeg",
+      image: "/portfolioImages/luxuryhome1.jpeg",
       description:
-        "Warm elegance meets modern innovation in this luxury bedroom.",
+        "An elegant luxury living space blending modern textures and lighting for an upscale lifestyle.",
       details:
-        "This master bedroom uses indirect LED lighting, velvet headboards, and warm wood textures to create a moody, luxurious atmosphere ideal for unwinding in style.",
+        "This villa project features 3D wall panels, ambient lighting, and a bespoke furniture layout that enhances comfort and visual appeal, creating an opulent yet cozy environment.",
     },
   ];
 
