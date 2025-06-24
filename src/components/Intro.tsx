@@ -6,10 +6,6 @@ const Intro: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
-    // {
-    //   url: "https://images.pexels.com/photos/313705/pexels-photo-313705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    //   alt: "Designers collaborating on luxury interior"
-    // },
     {
       url: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       alt: "Modern luxury living room design"

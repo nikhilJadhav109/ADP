@@ -186,58 +186,6 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Timeline */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Journey</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Key milestones that have shaped our company and defined our commitment to excellence.
-            </p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-teal-200 dark:bg-teal-800 hidden md:block"></div>
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className="flex-1 md:pr-8">
-                    {index % 2 === 0 ? (
-                      <div className="text-right hidden md:block">
-                        <div className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-2">{milestone.year}</div>
-                        <div className="text-xl font-bold text-gray-900 dark:text-white mb-3">{milestone.title}</div>
-                        <div className="text-gray-600 dark:text-gray-300">{milestone.description}</div>
-                      </div>
-                    ) : (
-                      <div className="hidden md:block">
-                        <div className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-2">{milestone.year}</div>
-                        <div className="text-xl font-bold text-gray-900 dark:text-white mb-3">{milestone.title}</div>
-                        <div className="text-gray-600 dark:text-gray-300">{milestone.description}</div>
-                      </div>
-                    )}
-                    {/* Mobile Layout */}
-                    <div className="md:hidden">
-                      <div className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-2">{milestone.year}</div>
-                      <div className="text-xl font-bold text-gray-900 dark:text-white mb-3">{milestone.title}</div>
-                      <div className="text-gray-600 dark:text-gray-300">{milestone.description}</div>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Dot */}
-                  <div className="w-4 h-4 bg-teal-500 dark:bg-teal-400 rounded-full relative z-10 hidden md:block">
-                    <div className="w-8 h-8 bg-teal-100 dark:bg-teal-900 rounded-full absolute -top-2 -left-2"></div>
-                  </div>
-                  
-                  <div className="flex-1 md:pl-8"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

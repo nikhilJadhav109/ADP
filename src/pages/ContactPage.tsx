@@ -4,12 +4,23 @@ import {
   Mail,
   MapPin,
   Clock,
-  Send,
-  MessageCircle,
+  MessageCircle, // Using MessageCircle for WhatsApp button
   CheckCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { CONTACT_INFO, LOCATION, MAP_LINK } from "../constants/path";
+
+// Assuming these constants are defined elsewhere or provided here for completeness.
+// You might need to adjust CONTACT_INFO.PHONE_NUMBER_1 to the actual WhatsApp number.
+const CONTACT_INFO = {
+  PHONE_NUMBER_1: "+919823069099", // Example: Replace with your actual WhatsApp enabled number
+  PHONE_NUMBER_2: "+918459758065",
+  EMAIL: "agrawalplydecor@gmail.com",
+  ADDRESS_LINE_1: "Agrawal Ply Decor",
+  ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near Orchid the international school, Pisoli, Pune, Maharashtra 411060",
+};
+
+const MAP_LINK = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.851204360001!2d73.90868613031786!3d18.450845940102138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb255da48447%3A0x45a26649ef046df8!2sAgrawal%20Ply%20Decor!5e0!3m2!1sen!2sin!4v1750698235313!5m2!1sen!2sin";
+
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +34,10 @@ const ContactPage: React.FC = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission feedback
+  const [isSubmitting, setIsSubmitting] = useState(false); // State for submission feedback
+
+  // WhatsApp number to send messages to
+  const whatsAppNumber = CONTACT_INFO.PHONE_NUMBER_1.replace(/\D/g, ''); // Remove non-digits for URL
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -40,12 +54,39 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Construct the WhatsApp message
+    const whatsappMessage = `
+Hello, I'm interested in discussing a project. Here are my details:
+
+Name: ${formData.name || 'N/A'}
+Email: ${formData.email || 'N/A'}
+Phone: ${formData.phone || 'N/A'}
+Project Type: ${formData.projectType || 'N/A'}
+Budget: ${formData.budget || 'N/A'}
+Timeline: ${formData.timeline || 'N/A'}
+
+Message:
+${formData.message || 'No specific message provided.'}
+
+Looking forward to your response!
+    `.trim();
+
+    // Encode the message for a URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsAppNumber}?text=${encodedMessage}`;
+
     try {
-      // Simulate API call
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank');
+
+      // Simulate a short delay for user feedback before "submission" is complete
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Form submitted:", formData);
-      setIsSubmitted(true);
-      // Clear form data after successful submission
+      console.log("Redirecting to WhatsApp:", formData);
+      setIsSubmitted(true); // Indicate that the WhatsApp redirect was initiated
+
+      // Optionally, clear form data after successful initiation, but user might want to re-try if WhatsApp wasn't opened
       setFormData({
         name: "",
         email: "",
@@ -56,12 +97,11 @@ const ContactPage: React.FC = () => {
         message: "",
       });
     } catch (error) {
-      console.error("Form submission failed:", error);
-      // Optionally, show an error message to the user
+      console.error("Failed to open WhatsApp:", error);
+      // Optionally, display an error message to the user if the redirect failed
     } finally {
       setIsSubmitting(false);
-      // Keep success message visible for a bit longer, then potentially hide if needed
-      // Or let the user navigate away
+      // The success message will remain visible until the user navigates away or refreshes
     }
   };
 
@@ -81,8 +121,8 @@ const ContactPage: React.FC = () => {
     {
       icon: MapPin,
       title: "Address",
-      details: [CONTACT_INFO.ADDRESS_LINE_1,CONTACT_INFO.ADDRESS_LINE_2],
-      action: {MAP_LINK},
+      details: [CONTACT_INFO.ADDRESS_LINE_1, CONTACT_INFO.ADDRESS_LINE_2],
+      action: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT_INFO.ADDRESS_LINE_1 + ", " + CONTACT_INFO.ADDRESS_LINE_2)}`, // Direct link to open map
     },
     {
       icon: Clock,
@@ -151,7 +191,7 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-20 bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-500">
+    <div className="pt-20 bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-500 font-sans">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -267,7 +307,7 @@ const ContactPage: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <motion.a
-                    href="tel:+91-9876543210"
+                    href={`tel:${CONTACT_INFO.PHONE_NUMBER_1}`}
                     className="bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -276,7 +316,7 @@ const ContactPage: React.FC = () => {
                     Call Us Now
                   </motion.a>
                   <motion.a
-                    href="https://wa.me/919876543210"
+                    href={`https://wa.me/${whatsAppNumber}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
@@ -305,15 +345,14 @@ const ContactPage: React.FC = () => {
                     Send Us a Message
                   </h3>
                   <form className="space-y-6" onSubmit={handleSubmit}>
-                    {/* Add hidden fields for FormSubmit.co for better integration */}
+                    {/* These hidden fields are for traditional form submissions and are not needed for WhatsApp.
+                        I'm leaving them commented out in case you decide to re-enable a server-side submission.
                     <input type="hidden" name="_template" value="table" />
                     <input
                       type="hidden"
                       name="_subject"
                       value="New Contact Form Submission from Website"
                     />
-                    {/* Re-enable this if you want to use FormSubmit.co's redirect feature
-                    <input type="hidden" name="_next" value="https://yourdomain.com/contact?success=true" />
                     */}
 
                     <motion.div variants={formFieldVariants}>
@@ -342,7 +381,7 @@ const ContactPage: React.FC = () => {
                         htmlFor="email"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
-                        Email Address <span className="text-red-500">*</span>
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -472,7 +511,7 @@ const ContactPage: React.FC = () => {
                         htmlFor="message"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
-                        Project Details <span className="text-red-500">*</span>
+                        Project Details
                       </label>
                       <textarea
                         id="message"
@@ -487,7 +526,7 @@ const ContactPage: React.FC = () => {
 
                     <motion.button
                       type="submit"
-                      className="w-full bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
+                      className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
@@ -516,12 +555,12 @@ const ContactPage: React.FC = () => {
                               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                             ></path>
                           </svg>
-                          Sending...
+                          Opening WhatsApp...
                         </>
                       ) : (
                         <>
-                          <Send className="w-5 h-5 mr-2" />
-                          Send Message
+                          <MessageCircle className="w-5 h-5 mr-2" />
+                          Send via WhatsApp
                         </>
                       )}
                     </motion.button>
@@ -537,16 +576,16 @@ const ContactPage: React.FC = () => {
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4 animate-bounce-in" />{" "}
                   {/* Added bounce-in for extra flair */}
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                    Message Sent Successfully!
+                    Redirecting to WhatsApp!
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6 px-4">
-                    Thank you for your inquiry. We've received your message and
-                    will get back to you within 24 business hours to discuss
-                    your project.
+                    Your message details are prepared. Please confirm the send
+                    in the WhatsApp window that just opened (or will open
+                    shortly).
                   </p>
                   <div className="flex gap-3 justify-center">
                     <motion.a
-                      href="tel:+91-9876543210"
+                      href={`tel:${CONTACT_INFO.PHONE_NUMBER_1}`}
                       className="bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center shadow-md hover:shadow-lg"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -586,13 +625,13 @@ const ContactPage: React.FC = () => {
             style={{ minHeight: "400px" }} // Ensure a minimum height for the map
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.851204360001!2d73.90868613031786!3d18.450845940102138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb255da48447%3A0x45a26649ef046df8!2sAgrawal%20Ply%20Decor!5e0!3m2!1sen!2sin!4v1750698235313!5m2!1sen!2sin"
+              src={MAP_LINK}
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen={true}
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
               title="Our Location in Pune"
               className="absolute inset-0 w-full h-full"
             ></iframe>

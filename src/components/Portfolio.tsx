@@ -290,6 +290,7 @@ const Portfolio: React.FC = () => {
                 onClick={() => setActiveFilter(filter)}
                 variants={filterVariants}
                 initial="inactive"
+                aria-label={`Show ${filter} projects`}
                 animate={activeFilter === filter ? "active" : "inactive"}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
