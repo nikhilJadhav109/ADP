@@ -78,9 +78,9 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-6">
+          {/*<div className="hidden lg:flex items-center space-x-6">
             <ThemeToggle />
-          </div>
+          </div>*/}
 
           {/* Mobile Menu Button & Theme Toggle */}
           <div className="md:hidden flex items-center space-x-3">
