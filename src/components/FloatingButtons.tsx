@@ -52,7 +52,7 @@ const FloatingButtons: React.FC = () => {
       {/* Enquire Now Button */}
       <button
         onClick={handleEnquireNow}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white p-3 rounded-l-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white p-3 rounded-l-full shadow-lg hover:shadow-xl transition-all duration-300 group "
       >
         <div className="flex items-center">
           <Phone className="w-5 h-5 mr-2" />
