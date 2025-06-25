@@ -21,10 +21,10 @@ const Intro: React.FC = () => {
   ];
 
   const stats = [
-    { icon: Award, number: "500+", label: "Projects Completed" },
-    { icon: Users, number: "200+", label: "Happy Clients" },
-    { icon: Home, number: "15+", label: "Years Experience" },
-    { icon: Sparkles, number: "100%", label: "Satisfaction Rate" }
+    { icon: Award, number: "25+", label: "Projects Completed" },
+    { icon: Users, number: "50+", label: "Happy Clients" },
+    { icon: Home, number: "5+", label: "Years Experience" },
+    { icon: Sparkles, number: "80%", label: "Satisfaction Rate" }
   ];
 
   useEffect(() => {

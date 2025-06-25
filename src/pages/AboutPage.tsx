@@ -3,10 +3,10 @@ import { Award, Users, Clock, Star, Target, Heart, Shield } from 'lucide-react';
 
 const AboutPage: React.FC = () => {
   const stats = [
-    { icon: Users, number: '500+', label: 'Happy Clients' },
-    { icon: Award, number: '15+', label: 'Years Experience' },
-    { icon: Clock, number: '1000+', label: 'Projects Completed' },
-    { icon: Star, number: '4.9', label: 'Client Rating' }
+    { icon: Users, number: '50+', label: 'Happy Clients' },
+    { icon: Award, number: '5+', label: 'Years Experience' },
+    { icon: Clock, number: '25+', label: 'Projects Completed' },
+    { icon: Star, number: '4.7', label: 'Client Rating' }
   ];
 
   const values = [
