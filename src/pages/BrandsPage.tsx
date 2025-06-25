@@ -3,34 +3,43 @@ import { CheckCircle, Award, Handshake } from 'lucide-react';
 
 const BrandsPage: React.FC = () => {
   const brands = [
-    { name: 'IKEA', logo: 'I', category: 'Furniture & Accessories' },
-    { name: 'West Elm', logo: 'W', category: 'Modern Furniture' },
-    { name: 'CB2', logo: 'C', category: 'Contemporary Design' },
-    { name: 'Herman Miller', logo: 'H', category: 'Office Furniture' },
-    { name: 'Steelcase', logo: 'S', category: 'Workplace Solutions' },
-    { name: 'Knoll', logo: 'K', category: 'Modern Furniture' },
-    { name: 'Pottery Barn', logo: 'P', category: 'Home Furnishings' },
-    { name: 'Restoration Hardware', logo: 'R', category: 'Luxury Home' },
-    { name: 'Crate & Barrel', logo: 'C', category: 'Home Decor' },
-    { name: 'Design Within Reach', logo: 'D', category: 'Modern Design' },
-    { name: 'Ligne Roset', logo: 'L', category: 'Contemporary Furniture' },
-    { name: 'Cassina', logo: 'C', category: 'Italian Design' },
-    { name: 'Vitra', logo: 'V', category: 'Design Furniture' },
-    { name: 'Artek', logo: 'A', category: 'Scandinavian Design' },
-    { name: 'Muuto', logo: 'M', category: 'Nordic Design' },
-    { name: 'HAY', logo: 'H', category: 'Danish Design' }
+    { name: 'IKEA', logo: 'I', category: 'Furniture & Accessories', logoPath: '/brands/ikea.png' }, // Example for existing
+    { name: 'West Elm', logo: 'W', category: 'Modern Furniture', logoPath: '/brands/west-elm.png' }, // Example for existing
+    { name: 'CB2', logo: 'C', category: 'Contemporary Design', logoPath: '/brands/cb2.png' }, // Example for existing
+    { name: 'Herman Miller', logo: 'H', category: 'Office Furniture', logoPath: '/brands/herman-miller.png' }, // Example for existing
+    { name: 'Steelcase', logo: 'S', category: 'Workplace Solutions', logoPath: '/brands/steelcase.png' }, // Example for existing
+    { name: 'Knoll', logo: 'K', category: 'Modern Furniture', logoPath: '/brands/knoll.png' }, // Example for existing
+    { name: 'Pottery Barn', logo: 'P', category: 'Home Furnishings', logoPath: '/brands/pottery-barn.png' }, // Example for existing
+    { name: 'Restoration Hardware', logo: 'R', category: 'Luxury Home', logoPath: '/brands/restoration-hardware.png' }, // Example for existing
+    { name: 'Crate & Barrel', logo: 'C', category: 'Home Decor', logoPath: '/brands/crate-barrel.png' }, // Example for existing
+    { name: 'Design Within Reach', logo: 'D', category: 'Modern Design', logoPath: '/brands/design-within-reach.png' }, // Example for existing
+    { name: 'Ligne Roset', logo: 'L', category: 'Contemporary Furniture', logoPath: '/brands/ligne-roset.png' }, // Example for existing
+    { name: 'Cassina', logo: 'C', category: 'Italian Design', logoPath: '/brands/cassina.png' }, // Example for existing
+    { name: 'Vitra', logo: 'V', category: 'Design Furniture', logoPath: '/brands/vitra.png' }, // Example for existing
+    { name: 'Artek', logo: 'A', category: 'Scandinavian Design', logoPath: '/brands/artek.png' }, // Example for existing
+    { name: 'Muuto', logo: 'M', category: 'Nordic Design', logoPath: '/brands/muuto.png' }, // Example for existing
+    { name: 'HAY', logo: 'H', category: 'Danish Design', logoPath: '/brands/hay.png' }, // Example for existing
+    // New brands from the image, assuming specific filenames in public/brands/
+    { name: 'Prachin Ply', logo: 'PP', category: 'Plywood & Boards', logoPath: '/brands/prachinPlywood.jpg' },
+    { name: 'Yeti Ply', logo: 'YP', category: 'Plywood & Boards', logoPath: '/brands/yetiply.png' },
+    { name: 'Ebco', logo: 'E', category: 'Architectural Hardware', logoPath: '/brands/ebco.jpg' },
+    { name: 'Hettich', logo: 'H', category: 'Furniture Fittings', logoPath: '/brands/hettich.png' },
+    { name: 'Royale Touche', logo: 'RT', category: 'Luxury Laminates', logoPath: '/brands/royal.png' },
+    { name: 'Enox', logo: 'E', category: 'Architectural Hardware', logoPath: '/brands/ENOX.webp' },
+    { name: 'Surface', logo: 'S', category: 'Laminates & Veneers', logoPath: '/brands/suface.jpg' },
+    { name: 'Merino', logo: 'M', category: 'Laminates & Panels', logoPath: '/brands/merino.webp' },
+    { name: 'Greenlam', logo: 'G', category: 'Laminates', logoPath: '/brands/greenlam-industries.png' },
+    { name: 'Hafele', logo: 'H', category: 'Architectural Hardware', logoPath: '/brands/haefele_logo.png' },
+    { name: 'Euro Pratik', logo: 'EP', category: 'Ply & Boards', logoPath: '/brands/euroPratik.png' },
+    { name: 'Ozone', logo: 'O', category: 'Architectural Hardware Solutions', logoPath: '/brands/ozone.webp' }
   ];
 
   const categories = [
+
     {
-      title: 'Furniture Partners',
-      description: 'Premium furniture brands offering exceptional quality and design',
-      brands: brands.slice(0, 8)
-    },
-    {
-      title: 'Design Collaborators',
-      description: 'Contemporary design houses known for innovation and style',
-      brands: brands.slice(8, 16)
+      title: 'Building Materials & Hardware',
+      description: 'Trusted brands for high-quality plywood, laminates, and architectural hardware',
+      brands: brands.filter(brand => ['Prachin Ply', 'Yeti Ply', 'Ebco', 'Hettich', 'Royale Touche', 'Enox', 'Surface', 'Merino', 'Greenlam', 'Hafele', 'Euro Pratik', 'Ozone'].includes(brand.name))
     }
   ];
 
@@ -61,7 +70,7 @@ const BrandsPage: React.FC = () => {
             Our <span className="text-teal-400">Brand Partners</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We collaborate with the world's leading furniture and decor brands to bring you the finest quality products and latest design trends for your interior spaces.
+            We collaborate with the world's leading furniture, decor, and building material brands to bring you the finest quality products and latest design trends for your interior spaces.
           </p>
         </div>
       </section>
@@ -106,9 +115,17 @@ const BrandsPage: React.FC = () => {
                   className="group bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
                 >
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-teal-500 dark:bg-teal-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-teal-600 dark:group-hover:bg-teal-500 transition-colors duration-300">
-                      <span className="text-white font-bold text-2xl">{brand.logo}</span>
-                    </div>
+                    {brand.logoPath ? (
+                      <img
+                        src={brand.logoPath}
+                        alt={`${brand.name} Logo`}
+                        className="w-auto h-16 object-contain mx-auto mb-4" // Use w-auto to maintain aspect ratio
+                      />
+                    ) : (
+                      <div className="w-16 h-16 bg-teal-500 dark:bg-teal-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-teal-600 dark:group-hover:bg-teal-500 transition-colors duration-300">
+                        <span className="text-white font-bold text-2xl">{brand.logo}</span>
+                      </div>
+                    )}
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{brand.name}</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{brand.category}</p>
                   </div>
