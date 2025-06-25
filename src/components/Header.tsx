@@ -148,18 +148,18 @@ const Header: React.FC = () => {
             ))}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <a
-                href="tel:+91-9876543210"
+                href="tel:+91-9823069099"
                 className="flex items-center text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 py-2"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                <span>+91-9876543210</span>
+                <span>+91-9823069099</span>
               </a>
               <a
-                href="mailto:info@agrawalplydecor.com"
+                href="mailto:agrawalplydecor@gmail.com"
                 className="flex items-center text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-200 py-2"
               >
                 <Mail className="w-4 h-4 mr-2" />
-                <span>info@agrawalplydecor.com</span>
+                <span>agrawalplydecor@gmail.com</span>
               </a>
             </div>
           </div>

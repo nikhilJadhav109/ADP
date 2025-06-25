@@ -16,18 +16,21 @@ const CONTACT_INFO = {
   PHONE_NUMBER_2: "+918459758065",
   EMAIL: "agrawalplydecor@gmail.com",
   ADDRESS_LINE_1: "Agrawal Ply Decor",
-  ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near Orchid the international school, Pisoli, Pune, Maharashtra 411060",
+  ADDRESS_LINE_2:
+    "Sr 46/1/2, Sangam Hospital Rd, near orchid the International School, Pisoli, Pune, Maharashtra 411060",
 };
 
+// Corrected MAP_LINK to be a proper Google Maps embed URL or a direct link that Google Maps understands.
+// If you want a specific embedded map, you usually get an iframe src from Google Maps Embed API.
+// For a simple link to open Google Maps, it's typically:
 const MAP_LINK = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.851204360001!2d73.90868613031786!3d18.450845940102138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb255da48447%3A0x45a26649ef046df8!2sAgrawal%20Ply%20Decor!5e0!3m2!1sen!2sin!4v1750698235313!5m2!1sen!2sin";
-
-
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     projectType: "",
+    size: "", // Added new field for size
     budget: "",
     timeline: "",
     message: "",
@@ -37,7 +40,7 @@ const ContactPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // State for submission feedback
 
   // WhatsApp number to send messages to
-  const whatsAppNumber = CONTACT_INFO.PHONE_NUMBER_1.replace(/\D/g, ''); // Remove non-digits for URL
+  const whatsAppNumber = CONTACT_INFO.PHONE_NUMBER_1.replace(/\D/g, ""); // Remove non-digits for URL
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -55,18 +58,26 @@ const ContactPage: React.FC = () => {
     setIsSubmitting(true);
 
     // Construct the WhatsApp message
-    const whatsappMessage = `
+    let whatsappMessage = `
 Hello, I'm interested in discussing a project. Here are my details:
 
-Name: ${formData.name || 'N/A'}
-Email: ${formData.email || 'N/A'}
-Phone: ${formData.phone || 'N/A'}
-Project Type: ${formData.projectType || 'N/A'}
-Budget: ${formData.budget || 'N/A'}
-Timeline: ${formData.timeline || 'N/A'}
+Name: ${formData.name || "N/A"}
+Email: ${formData.email || "N/A"}
+Phone: ${formData.phone || "N/A"}
+Project Type: ${formData.projectType || "N/A"}`;
+
+    // Conditionally add size to the message
+    if (formData.projectType === "residential" && formData.size) {
+      whatsappMessage += `
+Size: ${formData.size}`;
+    }
+
+    whatsappMessage += `
+Budget: ${formData.budget || "N/A"}
+Timeline: ${formData.timeline || "N/A"}
 
 Message:
-${formData.message || 'No specific message provided.'}
+${formData.message || "No specific message provided."}
 
 Looking forward to your response!
     `.trim();
@@ -79,7 +90,7 @@ Looking forward to your response!
 
     try {
       // Open WhatsApp in a new tab
-      window.open(whatsappUrl, '_blank');
+      window.open(whatsappUrl, "_blank");
 
       // Simulate a short delay for user feedback before "submission" is complete
       await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -92,6 +103,7 @@ Looking forward to your response!
         email: "",
         phone: "",
         projectType: "",
+        size: "", // Clear size field as well
         budget: "",
         timeline: "",
         message: "",
@@ -122,7 +134,9 @@ Looking forward to your response!
       icon: MapPin,
       title: "Address",
       details: [CONTACT_INFO.ADDRESS_LINE_1, CONTACT_INFO.ADDRESS_LINE_2],
-      action: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT_INFO.ADDRESS_LINE_1 + ", " + CONTACT_INFO.ADDRESS_LINE_2)}`, // Direct link to open map
+      action: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        CONTACT_INFO.ADDRESS_LINE_1 + ", " + CONTACT_INFO.ADDRESS_LINE_2
+      )}`, // Direct link to open map
     },
     {
       icon: Clock,
@@ -234,7 +248,7 @@ Looking forward to your response!
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
                   Whether you're planning a complete home renovation, designing
-                  a new office space, or just seeking expert design advice, our
+                  a new office space, designing a new home, or just seeking expert design advice, our
                   dedicated team is here to assist you. We're passionate about
                   turning your ideas into breathtaking realities.
                 </p>
@@ -345,16 +359,6 @@ Looking forward to your response!
                     Send Us a Message
                   </h3>
                   <form className="space-y-6" onSubmit={handleSubmit}>
-                    {/* These hidden fields are for traditional form submissions and are not needed for WhatsApp.
-                        I'm leaving them commented out in case you decide to re-enable a server-side submission.
-                    <input type="hidden" name="_template" value="table" />
-                    <input
-                      type="hidden"
-                      name="_subject"
-                      value="New Contact Form Submission from Website"
-                    />
-                    */}
-
                     <motion.div variants={formFieldVariants}>
                       <label
                         htmlFor="name"
@@ -403,7 +407,7 @@ Looking forward to your response!
                           htmlFor="phone"
                           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
-                          Phone Number
+                          Phone Number <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="tel"
@@ -411,6 +415,7 @@ Looking forward to your response!
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
+                          required
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                           placeholder="+91-9876543210"
                         />
@@ -447,10 +452,44 @@ Looking forward to your response!
                       </motion.div>
                     </div>
 
+                    {/* New "Size" Field - Conditionally Rendered */}
+                    {formData.projectType === "residential" && (
+                      <motion.div>
+                        <label
+                          htmlFor="size"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
+                          Size
+                        </label>
+                        <select
+                          id="size"
+                          name="size"
+                          value={formData.size}
+                          onChange={handleChange}
+                          required // Make it required if residential is selected
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                        >
+                          <option value="">Select size</option>
+                          <option value="1BHK">1 BHK</option>
+                          <option value="2BHK">2 BHK</option>
+                          <option value="3BHK">3 BHK</option>
+                          <option value="4BHK">4 BHK</option>
+                          <option value="5BHK">5 BHK</option>
+                          <option value="bungalow">Bungalow</option>
+                          <option value="row_house">Row House</option>
+                          <option value="farm_house">Farm House</option>
+                          <option value="duplex">Duplex</option>
+                        </select>
+                      </motion.div>
+                    )}
+
                     <div className="grid sm:grid-cols-2 gap-4">
                       <motion.div
                         variants={formFieldVariants}
-                        transition={{ delay: 0.4 }}
+                        transition={{
+                          delay:
+                            formData.projectType === "residential" ? 0.4 : 0.4,
+                        }} // Adjust delay if size field is present
                       >
                         <label
                           htmlFor="budget"
@@ -475,7 +514,10 @@ Looking forward to your response!
                       </motion.div>
                       <motion.div
                         variants={formFieldVariants}
-                        transition={{ delay: 0.5 }}
+                        transition={{
+                          delay:
+                            formData.projectType === "residential" ? 0.5 : 0.5,
+                        }} // Adjust delay if size field is present
                       >
                         <label
                           htmlFor="timeline"
@@ -505,7 +547,10 @@ Looking forward to your response!
 
                     <motion.div
                       variants={formFieldVariants}
-                      transition={{ delay: 0.6 }}
+                      transition={{
+                        delay:
+                          formData.projectType === "residential" ? 0.6 : 0.6,
+                      }} // Adjust delay if size field is present
                     >
                       <label
                         htmlFor="message"

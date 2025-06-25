@@ -3,23 +3,7 @@ import { CheckCircle, Award, Handshake } from 'lucide-react';
 
 const BrandsPage: React.FC = () => {
   const brands = [
-    { name: 'IKEA', logo: 'I', category: 'Furniture & Accessories', logoPath: '/brands/ikea.png' }, // Example for existing
-    { name: 'West Elm', logo: 'W', category: 'Modern Furniture', logoPath: '/brands/west-elm.png' }, // Example for existing
-    { name: 'CB2', logo: 'C', category: 'Contemporary Design', logoPath: '/brands/cb2.png' }, // Example for existing
-    { name: 'Herman Miller', logo: 'H', category: 'Office Furniture', logoPath: '/brands/herman-miller.png' }, // Example for existing
-    { name: 'Steelcase', logo: 'S', category: 'Workplace Solutions', logoPath: '/brands/steelcase.png' }, // Example for existing
-    { name: 'Knoll', logo: 'K', category: 'Modern Furniture', logoPath: '/brands/knoll.png' }, // Example for existing
-    { name: 'Pottery Barn', logo: 'P', category: 'Home Furnishings', logoPath: '/brands/pottery-barn.png' }, // Example for existing
-    { name: 'Restoration Hardware', logo: 'R', category: 'Luxury Home', logoPath: '/brands/restoration-hardware.png' }, // Example for existing
-    { name: 'Crate & Barrel', logo: 'C', category: 'Home Decor', logoPath: '/brands/crate-barrel.png' }, // Example for existing
-    { name: 'Design Within Reach', logo: 'D', category: 'Modern Design', logoPath: '/brands/design-within-reach.png' }, // Example for existing
-    { name: 'Ligne Roset', logo: 'L', category: 'Contemporary Furniture', logoPath: '/brands/ligne-roset.png' }, // Example for existing
-    { name: 'Cassina', logo: 'C', category: 'Italian Design', logoPath: '/brands/cassina.png' }, // Example for existing
-    { name: 'Vitra', logo: 'V', category: 'Design Furniture', logoPath: '/brands/vitra.png' }, // Example for existing
-    { name: 'Artek', logo: 'A', category: 'Scandinavian Design', logoPath: '/brands/artek.png' }, // Example for existing
-    { name: 'Muuto', logo: 'M', category: 'Nordic Design', logoPath: '/brands/muuto.png' }, // Example for existing
-    { name: 'HAY', logo: 'H', category: 'Danish Design', logoPath: '/brands/hay.png' }, // Example for existing
-    // New brands from the image, assuming specific filenames in public/brands/
+   
     { name: 'Prachin Ply', logo: 'PP', category: 'Plywood & Boards', logoPath: '/brands/prachinPlywood.jpg' },
     { name: 'Yeti Ply', logo: 'YP', category: 'Plywood & Boards', logoPath: '/brands/yetiply.png' },
     { name: 'Ebco', logo: 'E', category: 'Architectural Hardware', logoPath: '/brands/ebco.jpg' },

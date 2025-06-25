@@ -334,7 +334,7 @@ const ServicesPage = () => {
               </Link>
 
               <a
-                href="tel:+91-9876543210" // Replace with your actual phone number
+                href="tel:+91-9823069099" 
                 className="border-2 border-white text-white hover:bg-white hover:text-teal-600 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors duration-200"
               >
                 Call Now

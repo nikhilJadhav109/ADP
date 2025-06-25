@@ -28,31 +28,32 @@ const AboutPage: React.FC = () => {
   ];
 
   const team = [
-    {
-      name: 'Rajesh Agrawal',
-      position: 'Founder & Principal Designer',
-      image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'With over 15 years of experience in luxury interior design, Rajesh founded Agrawal Ply Decor with a vision to transform spaces into extraordinary experiences.'
-    },
-    {
-      name: 'Priya Sharma',
-      position: 'Senior Interior Designer',
-      image: 'https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'Priya specializes in residential design and has a keen eye for creating harmonious spaces that blend functionality with aesthetic appeal.'
-    },
-    {
-      name: 'Amit Kumar',
-      position: 'Project Manager',
-      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'Amit ensures every project runs smoothly from conception to completion, managing timelines, budgets, and quality control.'
-    },
-    {
-      name: 'Sneha Gupta',
-      position: 'Design Consultant',
-      image: 'https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'Sneha works closely with clients to understand their vision and translate it into stunning design concepts and solutions.'
-    }
-  ];
+  {
+    name: 'Komal Dhanuka',
+    position: 'Founder and Director',
+    image: 'https://images.pexels.co/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Leads the vision and design excellence at Agrawal Ply Decor.'
+  },
+  {
+    name: 'Kaustubh Dhanuka',
+    position: 'Managing Director',
+    image: 'https://images.pexels.co/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Drives operations and ensures strategic growth of the company.'
+  },
+  {
+    name: 'Manish Singh',
+    position: 'Business Development Manager',
+    image: 'https://images.pexels.co/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Builds client relations and drives business expansion.'
+  },
+  {
+    name: 'Payal Patil',
+    position: 'Front Desk Manager',
+    image: 'https://images.pexels.co/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Manages front office with professionalism and care.'
+  }
+];
+
 
   const milestones = [
     {
