@@ -305,27 +305,27 @@ const PortfolioPage: React.FC = () => {
                       href={`/portfolio/${project.id}`}
                       className="flex items-center text-teal-600 hover:text-teal-500 transition-colors duration-200"
                     >
-                      View Project
-                      <ArrowUpRight className="w-4 h-4 ml-1 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      {/* View Project
+                      <ArrowUpRight className="w-4 h-4 ml-1 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" /> */}
                     </a>
                   </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-snug">
+                 
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 leading-snug">
                     {project.title}
                   </h3>
+
 
                   <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
                     <MapPin className="w-4 h-4 mr-2 text-teal-500" />
                     <span>{project.location}</span>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-4">
+                  <p className="text-gray-800 text-base leading-relaxed mb-4">
                     {project.description}
                   </p>
-
                   {/* Optional: Details on hover or expansion */}
                   <p className="text-gray-500 dark:text-gray-400 text-sm italic leading-relaxed pt-2 border-t border-gray-100 dark:border-gray-700">
-                    {project.details.substring(0, 100)}...{" "}
+                    {project.details.substring(0, 300)}...{" "}
                     {/* Truncate for brevity on main card */}
                   </p>
                 </div>

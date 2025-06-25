@@ -429,10 +429,10 @@ const Portfolio: React.FC = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {[
-              { number: '150+', label: 'Projects Completed' },
-              { number: '98%', label: 'Client Satisfaction' },
-              { number: '15+', label: 'Years Experience' },
-              { number: '50+', label: 'Awards Won' }
+              { number: '50+', label: 'Projects Completed' },
+              { number: '80%', label: 'Client Satisfaction' },
+              { number: '5+', label: 'Years Experience' },
+              { number: '10+', label: 'Awards Won' }
             ].map((stat, index) => (
               <motion.div 
                 key={index}
