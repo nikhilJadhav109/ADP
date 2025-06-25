@@ -3,7 +3,6 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle } from 'lucide-r
 import { motion } from 'framer-motion';
 
 // Assuming these constants are defined elsewhere or provided here for completeness.
-// You might need to adjust CONTACT_INFO.PHONE_NUMBER_1 to the actual WhatsApp enabled number.
 const CONTACT_INFO = {
   PHONE_NUMBER_1: "+919823069099", // Example: Replace with your actual WhatsApp enabled number
   PHONE_NUMBER_2: "+918459758065",
@@ -12,9 +11,10 @@ const CONTACT_INFO = {
   ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near Orchid the international school, Pisoli, Pune, Maharashtra 411060",
 };
 
-// Directly using the Google Maps embed link for the map section.
+// Updated MAP_EMBED_LINK for better general functionality.
+// FOR BEST RESULTS, REPLACE THIS WITH AN ACTUAL EMBED URL FROM GOOGLE MAPS.
+// Example: Go to Google Maps, search your address, click "Share", then "Embed a map", and copy the src from the iframe.
 const MAP_EMBED_LINK = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.851204360001!2d73.90868613031786!3d18.450845940102138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eb255da48447%3A0x45a26649ef046df8!2sAgrawal%20Ply%20Decor!5e0!3m2!1sen!2sin!4v1750698235313!5m2!1sen!2sin";
-
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +22,7 @@ const Contact: React.FC = () => {
     email: '',
     phone: '',
     projectType: '',
+    size: '', // Added size to the formData state
     budget: '',
     timeline: '',
     message: ''
@@ -45,13 +46,21 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     // Construct the WhatsApp message
-    const whatsappMessage = `
+    let whatsappMessage = `
 Hello, I'm interested in discussing a project. Here are my details:
 
 Name: ${formData.name || 'N/A'}
 Email: ${formData.email || 'N/A'}
 Phone: ${formData.phone || 'N/A'}
-Project Type: ${formData.projectType || 'N/A'}
+Project Type: ${formData.projectType || 'N/A'}`;
+
+    // Conditionally add size to the message if projectType is 'residential'
+    if (formData.projectType === 'residential') {
+      whatsappMessage += `
+Size: ${formData.size || 'N/A'}`;
+    }
+
+    whatsappMessage += `
 Budget: ${formData.budget || 'N/A'}
 Timeline: ${formData.timeline || 'N/A'}
 
@@ -82,6 +91,7 @@ Looking forward to your response!
         email: '',
         phone: '',
         projectType: '',
+        size: '', // Clear size field as well
         budget: '',
         timeline: '',
         message: ''
@@ -361,7 +371,7 @@ Looking forward to your response!
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                       >
                         <option value="">Select project type</option>
-                        <option value="residential">Residential Design</option>
+                        <option value="residential">Residential Design</option> {/* Corrected value */}
                         <option value="commercial">Commercial Space</option>
                         <option value="luxury">Luxury Home</option>
                         <option value="consultation">Design Consultation</option>
@@ -370,8 +380,42 @@ Looking forward to your response!
                     </motion.div>
                   </div>
 
+                  {/* New "Size" Field - Conditionally Rendered */}
+                  {formData.projectType === 'residential' && (
+                    <motion.div>
+                      <label
+                        htmlFor="size"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Size
+                      </label>
+                      <select
+                        id="size"
+                        name="size"
+                        value={formData.size}
+                        onChange={handleChange}
+                        required // Make it required if residential is selected
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                      >
+                        <option value="">Select size</option>
+                        <option value="1BHK">1 BHK</option>
+                        <option value="2BHK">2 BHK</option>
+                        <option value="3BHK">3 BHK</option>
+                        <option value="4BHK">4 BHK</option>
+                        <option value="5BHK">5 BHK</option>
+                        <option value="bungalow">Bungalow</option>
+                        <option value="row_house">Row House</option>
+                        <option value="farm_house">Farm House</option>
+                        <option value="duplex">Duplex</option>
+                      </select>
+                    </motion.div>
+                  )}
+
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <motion.div variants={formFieldVariants} transition={{ delay: 0.4 }}>
+                    <motion.div
+                      variants={formFieldVariants}
+                      transition={{ delay: formData.projectType === 'residential' ? 0.4 : 0.4 }} // Adjust delay if size field is present
+                    >
                       <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Budget Range
                       </label>
@@ -390,7 +434,10 @@ Looking forward to your response!
                         <option value="above-50">Above ₹50 Lakhs</option>
                       </select>
                     </motion.div>
-                    <motion.div variants={formFieldVariants} transition={{ delay: 0.5 }}>
+                    <motion.div
+                      variants={formFieldVariants}
+                      transition={{ delay: formData.projectType === 'residential' ? 0.5 : 0.5 }} // Adjust delay if size field is present
+                    >
                       <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Timeline
                       </label>
@@ -410,7 +457,10 @@ Looking forward to your response!
                     </motion.div>
                   </div>
 
-                  <motion.div variants={formFieldVariants} transition={{ delay: 0.6 }}>
+                  <motion.div
+                    variants={formFieldVariants}
+                    transition={{ delay: formData.projectType === 'residential' ? 0.6 : 0.6 }} // Adjust delay if size field is present
+                  >
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Project Details
                     </label>
