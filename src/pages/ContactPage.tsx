@@ -17,7 +17,7 @@ const CONTACT_INFO = {
   EMAIL: "agrawalplydecor@gmail.com",
   ADDRESS_LINE_1: "Agrawal Ply Decor",
   ADDRESS_LINE_2:
-    "Sr 46/1/2, Sangam Hospital Rd, near Orchid the international school, Pisoli, Pune, Maharashtra 411060",
+    "Sr 46/1/2, Sangam Hospital Rd, near orchid the International School, Pisoli, Pune, Maharashtra 411060",
 };
 
 // Corrected MAP_LINK to be a proper Google Maps embed URL or a direct link that Google Maps understands.
@@ -248,7 +248,7 @@ Looking forward to your response!
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
                   Whether you're planning a complete home renovation, designing
-                  a new office space, or just seeking expert design advice, our
+                  a new office space, designing a new home, or just seeking expert design advice, our
                   dedicated team is here to assist you. We're passionate about
                   turning your ideas into breathtaking realities.
                 </p>
@@ -407,7 +407,7 @@ Looking forward to your response!
                           htmlFor="phone"
                           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
-                          Phone Number
+                          Phone Number <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="tel"
@@ -415,6 +415,7 @@ Looking forward to your response!
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
+                          required
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                           placeholder="+91-9876543210"
                         />

@@ -8,7 +8,7 @@ const CONTACT_INFO = {
   PHONE_NUMBER_2: "+918459758065",
   EMAIL: "agrawalplydecor@gmail.com",
   ADDRESS_LINE_1: "Agrawal Ply Decor",
-  ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near Orchid the international school, Pisoli, Pune, Maharashtra 411060",
+  ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near orchid the International School, Pisoli, Pune, Maharashtra 411060",
 };
 
 // Updated MAP_EMBED_LINK for better general functionality.
@@ -217,7 +217,7 @@ Looking forward to your response!
             >
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">Let's Start a Conversation</h3>
               <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
-                Whether you're planning a complete home renovation, designing a new office space, or just need some design advice, we're here to help. Our team of experts is ready to turn your ideas into reality.
+                Whether you're planning a complete home renovation, designing a new office space, designing a new home, or just need some design advice, we're here to help. Our team of experts is ready to turn your ideas into reality.
               </p>
             </motion.div>
 
@@ -346,12 +346,13 @@ Looking forward to your response!
                   <div className="grid sm:grid-cols-2 gap-4">
                     <motion.div variants={formFieldVariants} transition={{ delay: 0.2 }}>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Phone Number
+                        Phone Number<span className="text-red-500">*</span>
                       </label>
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
+                        required
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
