@@ -1,5 +1,4 @@
-import React from "react";
-// Removed lucide-react imports for icons as they are now inline SVGs
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { COMPANY_NAME, SERVICES_OG_IMAGE, SERVICES_PAGE_DESCRIPTION, SERVICES_PAGE_URL, SERVICES_SEO_KEYWORDS } from "../seo";
@@ -10,27 +9,29 @@ const CheckCircleIcon = () => (
 );
 
 // Inline SVG for Home
-const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const HomeIcon = (props) => (
   <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
 );
 
 // Inline SVG for Building
-const BuildingIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const BuildingIcon = (props) => (
   <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-4-4h1m-1 4h1m-4-4h1m-1 4h1"></path></svg>
 );
 
 // Inline SVG for Wrench
-const WrenchIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const WrenchIcon = (props) => (
   <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
 );
 
 // Inline SVG for Box
-const BoxIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const BoxIcon = (props) => (
   <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
 );
 
-const ServicesPage: React.FC = () => {
-  const services = [
+const ServicesPage = () => {
+  const [activeTab, setActiveTab] = useState("interiorDesign"); // State to manage active tab
+
+  const interiorDesignServices = [
     {
       icon: HomeIcon,
       title: "Residential Interior Design",
@@ -44,8 +45,7 @@ const ServicesPage: React.FC = () => {
         "Expert Plywood Use",
         "Full Project Management",
       ],
-      image:
-        "/portfolioImages/residential2.jpeg",
+      image: "/portfolioImages/residential2.jpeg",
     },
     {
       icon: BuildingIcon,
@@ -60,8 +60,7 @@ const ServicesPage: React.FC = () => {
         "Durable Premium Materials",
         "Branded Fixtures",
       ],
-      image:
-        "/portfolioImages/commercial2.jpeg",
+      image: "/portfolioImages/commercial2.jpeg",
     },
     {
       icon: WrenchIcon,
@@ -76,9 +75,11 @@ const ServicesPage: React.FC = () => {
         "Skilled Craftsmanship",
         "Post-Installation Support",
       ],
-      image:
-        "/portfolioImages/residential5.jpeg",
+      image: "/portfolioImages/residential5.jpeg",
     },
+  ];
+
+  const plywoodServices = [
     {
       icon: BoxIcon,
       title: "Plywood Wholesale & Supply (Pune)",
@@ -93,9 +94,9 @@ const ServicesPage: React.FC = () => {
         "Quality Certified & ISI Marked",
         "Prompt Pune Delivery",
       ],
-      image:
-        "/portfolioImages/luxuryhome1.jpeg",
+      image: "/portfolioImages/luxuryhome1.jpeg", // You might want to use a more specific plywood image here
     },
+    // Add more plywood-specific services if needed
   ];
 
   const process = [
@@ -165,53 +166,126 @@ const ServicesPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Services Detail */}
-        <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-16 md:space-y-20">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                    index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-                  }`}
-                >
-                  <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                    <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
-                      <service.icon className="w-7 h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400" />
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base"
-                        >
-                          <CheckCircleIcon />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
-                    />
-                  </div>
-                </div>
-              ))}
+        {/* Tab Navigation */}
+        <section className="bg-white dark:bg-gray-900 py-2">
+          <div className="max-w-3xl mx-auto px-4 sm:px-4 lg:px-8">
+            <div className="flex justify-center border-b border-gray-200 dark:border-gray-700">
+              <button
+                className={`py-3 px-6 text-lg font-medium transition-colors duration-200${
+                  activeTab === "interiorDesign"
+                    ? "text-teal-600 border-b-2 border-teal-600 dark:text-teal-400 dark:border-teal-400"
+                    : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                }`}
+                onClick={() => setActiveTab("interiorDesign")}
+              >
+                Interior Design
+              </button>
+              <button
+                className={`py-3 px-6 text-lg font-medium transition-colors duration-200 ${
+                  activeTab === "plywood"
+                    ? "text-teal-600 border-b-2 border-teal-600 dark:text-teal-400 dark:border-teal-400"
+                    : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                }`}
+                onClick={() => setActiveTab("plywood")}
+              >
+                Plywood & Supply
+              </button>
             </div>
           </div>
         </section>
 
-        {/* Process Section */}
+        {/* Services Detail - Tab Content */}
+        <section className="py-2 px-4 md:py-4 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8">
+            {activeTab === "interiorDesign" && (
+              <div className="space-y-16 md:space-y-20">
+                {interiorDesignServices.map((service, index) => (
+                  <div
+                    key={index}
+                    className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                      index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+                    }`}
+                  >
+                    <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                      <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                        <service.icon className="w-7 h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400" />
+                      </div>
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
+                        {service.title}
+                      </h2>
+                      <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <li
+                            key={featureIndex}
+                            className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base"
+                          >
+                            <CheckCircleIcon />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeTab === "plywood" && (
+              <div className="space-y-16 md:space-y-20">
+                {plywoodServices.map((service, index) => (
+                  <div
+                    key={index}
+                    className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                      index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+                    }`}
+                  >
+                    <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                      <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                        <service.icon className="w-7 h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400" />
+                      </div>
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
+                        {service.title}
+                      </h2>
+                      <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <li
+                            key={featureIndex}
+                            className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base"
+                          >
+                            <CheckCircleIcon />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Process Section (remains the same) */}
         <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 md:mb-16">
@@ -241,7 +315,7 @@ const ServicesPage: React.FC = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section (remains the same) */}
         <section className="py-16 md:py-20 bg-teal-600 dark:bg-teal-700 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-5">
