@@ -7,7 +7,7 @@ import { PROJECTS } from "../constants/projects";
 import { PortfolioPageHelmet } from "../helper/seoProvider";
 
 // ✅ Filters
-const filters = ["All", "Residential", "Commercial", "Luxury Homes"];
+const filters = ["Residential", "Commercial", "Luxury Homes"];
 
 const PortfolioPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -161,9 +161,9 @@ const PortfolioPage: React.FC = () => {
 
                     <p className="text-gray-800 mb-4">{project.description}</p>
 
-                    <p className="text-gray-500 dark:text-gray-400 text-sm italic border-t border-gray-100 dark:border-gray-700 pt-2">
+                    {/* <p className="text-gray-500 dark:text-gray-400 text-sm italic border-t border-gray-100 dark:border-gray-700 pt-2">
                       {project.details.substring(0, 250)}...
-                    </p>
+                    </p> */}
                   </div>
                 </motion.div>
               ))}
