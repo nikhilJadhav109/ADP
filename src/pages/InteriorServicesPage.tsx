@@ -41,7 +41,7 @@ const InteriorServicesPage: React.FC = () => {
         "Expert Plywood Use",
         "Full Project Management",
       ],
-      image: "/portfolioImages/residential2.jpeg", // Ensure correct path
+      image: "/portfolioImages/LivingRoomGeometricTVUnit.jpeg", // Ensure correct path
     },
     {
       icon: BuildingIcon,
@@ -56,7 +56,7 @@ const InteriorServicesPage: React.FC = () => {
         "Durable Premium Materials",
         "Branded Fixtures",
       ],
-      image: "/portfolioImages/commercial2.jpeg", // Ensure correct path
+      image: "/portfolioImages/SpaciousLivingRoomWithSwingSeat.jpeg", // Ensure correct path
     },
     {
       icon: WrenchIcon,
@@ -71,7 +71,7 @@ const InteriorServicesPage: React.FC = () => {
         "Skilled Craftsmanship",
         "Post-Installation Support",
       ],
-      image: "/portfolioImages/residential5.jpeg", // Ensure correct path
+      image: "/portfolioImages/KidsBedroomCustomShelving.jpeg", // Ensure correct path
     },
   ];
 

@@ -51,7 +51,7 @@ const ModularServicesPage: React.FC = () => {
         "Expert Installation",
         "Branded Plywood Base",
       ],
-      image: "/portfolioImages/modular-kitchen1.jpeg", // Placeholder: Add your image paths
+      image: "/portfolioImages/BlueModularKitchen.jpeg", // Placeholder: Add your image paths
     },
     {
       icon: WardrobeIcon,
@@ -66,7 +66,7 @@ const ModularServicesPage: React.FC = () => {
         "Space Optimization",
         "Long-lasting Quality",
       ],
-      image: "/portfolioImages/modular-wardrobe1.jpeg", // Placeholder: Add your image paths
+      image: "/portfolioImages/ModernIndustrialBedroomwithWorkspace.jpg", // Placeholder: Add your image paths
     },
     {
       icon: OfficeDeskIcon, // Using a generic icon for now, adjust as needed
@@ -81,7 +81,7 @@ const ModularServicesPage: React.FC = () => {
         "Scalable Designs",
         "Quick Assembly & Reconfiguration",
       ],
-      image: "/portfolioImages/modular-office1.jpeg", // Placeholder: Add your image paths
+      image: "/portfolioImages/CommercialInteriorDesignOffice.webp", // Placeholder: Add your image paths
     },
     {
       icon: CubeIcon, // Using CubeIcon for TV Units
@@ -96,7 +96,7 @@ const ModularServicesPage: React.FC = () => {
         "Seamless Wall Integration",
         "Modern & Contemporary Styles",
       ],
-      image: "/portfolioImages/modular-tvunit1.jpeg", // Placeholder: Add your image paths
+      image: "/portfolioImages/LuxuryLivingHallWithArt.png", // Placeholder: Add your image paths
     },
   ];
 
