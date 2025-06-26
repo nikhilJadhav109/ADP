@@ -49,6 +49,7 @@ const Footer: React.FC = () => {
                 href={FACEBOOK_LINK}
                 className="text-gray-400 hover:text-teal-400 transition-colors duration-200"
                 target="_blank"
+                aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -56,6 +57,7 @@ const Footer: React.FC = () => {
                 href={INSTAGRAM_LINK}
                 className="text-gray-400 hover:text-teal-400 transition-colors duration-200"
                 target="_blank"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>

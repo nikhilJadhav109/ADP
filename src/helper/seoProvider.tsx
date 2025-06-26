@@ -10,6 +10,7 @@ import {
   BRANDS_PAGE,
   CONTACT_PAGE,
   COMPANY_DESCRIPTION,
+  TESTIMONIALS_PAGE,
 } from "../constants/seoConfig";
 import { FACEBOOK_LINK, INSTAGRAM_LINK } from "../constants/path";
 import { CONTACT_INFO } from "../constants/contact";
@@ -72,13 +73,13 @@ const CommonHelmetTags = ({
           },
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": ${CONTACT_INFO.PHONE_NUMBER_1},
+            "telephone": ${CONTACT_INFO.PHONE_NUMBER_1}.toString(),
             "contactType": "customer service"
           },
           "sameAs": [
-            ${CONTACT_INFO.PHONE_NUMBER_1},
-            ${INSTAGRAM_LINK},
-            ${FACEBOOK_LINK}
+            ${CONTACT_INFO.PHONE_NUMBER_1}.toString(),
+            ${INSTAGRAM_LINK}.toString(),
+            ${FACEBOOK_LINK}.toString()
           ]
         }
       `}
