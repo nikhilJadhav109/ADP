@@ -14,7 +14,13 @@ import { FACEBOOK_LINK, INSTAGRAM_LINK } from "../constants/path";
 const Footer: React.FC = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
+    {
+      name: "Services",
+      path: "/services/interior",
+    },
+            { name: "Interior", path: "/services/interior" },
+        { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
+        { name: "Plywood Supply", path: "/services/plywood-supply" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
