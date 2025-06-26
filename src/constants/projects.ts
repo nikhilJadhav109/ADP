@@ -4,7 +4,7 @@
       title: "Ambient Master Bedroom",
       category: "Luxury Homes",
       location: "Model Colony, Pune, Maharashtra",
-      year: "2024",
+      year: "2025",
       image: "/portfolioImages/residential5.jpeg",
       description:
         "Warm elegance meets modern innovation in this luxury bedroom.",
@@ -92,8 +92,8 @@
     category: "Luxury Homes",
     location: "Koregaon Park, Pune, Maharashtra",
     year: "2023", 
-    image: "/portfolioImages/Elegant-Modern-Dining-Room.jpeg",
-    description: "Sophisticated **residential interior design** for luxury dining in Pune."
+    image: "/portfolioImages/ElegantModernDiningRoom.jpeg",
+    description: "Sophisticated residential interior design for luxury dining in Pune."
   },
   {
     id: 11,
@@ -101,17 +101,17 @@
     category: "Residential",
     location: "Hinjawadi, Pune, Maharashtra",
     year: "2024", 
-    image: "/portfolioImages/Open-Plan-Living-and-Dining-Space.jpeg",
-    description: "Seamless **open-plan interior design** for modern apartments in Pune."
+    image: "/portfolioImages/OpenPlanLivingandDiningSpace.jpeg",
+    description: "Seamless open-plan interior design for modern apartments in Pune."
   },
   {
     id: 12,
     title: "Spacious Living Room with Swing",
-    category: "Residential",
+    category: "Luxury Homes",
     location: "Baner, Pune, Maharashtra",
     year: "2023", 
-    image: "/portfolioImages/Spacious-Living-Room-with-Swing.jpeg",
-    description: "Trendy **living room interior design** featuring a stylish swing for comfort."
+    image: "/portfolioImages/SpaciousLivingRoomwithSwing.jpeg",
+    description: "Trendy living room interior design featuring a stylish swing for comfort."
   },
   {
     id: 13,
@@ -119,8 +119,8 @@
     category: "Residential",
     location: "Viman Nagar, Pune, Maharashtra",
     year: "2024", 
-    image: "/portfolioImages/Contemporary-Living-Area-with-Unique-Wall-Art.jpeg",
-    description: "Chic **home interior solutions** with unique wooden wall art in Pune."
+    image: "/portfolioImages/ContemporaryLivingAreawithuniqueWallArt.jpeg",
+    description: "Chic home interior solutions with unique wooden wall art in Pune."
   },
   {
     id: 14,
@@ -128,8 +128,8 @@
     category: "Residential",
     location: "Wakilwadi, Pune, Maharashtra",
     year: "2023", 
-    image: "/portfolioImages/Sleek-Modular-Kitchen-Design.jpeg",
-    description: "Functional **modular kitchen design** for modern homes in Pune."
+    image: "/portfolioImages/SleekModularKitchenDesign.jpeg",
+    description: "Functional modular kitchen design for modern homes in Pune."
   },
   {
     id: 15,
@@ -137,8 +137,8 @@
     category: "Residential",
     location: "Pimpri, Pune, Maharashtra", 
     year: "2024", 
-    image: "/portfolioImages/Vibrant-and-Cozy-Living-Room.jpeg",
-    description: "Vibrant **residential interior decor** with traditional accents in Pune."
+    image: "/portfolioImages/VibrantandCozyLivingRoom.jpeg",
+    description: "Vibrant residential interior decor with traditional accents in Pune."
   },
   {
     id: 16,
@@ -146,8 +146,8 @@
     category: "Residential",
     location: "Balewadi, Pune, Maharashtra",
     year: "2023", 
-    image: "/portfolioImages/Serene-All-White-Bedroom.jpeg",
-    description: "Minimalist **bedroom interior design** in an all-white serene palette."
+    image: "/portfolioImages/SereneAllWhiteBedroom.jpeg",
+    description: "Minimalist bedroom interior design in an all-white serene palette."
   },
   {
     id: 17,
@@ -155,7 +155,106 @@
     category: "Luxury Homes",
     location: "Kothrud, Pune, Maharashtra",
     year: "2024", 
-    image: "/portfolioImages/Modern-Industrial-Bedroom-with-Workspace.jpg",
-    description: "Edgy **contemporary bedroom design** with integrated workspace in Pune."
+    image: "/portfolioImages/ModernIndustrialBedroomwithWorkspace.jpg",
+    description: "Edgy contemporary bedroom design with integrated workspace in Pune."
+  },
+  {
+    id: 18,
+    title: "Contemporary Business Entrance",
+    category: "Commercial",
+    location: "Balewadi HighStreet, Pune, Maharashtra",
+    year: "2024", 
+    image: "/portfolioImages/ModernLobby.webp",
+    description: "Modern business entrance design in Satara, Maharashtra, India, showcasing contemporary style."
+  },
+  {
+    id: 19,
+    title: "Elegant Green Themed Bedroom",
+    category: "Luxury Homes",
+    location: "Kothrud, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/ElegantGreenBedroom.png",
+    description: "Luxurious bedroom interior design in Pune with a serene green theme."
+  },
+  {
+    id: 20,
+    title: "Vibrant Kids Bedroom with Celestial Ceiling",
+    category: "Residential",
+    location: "Wakad, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/KidsCelestialBedroom.jpeg",
+    description: "Playful kids bedroom design in Pune featuring a unique celestial ceiling."
+  },
+  {
+    id: 21,
+    title: "Contemporary Bedroom with Textured Walls",
+    category: "Residential",
+    location: "Hadapsar, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/TexturedBedroom.jpeg",
+    description: "Modern bedroom interior in Pune with stylish textured wall accents."
+  },
+  {
+    id: 22,
+    title: "Modern Industrial Meeting Room",
+    category: "Commercial",
+    location: "MIDC, Satara, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/IndustrialMeetingRoom.jpg",
+    description: "Dynamic commercial meeting room design in Satara with industrial flair."
+  },
+  {
+    id: 23,
+    title: "Luxury Living and Dining Space",
+    category: "Luxury Homes",
+    location: "Boat Club Road, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/LuxuryLivingDining.jpeg",
+    description: "Opulent living and dining area design in Pune's luxury homes."
+  },
+  {
+    id: 24,
+    title: "Modern Modular Kitchen in Blue",
+    category: "Residential",
+    location: "Pimple Saudagar, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/BlueModularKitchen.jpeg",
+    description: "Sleek modular kitchen design in Pune with modern blue cabinetry."
+  },
+  {
+    id: 25,
+    title: "Grand Commercial Lobby Interior",
+    category: "Commercial",
+    location: "Shivaji Nagar, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/GrandCommercialLobby.png",
+    description: "Luxurious commercial lobby design in Pune, perfect for corporate towers."
+  },
+  {
+    id: 26,
+    title: "Spacious Commercial Gym Interior",
+    category: "Commercial",
+    location: "Aundh, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/CommercialGym.jpg",
+    description: "Expansive commercial gym interior design in Pune, optimized for fitness."
+  },
+  {
+    id: 27,
+    title: "Executive Office Chamber",
+    category: "Commercial",
+    location: "Deccan Gymkhana, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/ExecutiveOffice.jpg",
+    description: "Sophisticated executive office interior in Pune with custom wood finishes."
+  },
+  {
+    id: 28,
+    title: "Chic Luxury Media Room",
+    category: "Luxury Homes",
+    location: "Prabhat Road, Pune, Maharashtra",
+    year: "2024",
+    image: "/portfolioImages/LuxuryMediaRoom.png",
+    description: "Elegant luxury media room design in Pune with ambient star lighting."
   }
 ];

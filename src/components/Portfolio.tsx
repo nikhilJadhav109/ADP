@@ -70,7 +70,7 @@ const Portfolio: React.FC = () => {
       title: "Ambient Master Bedroom",
       category: "Luxury Homes",
       location: "Model Colony, Pune, Maharashtra",
-      year: "2024",
+      year: "2025",
       image: "/portfolioImages/residential5.jpeg",
       description:
         "Warm elegance meets modern innovation in this luxury bedroom.",

@@ -14,7 +14,7 @@ import { BoxIcon, BuildingIcon, HomeIcon, WrenchIcon } from "lucide-react";
         "Expert Plywood Use",
         "Full Project Management",
       ],
-      image: "/portfolioImages/residential2.jpeg",
+      image: "/portfolioImages/LivingRoomGeometricTVUnit.jpeg",
     },
     {
       icon: BuildingIcon,
@@ -29,7 +29,7 @@ import { BoxIcon, BuildingIcon, HomeIcon, WrenchIcon } from "lucide-react";
         "Durable Premium Materials",
         "Branded Fixtures",
       ],
-      image: "/portfolioImages/commercial2.jpeg",
+      image: "/portfolioImages/SpaciousLivingRoomWithSwingSeat.jpeg",
     },
     {
       icon: WrenchIcon,
@@ -44,7 +44,7 @@ import { BoxIcon, BuildingIcon, HomeIcon, WrenchIcon } from "lucide-react";
         "Skilled Craftsmanship",
         "Post-Installation Support",
       ],
-      image: "/portfolioImages/residential5.jpeg",
+      image: "/portfolioImages/KidsBedroomCustomShelving.jpeg",
     },
   ];
 
