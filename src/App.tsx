@@ -17,6 +17,9 @@ import ContactPage from "./pages/ContactPage";
 import Intro from "./components/Intro";
 import ScrollToTop from "./ScrollToTop";
 import { HelmetProvider } from "react-helmet-async";
+import InteriorServicesPage from "./pages/InteriorServicesPage";
+import PlywoodSupplyPage from "./pages/PlywoodSupplyPage";
+import ModularServicesPage from "./pages/ModularServicesPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,6 +60,9 @@ function App() {
                 <Route path="/testimonials" element={<TestimonialsPage />} />
                 <Route path="/brands" element={<BrandsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/services/interior" element={<InteriorServicesPage />} />
+                <Route path="/services/plywood-supply" element={<PlywoodSupplyPage />} />
+                <Route path="/services/modular" element={<ModularServicesPage />} />
               </Routes>
             </main>
             <FloatingButtons />
