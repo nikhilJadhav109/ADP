@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { CONTACT_INFO } from "../constants/contact";
 
-// Assuming these constants are defined elsewhere or provided here for completeness.
-const CONTACT_INFO = {
-  PHONE_NUMBER_1: "+919823069099", // Example: Replace with your actual WhatsApp enabled number
-  PHONE_NUMBER_2: "+918459758065",
-  EMAIL: "agrawalplydecor@gmail.com",
-  ADDRESS_LINE_1: "Agrawal Ply Decor",
-  ADDRESS_LINE_2: "Sr 46/1/2, Sangam Hospital Rd, near orchid the International School, Pisoli, Pune, Maharashtra 411060",
-};
 
 // Updated MAP_EMBED_LINK for better general functionality.
 // FOR BEST RESULTS, REPLACE THIS WITH AN ACTUAL EMBED URL FROM GOOGLE MAPS.
@@ -361,7 +354,7 @@ Looking forward to your response!
                     </motion.div>
                     <motion.div variants={formFieldVariants} transition={{ delay: 0.3 }}>
                       <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Project Type
+                        Project Type<span className="text-red-500">*</span>
                       </label>
                       <select
                         id="projectType"

@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
               >
                 <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
-                <span>+91-9823069099 / +91-8459758065 </span>
+                <span>+91-9823069099 <br></br> +91-8459758065 </span>
               </a>
               <a
                 href="mailto:agrawalplydecor@gmail.com"
@@ -119,9 +119,11 @@ const Footer: React.FC = () => {
                 <span>
                   Sr 46/1/2
                   <br />
-                  Near Orchids The International School,Sangam hospital Road,
+                  Sangam Hospital Road
+                  <br/>
+                  Near Orchids The International School, Sangam hospital Road,
                   <br />
-                  Pisoli,Pune-411060
+                  Pisoli, Pune, Maharashtra-411060
                 </span>
               </div>
             </div>

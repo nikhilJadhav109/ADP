@@ -91,8 +91,7 @@ const Hero: React.FC = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
         >
           From Concept to Keys, We Handle Every Detail for Your Dream Space.
-          Trusted choice for end-to-end interior design and custom modular
-          furniture solutions.
+          Trusted choice for end-to-end interior design and customized modular furniture.
         </motion.p>
 
         <motion.div
