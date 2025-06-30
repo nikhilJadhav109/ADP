@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Award, Users, Home, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Award,
+  Users,
+  Home,
+  Sparkles,
+} from "lucide-react";
 
 const Intro: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -8,23 +15,35 @@ const Intro: React.FC = () => {
   const images = [
     {
       url: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      alt: "Modern luxury living room design"
+      alt: "Modern luxury living room design",
     },
     {
       url: "https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      alt: "Elegant bedroom interior design"
+      alt: "Elegant bedroom interior design",
     },
     {
       url: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      alt: "Contemporary kitchen design"
-    }
+      alt: "Contemporary kitchen design",
+    },
+    {
+      url: "https://images.pexels.com/photos/271800/pexels-photo-271800.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      alt: "Minimalist living room with natural light",
+    },
+    {
+      url: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      alt: "Luxury open space kitchen with marble",
+    },
+    {
+      url: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      alt: "Cozy bedroom with warm lighting",
+    },
   ];
 
   const stats = [
     { icon: Award, number: "25+", label: "Projects Completed" },
     { icon: Users, number: "50+", label: "Happy Clients" },
     { icon: Home, number: "5+", label: "Years Experience" },
-    { icon: Sparkles, number: "80%", label: "Satisfaction Rate" }
+    { icon: Sparkles, number: "80%", label: "Satisfaction Rate" },
   ];
 
   useEffect(() => {
@@ -60,7 +79,7 @@ const Intro: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 px-4 sm:px-0"
           >
@@ -74,15 +93,15 @@ const Intro: React.FC = () => {
                     alt={images[currentImage].alt}
                     className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
                   />
-                  
+
                   {/* Preload next image */}
                   <img
                     src={images[(currentImage + 1) % images.length].url}
                     alt={images[(currentImage + 1) % images.length].alt}
                     className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out"
-                    style={{ display: 'none' }}
+                    style={{ display: "none" }}
                   />
-                  
+
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                 </div>
@@ -109,8 +128,8 @@ const Intro: React.FC = () => {
                       onClick={() => setCurrentImage(index)}
                       className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                         index === currentImage
-                          ? 'bg-teal-400 scale-110'
-                          : 'bg-white/50 hover:bg-white/70'
+                          ? "bg-teal-400 scale-110"
+                          : "bg-white/50 hover:bg-white/70"
                       }`}
                     />
                   ))}
@@ -124,7 +143,9 @@ const Intro: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gradient-to-r from-teal-500 to-cyan-500 dark:from-teal-400 dark:to-cyan-400 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl shadow-lg"
               >
-                <p className="text-xs sm:text-sm font-semibold">Premium Quality</p>
+                <p className="text-xs sm:text-sm font-semibold">
+                  Premium Quality
+                </p>
                 <p className="text-xs opacity-90 hidden sm:block">Guaranteed</p>
               </motion.div>
             </div>
@@ -134,7 +155,7 @@ const Intro: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 text-center lg:text-left"
           >
@@ -149,20 +170,30 @@ const Intro: React.FC = () => {
               Pune's Premier Interior Design Studio
             </motion.div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-              Welcome to{' '}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5 sm:mb-6">
               <span className="bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-500 dark:from-teal-400 dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent">
+                Welcome to
+              </span>
+              <br />
+              <span className="text-gray-900 dark:text-white">
                 Agrawal Ply Decor
               </span>
             </h2>
 
             <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
-                We don't just design spaces – we craft{' '}
-                <span className="font-semibold text-teal-600 dark:text-teal-400">experiences</span>.
+                We don't just design spaces – we craft{" "}
+                <span className="font-semibold text-teal-600 dark:text-teal-400">
+                  experiences
+                </span>
+                .
               </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                As leading interior design experts, we transform your vision into reality with our comprehensive turnkey solutions. From initial concept to final installation, we guide you through every step with unmatched expertise and meticulous attention to detail.
+                As leading interior design experts, we transform your vision
+                into reality with our comprehensive turnkey solutions. From
+                initial concept to final installation, we guide you through
+                every step with unmatched expertise and meticulous attention to
+                detail.
               </p>
             </div>
 
@@ -175,10 +206,7 @@ const Intro: React.FC = () => {
               className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8"
             >
               {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="text-center lg:text-left"
-                >
+                <div key={index} className="text-center lg:text-left">
                   <div className="flex items-center justify-center lg:justify-start mb-1 sm:mb-2">
                     <stat.icon className="w-4 h-4 sm:w-6 sm:h-6 text-teal-500 dark:text-teal-400 mr-1 sm:mr-2" />
                     <span className="text-lg sm:text-2xl font-bold text-gray-800 dark:text-gray-100">
@@ -199,7 +227,8 @@ const Intro: React.FC = () => {
               viewport={{ once: true }}
               className="text-base sm:text-lg text-gray-500 dark:text-gray-400 italic font-light leading-relaxed"
             >
-              "Say goodbye to project complexities and hello to a beautifully realized vision that exceeds your expectations."
+              "Say goodbye to project complexities and hello to a beautifully
+              realized vision that exceeds your expectations."
             </motion.p>
           </motion.div>
         </div>

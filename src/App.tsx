@@ -20,6 +20,8 @@ import { HelmetProvider } from "react-helmet-async";
 import InteriorServicesPage from "./pages/InteriorServicesPage";
 import PlywoodSupplyPage from "./pages/PlywoodSupplyPage";
 import ModularServicesPage from "./pages/ModularServicesPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,6 +65,8 @@ function App() {
                 <Route path="/services/interior" element={<InteriorServicesPage />} />
                 <Route path="/services/plywood-supply" element={<PlywoodSupplyPage />} />
                 <Route path="/services/modular" element={<ModularServicesPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
               </Routes>
             </main>
             <FloatingButtons />
