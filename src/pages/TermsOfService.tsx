@@ -3,7 +3,7 @@ import { CONTACT_INFO } from "../constants/contact";
 
 const TermsOfService: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-200">
+    <div className="max-w-4xl mx-auto px-4 py-20 text-gray-800 dark:text-gray-200">
       <h1 className="text-4xl font-bold mb-6 text-teal-600 dark:text-teal-400">
         Terms of Service
       </h1>
