@@ -169,36 +169,6 @@ const PlywoodSupplyPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Our <span className="text-teal-600 dark:text-teal-400">Efficient Supply Process</span>
-              </h2>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                We ensure a smooth and reliable process for all your plywood and building material needs.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
-              {process.map((step, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-600 dark:bg-teal-500 text-white rounded-full flex items-center justify-center text-lg md:text-xl font-bold mx-auto mb-3 md:mb-4">
-                    {step.step}
-                  </div>
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="py-16 md:py-20 bg-teal-600 dark:bg-teal-700 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
