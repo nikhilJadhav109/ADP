@@ -125,9 +125,9 @@ const Footer: React.FC = () => {
                 <span>
                   Sr 46/1/2
                   <br />
-                  Sangam Hospital Road
+                  Near Orchids The International School,
                   <br/>
-                  Near Orchids The International School, Sangam hospital Road,
+                  Sangam Hospital Road,
                   <br />
                   Pisoli, Pune, Maharashtra-411060
                 </span>

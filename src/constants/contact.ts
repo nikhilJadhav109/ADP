@@ -4,5 +4,5 @@ export const CONTACT_INFO = {
   EMAIL: "agrawalplydecor@gmail.com",
   ADDRESS_LINE_1: "Agrawal Ply Decor",
   ADDRESS_LINE_2:
-    "Sr 46/1/2, Sangam Hospital Road, Near Orchid The International School, Pisoli, Pune, Maharashtra-411060",
+    "Sr 46/1/2, Near Orchid The International School, Sangam Hospital Road, Pisoli, Pune, Maharashtra-411060",
 };

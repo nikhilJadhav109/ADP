@@ -28,7 +28,7 @@ const Services: React.FC = () => {
         "Sophisticated Hospitality Design",
         "Seamless Brand Integration",
       ],
-      badge: "Business Focus", // Slightly more descriptive
+      badge: "Commercial Excellence", // Slightly more descriptive
     },
     {
       icon: Wrench,

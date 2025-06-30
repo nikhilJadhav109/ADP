@@ -225,7 +225,7 @@ Looking forward to your response!
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 shadow-sm border border-gray-100 dark:border-gray-700"
+                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 shadow-sm border border-gray-100 dark:border-gray-700"
                   variants={cardVariants}
                 >
                   <div className="flex items-start">
@@ -294,7 +294,7 @@ Looking forward to your response!
 
           {/* Contact Form */}
           <motion.div
-            className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700"
+            className="bg-gray-50 dark:bg-gray-800 rounded-3xl  px-8 py-1  shadow-xl border border-gray-100 dark:border-gray-700"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -471,7 +471,7 @@ Looking forward to your response!
 
                   <motion.button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
+                    className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-2 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"

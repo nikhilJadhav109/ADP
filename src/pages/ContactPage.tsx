@@ -313,7 +313,7 @@ const ContactPage: React.FC = () => {
 
               {/* Contact Form */}
               <motion.div
-                className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700"
+                className="bg-gray-50 dark:bg-gray-800 rounded-3xl  px-8 py-2 shadow-xl border border-gray-100 dark:border-gray-700"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -533,14 +533,14 @@ const ContactPage: React.FC = () => {
                           value={formData.message}
                           onChange={handleChange}
                           rows={5}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                          className="w-full px-4 py-1 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                           placeholder="Tell us about your project, specific requirements, style preferences, and any other details that would help us understand your vision..."
                         ></textarea>
                       </motion.div>
 
                       <motion.button
                         type="submit"
-                        className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
+                        className="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-1 px-1 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
