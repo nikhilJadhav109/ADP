@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
       name: "Services",
       path: "/services/interior",
     },
-            { name: "Interior", path: "/services/interior" },
-        { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
-        { name: "Plywood Supply", path: "/services/plywood-supply" },
+    { name: "Interior", path: "/services/interior" },
+    { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
+    { name: "Plywood Supply", path: "/services/plywood-supply" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -111,7 +111,9 @@ const Footer: React.FC = () => {
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
               >
                 <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
-                <span>+91-9823069099 <br></br> +91-8459758065 </span>
+                <span>
+                  +91-9823069099 <br></br> +91-8459758065{" "}
+                </span>
               </a>
               <a
                 href="mailto:agrawalplydecor@gmail.com"
@@ -126,7 +128,7 @@ const Footer: React.FC = () => {
                   Sr 46/1/2
                   <br />
                   Near Orchids The International School,
-                  <br/>
+                  <br />
                   Sangam Hospital Road,
                   <br />
                   Pisoli, Pune, Maharashtra-411060
@@ -143,24 +145,18 @@ const Footer: React.FC = () => {
               © 2024 Agrawal Ply Decor. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
-                href="#"
+              <Link
+                to="/privacy-policy"
                 className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/terms-of-service"
                 className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
               >
                 Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-teal-400 text-sm transition-colors duration-200"
-              >
-                Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, Download } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import { LOGO } from "../constants/path";
+import { DARK_LOGO, LIGHT_LOGO } from "../constants/path";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +34,12 @@ const Header: React.FC = () => {
     { name: "About", path: "/about" },
     { name: "Brands", path: "/brands" },
     { name: "Contact", path: "/contact" },
-    { name: "Download Catalogue", path: "/document/catalogue.pdf", download: true, icon: <Download className="w-5 h-5" /> },
+    {
+      name: "Download Catalogue",
+      path: "/document/catalogue.pdf",
+      download: true,
+      icon: <Download className="w-5 h-5" />,
+    },
   ];
 
   const isHomePage = location.pathname === "/";
@@ -48,17 +53,29 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
-          <div className="flex-shrink-0">
-            <Link to="/">
-              <span className="text-gray-900 dark:text-teal-400 text-l font-semibold text-center leading-none p-2">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center flex-shrink-0">
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src= {LIGHT_LOGO}
+                alt="Agrawal Ply Decor Logo"
+                className="w-16 h-16 object-contain"
+              />
+              <span
+                className={`text-lg font-semibold leading-none transition-colors duration-300 ${
+                  isScrolled
+                    ? "text-gray-900 dark:text-teal-400"
+                    : "text-white dark:text-white"
+                }`}
+              >
                 Agrawal Ply Decor
               </span>
             </Link>
           </div>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item) =>
               item.download ? (
                 <a
                   key={item.name}
@@ -92,7 +109,8 @@ const Header: React.FC = () => {
                     }`}
                   >
                     {item.name}
-                    {(location.pathname === item.path || location.pathname.startsWith(item.path + '/')) && (
+                    {(location.pathname === item.path ||
+                      location.pathname.startsWith(item.path + "/")) && (
                       <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal-600 dark:bg-teal-400"></span>
                     )}
                   </Link>
@@ -140,7 +158,7 @@ const Header: React.FC = () => {
                   )}
                 </Link>
               )
-            ))}
+            )}
           </nav>
 
           <div className="hidden lg:flex items-center space-x-6">
@@ -172,16 +190,14 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
           <div className="px-4 pt-2 pb-6 space-y-4">
-            {navItems.map((item) => (
+            {navItems.map((item) =>
               item.download ? (
                 <a
                   key={item.name}
                   href={item.path}
                   download="Agrawal_Ply_Decor_Catalogue.pdf"
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block w-full text-left transition-colors duration-200 py-2 font-medium flex items-center ${
-                    "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
-                  }`}
+                  className={`block w-full text-left transition-colors duration-200 py-2 font-medium flex items-center ${"text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"}`}
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>
@@ -234,7 +250,7 @@ const Header: React.FC = () => {
                   {item.name}
                 </Link>
               )
-            ))}
+            )}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <a
                 href="tel:+91-9823069099"
