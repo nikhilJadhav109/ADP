@@ -41,12 +41,12 @@
     },
     {
       id: 5,
-      title: "Spacious Office Lobby",
+      title: "Modern Commercial Office",
       category: "Commercial",
-      location: "Hinjewadi, Pune, Maharashtra",
+      location: "WTC, Pune, Maharashtra",
       year: "2023",
       image: "/portfolioImages/commercial2.jpeg",
-      description: "A grand and inviting entrance for a corporate environment."
+      description: "Creating memorable first impressions with luxurious hospitality design.",
     },
     {
       id: 6,
@@ -165,7 +165,7 @@
     location: "Balewadi HighStreet, Pune, Maharashtra",
     year: "2024", 
     image: "/portfolioImages/ModernLobby.webp",
-    description: "Modern business entrance design in Satara, Maharashtra, India, showcasing contemporary style."
+    description: "Modern business entrance design showcasing contemporary style."
   },
   {
     id: 19,
@@ -180,7 +180,7 @@
     id: 20,
     title: "Vibrant Kids Bedroom with Celestial Ceiling",
     category: "Residential",
-    location: "Wakad, Pune, Maharashtra",
+    location: "Sambhajinagar, Maharashtra",
     year: "2024",
     image: "/portfolioImages/KidsCelestialBedroom.jpeg",
     description: "Playful kids bedroom design in Pune featuring a unique celestial ceiling."
@@ -198,10 +198,10 @@
     id: 22,
     title: "Modern Industrial Meeting Room",
     category: "Commercial",
-    location: "MIDC, Satara, Maharashtra",
+    location: "Sambhajinagar, Maharashtra",
     year: "2024",
     image: "/portfolioImages/IndustrialMeetingRoom.jpg",
-    description: "Dynamic commercial meeting room design in Satara with industrial flair."
+    description: "Dynamic commercial meeting room design in Sambhajinagar with industrial flair."
   },
   {
     id: 23,
@@ -223,12 +223,12 @@
   },
   {
     id: 25,
-    title: "Grand Commercial Lobby Interior",
+    title: "Commercial Interior Design - Lounge",
     category: "Commercial",
     location: "Shivaji Nagar, Pune, Maharashtra",
     year: "2024",
     image: "/portfolioImages/GrandCommercialLobby.png",
-    description: "Luxurious commercial lobby design in Pune, perfect for corporate towers."
+    description: "Luxurious commercial lounge design in Pune, perfect for corporate towers."
   },
   {
     id: 26,

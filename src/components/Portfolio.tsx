@@ -104,9 +104,9 @@ const Portfolio: React.FC = () => {
     },
     {
       id: 4,
-      title: "Elegant Hospitality Lobby",
+      title: "Modern Commercial Office",
       category: "Commercial",
-      location: "Kalyani Nagar, Pune, Maharashtra",
+      location: "WTC, Pune, Maharashtra",
       year: "2023",
       image: "/portfolioImages/commercial2.jpeg",
       description:
@@ -116,9 +116,9 @@ const Portfolio: React.FC = () => {
     },
     {
       id: 5,
-      title: "Modern Kitchen Apartment",
+      title: "Modern Minimalist Kitchen",
       category: "Residential",
-      location: "Aundh, Pune, Maharashtra",
+      location: "Baner, Pune, Maharashtra",
       year: "2022",
       image: "/portfolioImages/residential3.jpeg",
       description:
