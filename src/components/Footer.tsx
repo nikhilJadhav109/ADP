@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
               {services.map((service, index) => (
                 <li
                   key={index}
-                  className="text-gray-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300"
                 >
                   {service}
                 </li>
