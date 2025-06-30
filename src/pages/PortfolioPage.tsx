@@ -204,7 +204,7 @@ const PortfolioPage: React.FC = () => {
               variants={ctaVariants}
               transition={{ delay: 0.2 }}
             >
-              Our expert **interior designers in Pune** are ready to turn your
+              Our expert <strong>interior designers </strong> are ready to turn your
               vision into a stunning reality. Contact us today for a
               consultation.
             </motion.p>
