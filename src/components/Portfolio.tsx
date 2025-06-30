@@ -329,8 +329,8 @@ const Portfolio: React.FC = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-500"
               >
                 {/* Image Container */}
