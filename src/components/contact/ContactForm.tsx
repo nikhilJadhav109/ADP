@@ -274,7 +274,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             </motion.div>
           </div>
           {/* New "Size" Field - Conditionally Rendered */}
-          {formData.projectType === "residential" && (
+          {formData.projectType === "Residential Interior" && (
             <motion.div>
               <label
                 htmlFor="size"
