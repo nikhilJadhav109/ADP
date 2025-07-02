@@ -92,21 +92,12 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
     googleFormData.append(GOOGLE_FORM_FIELD_IDS.name, formData.name);
     googleFormData.append(GOOGLE_FORM_FIELD_IDS.phone, formData.phone);
-    googleFormData.append(
-      GOOGLE_FORM_FIELD_IDS.projectType,
-      formData.projectType
-    );
-
-    if (formData.projectType === "residential" && formData.size) {
-      googleFormData.append(GOOGLE_FORM_FIELD_IDS.size, formData.size);
-    }
-
+    googleFormData.append(GOOGLE_FORM_FIELD_IDS.projectType,formData.projectType);
+    googleFormData.append(GOOGLE_FORM_FIELD_IDS.size, formData.size);
     googleFormData.append(GOOGLE_FORM_FIELD_IDS.budget, formData.budget);
     googleFormData.append(GOOGLE_FORM_FIELD_IDS.timeline, formData.timeline);
-    googleFormData.append(
-      GOOGLE_FORM_FIELD_IDS.projectLocation,
-      formData.message
-    );
+    googleFormData.append(GOOGLE_FORM_FIELD_IDS.projectLocation,formData.message);
+    googleFormData.append(GOOGLE_FORM_FIELD_IDS.email,formData.email);
 
     try {
       const response = await fetch(GOOGLE_FORM_SUBMIT_URL, {
