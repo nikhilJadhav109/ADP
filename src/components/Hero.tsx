@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Hero: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const backgroundImages = [
     "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
@@ -18,21 +20,19 @@ const Hero: React.FC = () => {
       setCurrentImageIndex(
         (prevIndex) => (prevIndex + 1) % backgroundImages.length
       );
-    }, 4000); // Using 4000ms as per your second useEffect
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [backgroundImages.length]); // Dependency array should include backgroundImages for robustness, though length is fine here.
+  }, [backgroundImages.length]);
 
+  // Use useNavigate for navigation to /services route
   const scrollToServices = () => {
-    // You might want to use React Router's `useNavigate` or `Link` for internal navigation
-    // if `#services` is on a different page, or ensure `#services` is an actual ID on the current page.
-    const section = document.querySelector("#services");
-    section?.scrollIntoView({ behavior: "smooth" });
+    navigate("/portfolio");
   };
 
+  // Use useNavigate for navigation to /contact route
   const scrollToContact = () => {
-    const section = document.querySelector("#contact");
-    section?.scrollIntoView({ behavior: "smooth" });
+    navigate("/contact");
   };
 
   return (
@@ -45,18 +45,16 @@ const Hero: React.FC = () => {
         <AnimatePresence initial={false}>
           {backgroundImages.map(
             (image, index) =>
-              // Only render the current image's motion.div
               index === currentImageIndex && (
                 <motion.div
-                  key={image} // Use image path as key for reliable animation with AnimatePresence
+                  key={image}
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{ backgroundImage: `url(${image})` }}
-                  initial={{ opacity: 0 }} // Start completely transparent
-                  animate={{ opacity: 1 }} // Fade in to fully opaque
-                  exit={{ opacity: 0 }} // Fade out to completely transparent
-                  transition={{ duration: 1.5, ease: "easeInOut" }} // Smooth transition for crossfade
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
                 >
-                  {/* Overlay for text readability (optional, adjust opacity) */}
                   <div className="absolute inset-0 bg-black/60 dark:bg-black/70"></div>
                 </motion.div>
               )
@@ -71,7 +69,6 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Changed from div to h1 for semantic SEO */}
         <motion.h1
           className="md:text-5xl text-3xl font-bold text-white mb-6 leading-snug tracking-tight"
           initial={{ opacity: 0, y: 20 }}
@@ -91,7 +88,8 @@ const Hero: React.FC = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
         >
           From Concept to Keys, We Handle Every Detail for Your Dream Space.
-          Trusted choice for end-to-end interior design and customized modular furniture.
+          Trusted choice for end-to-end interior design and customized modular
+          furniture.
         </motion.p>
 
         <motion.div
@@ -119,7 +117,6 @@ const Hero: React.FC = () => {
               Start Your Project
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </span>
-            {/* The animated border effect here looks cool! */}
             <span className="absolute inset-0 rounded-lg z-0 hidden group-hover:block border-2 border-transparent animate-border bg-gradient-to-r from-teal-500 via-coral-500 to-teal-500 bg-[length:200%_100%]"></span>
           </motion.button>
 

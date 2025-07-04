@@ -35,7 +35,7 @@ const BrandsCarousel: React.FC<BrandsCarouselProps> = ({ brands }) => {
             <img
               src={brand.logoPath}
               alt={brand.name}
-              className="h-18 w-auto object-contain grayscale hover:grayscale-0 transition-all"
+              className="h-18 w-auto object-contain transition-all"
             />
             <div className="flex items-center gap-1 mt-2">
               <Check className="w-4 h-4 text-teal-500" />

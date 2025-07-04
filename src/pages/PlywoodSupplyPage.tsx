@@ -1,198 +1,218 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { COMPANY_NAME } from "../constants/seoConfig"; // Assuming you have COMPANY_NAME in seo.ts
-import { JSX } from "react/jsx-runtime";
-
-// Inline SVG for CheckCircle
-const CheckCircleIcon = () => (
-  <svg className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-);
-
-// Inline SVG for Box
-const BoxIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
-);
+import { COMPANY_NAME } from "../constants/seoConfig";
+import { PLYWOOD_SERVICES } from "../constants/plywood";
+import YetiplyIntro from "../components/YetiplyIntro";
+import { CONTACT_INFO } from "../constants/contact";
 
 const PlywoodSupplyPage: React.FC = () => {
-  const plywoodServices = [
-    {
-      icon: BoxIcon,
-      title: "Yeti Ply: Quality and Durability Redefined",
-      description:
-        "Yeti Ply offers a comprehensive range of plywood products, including calibrated, film-faced shuttering plywood, and block boards. We focus on exceptional quality and lasting durability, utilizing high-grade raw materials and stringent checks. Yeti Ply caters to diverse needs, from furniture making to demanding construction projects, ensuring precision and reliability.",
-      features: [
-        "Calibrated Plywood: Precision thickness for accurate measurements.",
-        "Film-Faced Shuttering Plywood: Strong and durable for construction.",
-        "Yeti Arniko Ply: Waterproof options for various furniture applications.",
-        "Yeti Champ Ply: Ideal for furniture, made from hardwood and Indian timber.",
-        "Block Boards & Flush Doors: Available in various grades, customizable.",
-        "Quality Focused: Rigorous testing and high-grade raw materials.",
-        "ISI Marked: Adherence to industry quality standards.",
-      ],
-      image: "/services/yetiply.webp",
-    },
-    // Add more plywood-specific services if needed
-    {
-      icon: BoxIcon, // You might want a different icon for a distinct service
-      title: "Custom Plywood Solutions",
-      description:
-        "Need specific dimensions or types of plywood? We offer custom cutting and sourcing to meet unique project requirements, ensuring you get exactly what you need.",
-      features: [
-        "Tailored Dimensions & Thicknesses",
-        "Specialized Ply Types (Marine, Flexible)",
-        "Precision Cutting Services",
-        "Volume Discounts for Custom Orders",
-        "Technical Consultation",
-        "On-time Delivery for Project Schedules",
-      ],
-      image: "/services/ply.jpg", // Replace with a more specific plywood image
-    },
-  ];
-
-  // Simplified process for plywood supply, if applicable
   const process = [
     {
       step: "01",
       title: "Inquiry & Consultation",
-      description: "Discuss your plywood requirements and project needs.",
+      description:
+        "Discuss your Yeti Ply requirements and project needs with our experts.",
     },
     {
       step: "02",
       title: "Product Selection & Quote",
-      description: "Choose from our extensive range, get competitive pricing.",
+      description:
+        "Choose from our extensive Yeti Ply range and get competitive pricing.",
     },
     {
       step: "03",
       title: "Order Placement",
-      description: "Confirm your order with flexible payment options.",
+      description: "Confirm your Yeti Ply order with flexible payment options.",
     },
     {
       step: "04",
       title: "Quality Check & Dispatch",
-      description: "Ensuring every sheet meets our high standards before delivery.",
+      description:
+        "Every Yeti Ply sheet meets our high standards before delivery.",
     },
     {
       step: "05",
       title: "Prompt Delivery",
-      description: "Receive your plywood efficiently at your project site in Pune.",
+      description:
+        "Receive your Yeti Ply efficiently at your project site in Pune.",
     },
   ];
 
-
-  const pageTitle = `${COMPANY_NAME} - Plywood Wholesale & Supply in Pune | Yeti Ply`;
-  const pageDescription = "Get high-quality, branded plywood directly from the wholesaler in Pune. We supply residential and commercial projects with BWP, MR, and Yeti Ply at competitive prices.";
-  const pageKeywords = "plywood wholesale Pune, plywood suppliers Pune, Yeti Ply Pune, BWP plywood Pune, MR plywood Pune, fire retardant plywood Pune, ISI plywood Pune, plywood dealers Pune, bulk plywood supply Pune, Greenply Pune, Century Ply Pune";
-  const pageUrl = "https://www.yourwebsite.com/services/plywood-supply"; // Replace with your actual URL
-  const ogImage = "https://www.yourwebsite.com/path-to-plywood-og-image.jpg"; // Replace with a relevant image
+  const pageTitle = `${COMPANY_NAME} - Yeti Ply Wholesale & Supply in Pune | Premium Plywood`;
+  const pageDescription =
+    "Your trusted source for high-quality, ISI-certified plywood, delivered directly to your project site in Pune. Experience superior strength, durability, and reliability with every sheet, ensuring your construction and furniture projects stand the test of time.";
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={pageKeywords} />
-        <link rel="canonical" href={pageUrl} />
-
-        {/* Open Graph / Facebook / LinkedIn */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:image:alt" content="Plywood Wholesale and Supply by Agrawal Ply Decor" />
-        <meta property="og:site_name" content={COMPANY_NAME} />
-
-        {/* Local SEO specifics */}
-        <meta name="geo.placename" content="Pune" />
-        <meta name="geo.region" content="IN-MH" />
-        <meta name="geo.position" content="18.5204;73.8567" />
-        <meta name="ICBM" content="18.5204, 73.8567" />
       </Helmet>
 
-      <div className="pt-20">
+      <div className="pt-16 sm:pt-20">
         {/* Hero Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+        <section className="py-10 sm:py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Premium <span className="text-teal-400">Plywood & Building Material</span> Supply
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+              Premium Ply Supply
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-              Your reliable source for high-quality, ISI-marked, and branded plywood, including our own 'Yeti Ply', delivered directly to your project in Pune.
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Your trusted source for high-quality, ISI-certified plywood, delivered directly to your project site in Pune. Experience superior strength, durability, and reliability with every sheet, ensuring your construction and furniture projects stand the test of time.
             </p>
           </div>
         </section>
 
-        {/* Plywood Services Detail */}
-        <section className="py-2 px-4 md:py-4 bg-white dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8">
-            <div className="space-y-16 md:space-y-20">
-              {plywoodServices.map((service, index) => (
-                <div
-                  key={index}
-                  className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                    index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-                  }`}
-                >
-                  <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                    <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
-                      <service.icon className="w-7 h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400" />
+        <section>
+          <YetiplyIntro />
+        </section>
+        {/* <section className="bg-white dark:bg-gray-900 py-16 px-6 sm:px-16 lg:px-18">
+        <div className="max-w-7xl mx-auto space-y-20">
+          {PLYWOOD_SERVICES.map((service, index) => (
+            <div
+              key={index}
+              className={`grid lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+              }`}
+            >
+              <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  {service.title}
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-4">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex text-gray-700 dark:text-gray-300">
+                      <feature.icon className="w-6 h-6 text-teal-600 dark:text-teal-400 mr-3" />
+                      <span>{feature.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="rounded-2xl shadow-xl w-50 h-64 md:h-80 lg:h-96 object-contain bg-slate-100"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section> */}
+
+        <section className="bg-white dark:bg-gray-900 py-16 px-6 sm:px-16 lg:px-18">
+          <div className="max-w-7xl mx-auto space-y-12">
+            {PLYWOOD_SERVICES.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700"
+              >
+                <div className="grid lg:grid-cols-5 gap-0">
+                  {/* Image Section - Takes up 2 columns */}
+                  <div className="lg:col-span-2">
+                    <div className="h-full min-h-[300px] lg:min-h-[500px]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base"
-                        >
-                          <CheckCircleIcon />
-                          <span>{feature}</span>
-                        </li>
+                  </div>
+
+                  {/* Content Section - Takes up 3 columns */}
+                  <div className="lg:col-span-3 p-8 lg:p-12">
+                    {/* Title */}
+                    <div className="mb-1">
+                      <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+                        {service.title}
+                      </h2>
+                    </div>
+
+                    <div className="mb-3">
+                      <p className="text-xl text-teal-600 dark:text-teal-400 font-semibold">
+                        {service.subtitle}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <div className="mb-4">
+                      <p className="text-200 text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start py-2">
+                          <feature.icon className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            {feature.text}
+                          </span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
-                  <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
-                    />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-20 bg-gray-50 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              Our Yeti Ply Supply Process
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+              From consultation to delivery, we ensure a seamless experience for
+              all your Yeti Ply needs.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+              {process.map((step, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-teal-600 dark:bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-white">
+                      {step.step}
+                    </span>
                   </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 md:py-20 bg-teal-600 dark:bg-teal-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-5">
-              Need High-Quality Plywood?
-            </h2>
-            <p className="text-lg md:text-xl mb-8">
-              Get competitive prices and reliable delivery for all your project requirements.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors duration-200 flex items-center justify-center"
-              >
-                Get a Plywood Quote
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path></svg>
-              </Link>
-              <a
-                href="tel:+91-9823069099"
-                className="border-2 border-white text-white hover:bg-white hover:text-teal-600 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors duration-200"
-              >
-                Call Now
-              </a>
-            </div>
+        <section className="py-20 bg-teal-600 dark:bg-teal-700 text-white text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready for Premium Yeti Ply?
+          </h2>
+          <p className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
+            Get competitive prices and reliable delivery for all your Yeti Ply
+            requirements. Experience the difference of premium quality plywood.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              to="/contact"
+              className="bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+            >
+              Get Yeti Ply Quote
+            </Link>
+            <a
+              // href="tel:+91-9823069099"
+              href={`tel:${CONTACT_INFO.PHONE_NUMBER_1}`}
+              className="border-2 border-white text-white hover:bg-white hover:text-teal-600 px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+            >
+              Call Now
+            </a>
           </div>
         </section>
       </div>
