@@ -10,7 +10,7 @@ import { PortfolioPageHelmet } from "../helper/seoProvider";
 const filters = ["Residential", "Commercial", "Luxury Homes"];
 
 const PortfolioPage: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState("Residential");
+  const [activeFilter, setActiveFilter] = useState("Luxury Homes");
 
   const filteredProjects =
     activeFilter.toLowerCase() === "all"
