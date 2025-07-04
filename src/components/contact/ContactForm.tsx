@@ -47,7 +47,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const [toastType, setToastType] = useState<"success" | "error" | null>(null);
 
   const whatsAppNumber = CONTACT_INFO.PHONE_NUMBER_1.replace(/\D/g, "");
-
+  const TIMEOUT_DURATION = 60000;
   useEffect(() => {
     if (toastMessage) {
       const timer = setTimeout(() => {
@@ -93,7 +93,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         setIsSubmitted(false);
         setToastMessage("");
         setToastType(null);
-      }, 10000);
+      }, TIMEOUT_DURATION);
     } catch (error) {
       console.error("Failed to open WhatsApp:", error);
       setToastMessage("Failed to open WhatsApp.");
@@ -162,7 +162,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         setIsSubmittingGoogleForm(false);
         setToastMessage("");
         setToastType(null);
-      }, 10000);
+      }, TIMEOUT_DURATION);
     } catch (error) {
       console.error("Error submitting to Google Form:", error);
       setGoogleFormStatus("Failed to submit to Google Form. Please try again.");
