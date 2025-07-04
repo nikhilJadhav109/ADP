@@ -4,135 +4,93 @@ import { Helmet } from "react-helmet-async";
 import { COMPANY_NAME } from "../constants/seoConfig"; // Assuming you have COMPANY_NAME in seo.ts
 import { JSX } from "react/jsx-runtime";
 
-// --- SVG Icons for Modular Services ---
-// You can use existing ones or find new ones from Lucide React or similar icon libraries
-// For example, using a customizable icon for modular items/units.
-const CubeIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10m-4-2h8m-4-4v-4m0 8h.01M12 21.01V12"></path>
-  </svg>
-);
-
-const KitchenIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 3h4M2 13l2 4 2-4m-2 4h4m6-10v4m-2-4h4m-2 4l2 4 2-4m-2 4h4m6-10v4m-2-4h4m-2 4l2 4 2-4m-2 4h4M9 13l2 4 2-4m-2 4h4m6-10v4m-2-4h4m-2 4l2 4 2-4m-2 4h4"></path>
-  </svg>
-);
-
-const WardrobeIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a2 2 0 00-2-2H8a2 2 0 00-2 2v4"></path>
-  </svg>
-);
-
-const OfficeDeskIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
-  <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10m-4-2h8m-4-4v-4m0 8h.01M12 21.01V12"></path>
-  </svg>
-);
-
-const CheckCircleIcon = () => ( // Re-using CheckCircleIcon from InteriorServicesPage
+// --- SVG Icons (keeping only CheckCircleIcon as it's still useful) ---
+const CheckCircleIcon = () => (
   <svg className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
+const ModularFurnitureOverviewPage: React.FC = () => {
+  const whatIsModularFurniture = {
+    title: "What is Modular Furniture?",
+    description: "Modular furniture refers to pre-manufactured, standardized units or sections that can be combined and rearranged in various configurations to create customized furniture pieces or complete interior setups. Unlike traditional, fixed furniture, modular units offer unparalleled flexibility, allowing for easy assembly, disassembly, and reconfiguration to adapt to changing needs and spaces.",
+    points: [
+      "Composed of individual, interconnected units.",
+      "Offers high flexibility and customization.",
+      "Easy to assemble, disassemble, and transport.",
+      "Optimizes space utilization efficiently.",
+      "Manufactured with precision in a factory setting.",
+    ],
+    image: "/services/modulerFurniture.png", // Placeholder: Add a general image representing modularity
+  };
 
-const ModularServicesPage: React.FC = () => {
-  const modularServices = [
-    {
-      icon: KitchenIcon,
-      title: "Modular Kitchens",
-      description:
-        "Design and install highly functional and aesthetically pleasing modular kitchens tailored to your cooking style and space.",
-      features: [
-        "Custom Layouts (L-shape, U-shape, Parallel, Island)",
-        "Premium Finishes (Acrylic, Laminate, Membrane, Veneer)",
-        "Smart Storage Solutions",
-        "Durable Hardware & Accessories",
-        "Expert Installation",
-        "Branded Plywood Base",
-      ],
-      image: "/portfolioImages/BlueModularKitchen.jpeg", // Placeholder: Add your image paths
-    },
-    {
-      icon: WardrobeIcon,
-      title: "Modular Wardrobes",
-      description:
-        "Optimize your storage with custom modular wardrobes, designed for maximum utility and seamless integration into your bedroom aesthetics.",
-      features: [
-        "Sliding & Hinged Wardrobes",
-        "Integrated Lighting",
-        "Custom Compartments & Organizers",
-        "Variety of Finishes & Materials",
-        "Space Optimization",
-        "Long-lasting Quality",
-      ],
-      image: "/portfolioImages/ModernIndustrialBedroomwithWorkspace.jpg", // Placeholder: Add your image paths
-    },
-    {
-      icon: OfficeDeskIcon, // Using a generic icon for now, adjust as needed
-      title: "Modular Office Furniture",
-      description:
-        "Create efficient and comfortable office environments with our versatile modular furniture solutions, perfect for homes and commercial spaces.",
-      features: [
-        "Ergonomic Workstations",
-        "Conference Tables & Cabinets",
-        "Custom Storage Units",
-        "Robust & Professional Finishes",
-        "Scalable Designs",
-        "Quick Assembly & Reconfiguration",
-      ],
-      image: "/portfolioImages/CommercialInteriorDesignOffice.webp", // Placeholder: Add your image paths
-    },
-    {
-      icon: CubeIcon, // Using CubeIcon for TV Units
-      title: "Modular TV Units & Entertainment",
-      description:
-        "Enhance your living room with stylish and functional modular TV units, offering integrated storage and display solutions.",
-      features: [
-        "Custom Dimensions & Designs",
-        "Cable Management Solutions",
-        "Open Shelving & Closed Cabinets",
-        "Variety of Materials & Textures",
-        "Seamless Wall Integration",
-        "Modern & Contemporary Styles",
-      ],
-      image: "/portfolioImages/LuxuryLivingHallWithArt.png", // Placeholder: Add your image paths
-    },
-  ];
+  const advantagesOfModularFurniture = {
+    title: "Advantages of Choosing Modular Furniture",
+    description: "Opting for modular furniture brings a multitude of benefits, from superior design flexibility to long-term cost-effectiveness and environmental considerations.",
+    advantages: [
+      {
+        heading: "Unmatched Flexibility & Customization",
+        text: "Modular units can be tailored to fit any space and aesthetic, offering endless design possibilities and easy reconfigurations as your needs evolve.",
+      },
+      {
+        heading: "Space Optimization",
+        text: "Designed to maximize utility even in compact areas, modular furniture helps declutter and organize your living or working environment efficiently.",
+      },
+      {
+        heading: "Durability & Quality",
+        text: "Manufactured in controlled factory environments using high-grade materials and precision machinery, ensuring consistent quality and longevity.",
+      },
+      {
+        heading: "Cost-Effectiveness",
+        text: "Reduced on-site labor, efficient material usage, and long-lasting designs contribute to significant cost savings over the lifespan of the furniture.",
+      },
+      {
+        heading: "Quick Installation",
+        text: "Pre-fabricated units mean faster assembly and minimal disruption during installation, getting your space ready sooner.",
+      },
+      {
+        heading: "Sustainability",
+        text: "Often involves less material waste during production and offers the ability to reuse or reconfigure units, promoting a more sustainable approach to interiors.",
+      },
+    ],
+    image: "/images/advantages-modular-furniture.jpg", // Placeholder: Add a relevant image
+  };
 
-  const process = [
-    {
-      step: "01",
-      title: "Concept & Planning",
-      description: "Discuss your needs, measure space, and plan initial layouts.",
-    },
-    {
-      step: "02",
-      title: "Design & Material Selection",
-      description: "Create detailed 3D designs, select finishes, and confirm hardware.",
-    },
-    {
-      step: "03",
-      title: "Manufacturing Precision",
-      description: "Modules are crafted in our state-of-the-art facility using quality raw materials.",
-    },
-    {
-      step: "04",
-      title: "Delivery & Installation",
-      description: "Careful transport and efficient, clean on-site assembly.",
-    },
-    {
-      step: "05",
-      title: "Quality Check & Handover",
-      description: "Final inspection to ensure perfection and client satisfaction.",
-    },
-  ];
+  const ourManufacturingProcess = {
+    title: "Our Professional Manufacturing Process",
+    description: "At Agrawal Ply Decor, we leverage state-of-the-art machinery and skilled craftsmanship to ensure every piece of modular furniture we produce meets the highest standards of quality and precision. Our factory-made approach guarantees consistency, durability, and a flawless finish.",
+    machines: [
+      {
+        name: "Edge Bending Machine",
+        description: "Ensures seamless and durable edges, protecting against moisture and enhancing aesthetics. This precision machine applies strong adhesive and trims edges for a perfect finish.",
+        path: "/services/Edge Bending Machine.jpg", // Using a generic 'path' property
+        type: "image", // Explicitly state type
+      },
+      {
+        name: "Multi Boring Machine",
+        description: "Used for precise and accurate drilling of multiple holes simultaneously, crucial for perfect alignment and easy assembly of modular units.",
+        path: "/services/MultiBoringMachine.mp4", // Using a generic 'path' property
+        type: "video", // Explicitly state type
+      },
+      {
+        name: "Panel Saw Cutter",
+        description: "Provides highly accurate and clean cuts on large panels of wood, ensuring precise dimensions for all modular components, minimizing waste and errors.",
+        path: "/services/Panel Saw Cutter Machine.jpg", // Using a generic 'path' property
+        type: "image", // Explicitly state type
+      },
+      {
+        name: "Cold Press",
+        description: "Utilized for laminating and veneering, the cold press applies uniform pressure to bond materials securely, resulting in smooth, strong, and long-lasting surfaces.",
+        path: "/services/cold press machine.webp", // Using a generic 'path' property
+        type: "image", // Explicitly state type
+      },
+    ],
+  };
 
-  const pageTitle = `${COMPANY_NAME} - Modular Furniture Services in Pune`;
-  const pageDescription = "Discover custom modular kitchens, wardrobes, TV units, and office furniture solutions in Pune. High-quality designs, factory precision, and reliable installation.";
-  const pageKeywords = "modular furniture Pune, modular kitchen Pune, modular wardrobe Pune, modular TV unit Pune, modular office furniture Pune, custom furniture Pune, factory made furniture Pune, modern furniture Pune";
-  const pageUrl = "https://www.yourwebsite.com/services/modular"; // Replace with your actual URL
-  const ogImage = "https://www.yourwebsite.com/path-to-modular-og-image.jpg"; // Replace with a relevant image
+  const pageTitle = `${COMPANY_NAME} - Understanding Modular Furniture & Our Process in Pune`;
+  const pageDescription = "Explore what modular furniture is, its advantages, and how Agrawal Ply Decor's state-of-the-art manufacturing process, including Edge Bending, Multi Boring, and Panel Saw machines, ensures high-quality modular solutions in Pune.";
+  const pageKeywords = "what is modular furniture, advantages of modular furniture, modular furniture manufacturing process, modular furniture Pune, edge bending machine, multi boring machine, panel saw cutter, cold press, factory made furniture Pune, Agrawal Ply Decor";
+  const pageUrl = "https://www.yourwebsite.com/services/modular-furniture-overview"; // Updated URL
+  const ogImage = "https://www.yourwebsite.com/path-to-modular-overview-og-image.jpg"; // Replace with a relevant image
 
   return (
     <>
@@ -148,7 +106,7 @@ const ModularServicesPage: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={ogImage} />
-        <meta property="og:image:alt" content="Modular Furniture Services by Agrawal Ply Decor" />
+        <meta property="og:image:alt" content="Modular Furniture Overview by Agrawal Ply Decor" />
         <meta property="og:site_name" content={COMPANY_NAME} />
 
         {/* Local SEO specifics (adjust if necessary) */}
@@ -163,53 +121,105 @@ const ModularServicesPage: React.FC = () => {
         <section className="py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Innovative <span className="text-teal-400">Modular Furniture</span> Solutions
+              Unlock the Potential of <span className="text-teal-400">Modular Furniture</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-              Experience the blend of design flexibility, factory precision, and exceptional quality with our modular furniture services.
+              Discover the flexibility, quality, and precision behind our expertly crafted modular solutions.
             </p>
           </div>
         </section>
 
-        {/* Modular Services Detail */}
-        <section className="py-2 px-4 md:py-4 bg-white dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8">
-            <div className="space-y-16 md:space-y-20">
-              {modularServices.map((service, index) => (
-                <div
-                  key={index}
-                  className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                    index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-                  }`}
-                >
-                  <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                    <div className="w-14 h-14 md:w-16 md:h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
-                      <service.icon className="w-7 h-7 md:w-8 md:h-8 text-teal-600 dark:text-teal-400" />
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-5 md:mb-6">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base"
-                        >
-                          <CheckCircleIcon />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+        {/* What is Modular Furniture Section */}
+        <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                  {whatIsModularFurniture.title}
+                </h2>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6">
+                  {whatIsModularFurniture.description}
+                </p>
+                <ul className="space-y-2">
+                  {whatIsModularFurniture.points.map((point, index) => (
+                    <li key={index} className="flex items-start text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                      <CheckCircleIcon />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <img
+                  src={whatIsModularFurniture.image}
+                  alt="What is Modular Furniture"
+                  className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Advantages of Modular Furniture Section */}
+        <section className="py-16 md:py-20 bg-gray-100 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              {advantagesOfModularFurniture.title}
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-10">
+              {advantagesOfModularFurniture.description}
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {advantagesOfModularFurniture.advantages.map((advantage, index) => (
+                <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+                  <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-3">
+                    {advantage.heading}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">{advantage.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Professional Manufacturing Process Section */}
+        <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {ourManufacturingProcess.title}
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                {ourManufacturingProcess.description}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {ourManufacturingProcess.machines.map((machine, index) => (
+                <div key={index} className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                  {/* Conditional rendering for video or image based on 'type' property */}
+                  {machine.type === "video" ? (
+                    <video
+                      src={machine.path} // Use 'path' for video source
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-48 object-cover object-center"
+                      aria-label={`Video of ${machine.name}`}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
                     <img
-                      src={service.image}
-                      alt={service.title}
-                      className="rounded-2xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover"
+                      src={machine.path} // Use 'path' for image source
+                      alt={machine.name}
+                      className="w-full h-48 object-cover object-center"
                     />
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{machine.name}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">{machine.description}</p>
                   </div>
                 </div>
               ))}
@@ -217,7 +227,7 @@ const ModularServicesPage: React.FC = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section (retained) */}
         <section className="py-16 md:py-20 bg-teal-600 dark:bg-teal-700 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-5">
@@ -248,4 +258,4 @@ const ModularServicesPage: React.FC = () => {
   );
 };
 
-export default ModularServicesPage;
+export default ModularFurnitureOverviewPage;
