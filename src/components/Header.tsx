@@ -12,7 +12,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,7 +23,6 @@ const Header: React.FC = () => {
     { name: "Home", path: "/" },
     {
       name: "Services",
-      path: "/services/interior",
       submenu: [
         { name: "Interior", path: "/services/interior" },
         { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
@@ -45,25 +44,19 @@ const Header: React.FC = () => {
   const isHomePage = location.pathname === "/";
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage
-          ? "bg-white/55 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
-          : " dark:bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/55 dark:bg-gray-900/95 backdrop-blur-md shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src= {LIGHT_LOGO}
+                src={isScrolled || !isHomePage ? DARK_LOGO : LIGHT_LOGO}
                 alt="Agrawal Ply Decor Logo"
-                className="w-16 h-16 object-contain"
+                className="w-16 h-16 object-contain transition-all duration-300"
               />
               <span
                 className={`text-lg font-semibold leading-none transition-colors duration-300 ${
-                  isScrolled
+                  isScrolled || !isHomePage
                     ? "text-gray-900 dark:text-teal-400"
                     : "text-white dark:text-white"
                 }`}
@@ -117,11 +110,7 @@ const Header: React.FC = () => {
                   {isServicesHovered && (
                     <div
                       // Removed mt-2, will adjust positioning through parent if needed, or rely on flex/block behavior
-                      className={`absolute top-full left-0 py-2 w-48 rounded-md shadow-lg ${
-                        isScrolled || !isHomePage
-                          ? "bg-white dark:bg-gray-800"
-                          : "bg-white dark:bg-gray-800"
-                      }`}
+                      className={`absolute top-full left-0 py-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 `}
                     >
                       {item.submenu.map((subItem) => (
                         <Link

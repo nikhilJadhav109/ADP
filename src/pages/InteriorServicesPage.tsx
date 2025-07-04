@@ -7,6 +7,7 @@ import { JSX } from "react/jsx-runtime";
 import BrandsCarousel from "../components/BrandsCarousel";
 import { BRANDS } from "../constants/brands";
 import { DESIGN_SERVICES } from "../constants/services";
+import PartnerShipBenefits from "../components/PartnerShipBenefits";
 
 // Inline SVG for CheckCircle
 const CheckCircleIcon = () => (
@@ -227,6 +228,12 @@ const InteriorServicesPage: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="p-10">
+            <PartnerShipBenefits/>
           </div>
         </section>
 

@@ -12,7 +12,7 @@ const ContactPage: React.FC = () => {
       <ContactPageHelmet />
       <div className="pt-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-500">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+        <section className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <motion.h1
               className="text-5xl md:text-6xl font-extrabold mb-6"
@@ -23,14 +23,13 @@ const ContactPage: React.FC = () => {
               Get In <span className="text-teal-400">Touch</span>
             </motion.h1>
             <motion.p
-              className="text-xl text-gray-300 max-w-4xl mx-auto"
+              className="text-xl text-gray-300 max-w-2xl mx-auto"
               initial="hidden"
               animate="visible"
               variants={heroVariants}
               transition={{ delay: 0.2 }}
             >
-              Ready to transform your space? Let's discuss your project and
-              bring your vision to life.
+              Ready to elevate your space? Share your vision and let’s create something extraordinary together.
             </motion.p>
           </div>
         </section>

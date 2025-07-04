@@ -49,27 +49,6 @@ import { BoxIcon, Building2, BuildingIcon, CookingPot, Home, HomeIcon, Wrench, W
   ];
 
 
-  export const PLYWOOD_SERVICES = [
-    {
-      icon: BoxIcon,
-      title: "Plywood Wholesale & Supply (Pune)",
-      description:
-        "As Pune's trusted wholesaler, we offer a comprehensive range of premium, branded, and certified plywood, including our own 'Yeti Ply'. Get competitive prices and reliable delivery directly from the source.",
-      features: [
-        "Own Brand: Yeti Ply",
-        "Direct from Manufacturer: Quality Assured & Competitive Prices",
-        "Extensive Branded Plywoods",
-        "All Grades Available (BWP, MR, Fire-Retardant)",
-        "Custom Sizes & Bulk Orders",
-        "Quality Certified & ISI Marked",
-        "Prompt Pune Delivery",
-      ],
-      image: "/portfolioImages/luxuryhome1.jpeg", // You might want to use a more specific plywood image here
-    },
-    // Add more plywood-specific services if needed
-  ];
-
-
   export const DESIGN_SERVICES = [
   {
     icon: Home,

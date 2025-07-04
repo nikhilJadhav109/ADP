@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ServicesPageHelmet } from "../helper/seoProvider";
-import { INTERIOR_DESIGN_SERVICES, PLYWOOD_SERVICES } from "../constants/services";
+import { INTERIOR_DESIGN_SERVICES} from "../constants/services";
 import { PROCESS } from "../constants/process";
 import { CheckCircleIcon } from "lucide-react";
+import { PLYWOOD_SERVICES } from "../constants/plywood";
 
 const ServicesPage = () => {
   const [activeTab, setActiveTab] = useState("interiorDesign");
