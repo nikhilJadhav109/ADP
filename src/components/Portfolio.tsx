@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS } from "../constants/projects";
 
 const Portfolio: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState("Residential");
+  const [activeFilter, setActiveFilter] = useState("Luxury Homes");
   
   const filters = ["Residential", "Commercial", "Luxury Homes"];
 

@@ -183,7 +183,7 @@
     location: "Sambhajinagar, Maharashtra",
     year: "2024",
     image: "/portfolioImages/KidsCelestialBedroom.jpeg",
-    description: "Playful kids bedroom design in Pune featuring a unique celestial ceiling."
+    description: "Playful kids bedroom design in Sambhajinagar featuring a unique celestial ceiling."
   },
   {
     id: 21,

@@ -20,7 +20,7 @@
   {
     name: 'Arvind Vishwakarma',
     position: 'Production Head',
-    image: 'team/komal_dhanuka.png',
+    image: 'team/Arvind.jpeg',
     bio: 'Manages front office with professionalism and care.'
   }
 ];

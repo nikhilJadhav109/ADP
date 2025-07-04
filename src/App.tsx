@@ -12,7 +12,6 @@ import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import AboutPage from "./pages/AboutPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
-import BrandsPage from "./pages/BrandsPage";
 import ContactPage from "./pages/ContactPage";
 import Intro from "./components/Intro";
 import ScrollToTop from "./ScrollToTop";
@@ -60,7 +59,6 @@ function App() {
                 <Route path="/portfolio" element={<PortfolioPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/testimonials" element={<TestimonialsPage />} />
-                <Route path="/brands" element={<BrandsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/services/interior" element={<InteriorServicesPage />} />
                 <Route path="/services/plywood-supply" element={<PlywoodSupplyPage />} />
