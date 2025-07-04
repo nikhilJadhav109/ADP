@@ -75,8 +75,8 @@ const YetiplyIntro: React.FC = () => {
           of Plywood Excellence
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Yetiply is a **trusted name** in premium plywood, consistently combining
-          **unmatched durability**, **precision engineering**, and **exceptional strength** for
+          Yetiply is a trusted name in premium plywood, consistently combining
+          unmatched durability, precision engineering, and exceptional strength for
           all your furniture, modular setups, and robust formwork needs.
         </p>
       </motion.div>
