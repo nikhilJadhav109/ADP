@@ -58,7 +58,7 @@ const PlywoodSupplyPage: React.FC = () => {
               Premium Ply Supply
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Your trusted source for high-quality, ISI-certified plywood, delivered directly to your project site in Pune. Experience superior strength, durability, and reliability with every sheet, ensuring your construction and furniture projects stand the test of time.
+              Your trusted source for high-quality, ISI-certified plywood, delivered directly to your project in Pune. Experience superior strength, durability, and reliability with every sheet, ensuring your construction and furniture projects stand the test of time.
             </p>
           </div>
         </section>

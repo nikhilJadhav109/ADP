@@ -36,22 +36,6 @@ export const PLYWOOD_SERVICES = [
         image: "/plywood/pride.JPG",
     },
     {
-        title: "Yeti Champ – Affordable Plywood for Every Need",
-        subtitle: "Economical, Durable, and Eco-Friendly Plywood for Versatile Applications",
-        description:
-            "Yeti Champ plywood offers reliable quality at an affordable price, crafted from premium eucalyptus and popular Indian timber. Available in MR and BWR grades, it’s bonded with MUF resin and manufactured to IS:303 standards. Treated with vacuum pressure technology and glue-line preservatives, Yeti Champ is borer-proof, eco-friendly, and ideal for a wide range of furniture and interior projects.",
-        features: [
-            { icon: Ruler, text: "Consistent thickness with short core veneer construction" },
-            { icon: Droplets, text: "Moisture and boiling water resistant options (MR & BWR)" },
-            { icon: Award, text: "ISI:303 certified for quality assurance" },
-            { icon: ShieldCheck, text: "Borer-proof with advanced vacuum pressure treatment" },
-            { icon: Leaf, text: "Eco-friendly, made from locally sourced Indian timber" },
-            { icon: CheckCircle, text: "Economical and versatile for all furniture needs" }
-        ],
-        image: "/plywood/champ.JPG"
-    },
-
-    {
         title: "Yeti Arniko",
         subtitle: "Durable, Eco-Friendly Plywood Engineered for Versatile Furniture Solutions",
         description:
@@ -65,6 +49,21 @@ export const PLYWOOD_SERVICES = [
             { icon: CheckCircle, text: "Affordable and versatile for all furniture needs" }
         ],
         image: "/plywood/arniko.JPG"
+    },
+    {
+        title: "Yeti Champ – Affordable Plywood for Every Need",
+        subtitle: "Economical, Durable, and Eco-Friendly Plywood for Versatile Applications",
+        description:
+            "Yeti Champ plywood offers reliable quality at an affordable price, crafted from premium eucalyptus and popular Indian timber. Available in MR and BWR grades, it’s bonded with MUF resin and manufactured to IS:303 standards. Treated with vacuum pressure technology and glue-line preservatives, Yeti Champ is borer-proof, eco-friendly, and ideal for a wide range of furniture and interior projects.",
+        features: [
+            { icon: Ruler, text: "Consistent thickness with short core veneer construction" },
+            { icon: Droplets, text: "Moisture and boiling water resistant options (MR & BWR)" },
+            { icon: Award, text: "ISI:303 certified for quality assurance" },
+            { icon: ShieldCheck, text: "Borer-proof with advanced vacuum pressure treatment" },
+            { icon: Leaf, text: "Eco-friendly, made from locally sourced Indian timber" },
+            { icon: CheckCircle, text: "Economical and versatile for all furniture needs" }
+        ],
+        image: "/plywood/champ.JPG"
     },
 
     //   {

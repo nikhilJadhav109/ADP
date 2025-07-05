@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Calendar, MapPin, Search } from "lucide-react";
-import { motion, easeOut, Variants } from "framer-motion";
+import { motion, easeOut, Variants, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { PROJECTS } from "../constants/projects";
@@ -55,6 +55,45 @@ const PortfolioPage: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: { duration: 0.7, ease: easeOut },
+    },
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.1,
+      transition: {
+        duration: 0.1,
+        ease: "easeInOut" as const,
+      },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.1,
+        ease: "easeInOut" as const,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.3,
+      },
     },
   };
 
@@ -115,58 +154,113 @@ const PortfolioPage: React.FC = () => {
         </section>
 
         {/* ✅ Portfolio Grid */}
-        <section className="py-16 bg-white dark:bg-gray-900">
+        <section className="py-16 bg-snow-900  dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
-              key={activeFilter}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+              variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              animate="visible"
+              key={activeFilter}
             >
-              {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  className="group bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
-                  variants={projectCardVariants}
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
-                    />
-                    <span className="absolute top-5 left-5 bg-teal-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
-                      {project.category}
-                    </span>
-                  </div>
+              <AnimatePresence mode="wait">
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={`${activeFilter}-${project.id}`}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.08, ease: "easeOut" }}
+                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-md border  shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 cursor-pointer"
+                  >
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
 
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3 text-sm">
-                      <div className="flex items-center text-gray-500 dark:text-gray-400">
-                        <Calendar className="w-4 h-4 mr-2 text-teal-500" />
-                        <span>{project.year}</span>
-                      </div>
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                      {/* Category Badge */}
+                      <motion.div
+                        className="absolute top-4 left-4"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
+                      >
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 backdrop-blur-sm text-teal-300 border border-teal-500/30">
+                          {project.category}
+                        </span>
+                      </motion.div>
+
+                      {/* Year Badge */}
+                      <motion.div
+                        className="absolute top-4 right-4"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
+                      >
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-black/30 backdrop-blur-sm text-white border border-white/20">
+                          {project.year}
+                        </span>
+                      </motion.div>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">
-                      {project.title}
-                    </h3>
+                    {/* Content */}
+                    <div className="p-5 sm:p-6">
+                      <motion.div
+                        className="flex items-start justify-between mb-3"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + index * 0.1 }}
+                      >
+                        <div className="flex-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-teal-300 transition-colors duration-300">
+                            {project.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-gray-400 font-medium">
+                            {project.location}
+                          </p>
+                        </div>
+                      </motion.div>
 
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
-                      <MapPin className="w-4 h-4 mr-2 text-teal-500" />
-                      <span>{project.location}</span>
+                      <motion.p
+                        className="text-sm text-gray-300 leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
+                      >
+                        {project.description}
+                      </motion.p>
+
+                      {/* Progress Bar */}
+                      <motion.div
+                        className="mt-4 h-1 bg-gray-700 rounded-full overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
+                      >
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-teal-500 to-cyan-400"
+                          initial={{ width: "0%" }}
+                          whileInView={{ width: "100%" }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay:  index * 0.1,
+                            duration: 1.2,
+                            ease: "easeOut",
+                          }}
+                        />
+                      </motion.div>
                     </div>
-
-                    <p className="text-gray-800 mb-4">{project.description}</p>
-
-                    {/* <p className="text-gray-500 dark:text-gray-400 text-sm italic border-t border-gray-100 dark:border-gray-700 pt-2">
-                      {project.details.substring(0, 250)}...
-                    </p> */}
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </motion.div>
 
             {filteredProjects.length === 0 && (
@@ -204,8 +298,8 @@ const PortfolioPage: React.FC = () => {
               variants={ctaVariants}
               transition={{ delay: 0.2 }}
             >
-              Our expert <strong>interior designers </strong> are ready to turn your
-              vision into a stunning reality. Contact us today for a
+              Our expert <strong>interior designers </strong> are ready to turn
+              your vision into a stunning reality. Contact us today for a
               consultation.
             </motion.p>
             <motion.div

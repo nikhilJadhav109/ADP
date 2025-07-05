@@ -156,7 +156,7 @@ const AboutPage: React.FC = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-teal-900 dark:border-teal-600"
                   />
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                     {member.name}

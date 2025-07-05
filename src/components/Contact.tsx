@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
             <div className="w-full lg:w-[50%]">
               <ContactDetails />
             </div>
-            <div className="w-full lg:w-[50%]">
+            <div className="w-full lg:w-[50%] -mt-4">
               <ContactForm />
             </div>
           </div>
