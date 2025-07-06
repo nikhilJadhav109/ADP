@@ -51,7 +51,7 @@ export const PLYWOOD_SERVICES = [
         image: "/plywood/arniko.JPG"
     },
     {
-        title: "Yeti Champ – Affordable Plywood for Every Need",
+        title: "Yeti Champ",
         subtitle: "Economical, Durable, and Eco-Friendly Plywood for Versatile Applications",
         description:
             "Yeti Champ plywood offers reliable quality at an affordable price, crafted from premium eucalyptus and popular Indian timber. Available in MR and BWR grades, it’s bonded with MUF resin and manufactured to IS:303 standards. Treated with vacuum pressure technology and glue-line preservatives, Yeti Champ is borer-proof, eco-friendly, and ideal for a wide range of furniture and interior projects.",

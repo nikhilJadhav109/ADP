@@ -3,6 +3,7 @@ export const BRANDS = [
     { name: 'Prachin Ply', logo: 'PP', category: 'Plywood & Boards', logoPath: '/brands/prachinPlywood.jpg' },
     { name: 'Yeti Ply', logo: 'YP', category: 'Plywood & Boards', logoPath: '/brands/yetiply.png' },
     { name: 'Ebco', logo: 'E', category: 'Architectural Hardware', logoPath: '/brands/ebco.jpg' },
+    { name: 'Quba', logo: 'Q', category: 'Laminates & Panels', logoPath: '/brands/quba.png' },
     { name: 'Hettich', logo: 'H', category: 'Furniture Fittings', logoPath: '/brands/hettich.png' },
     { name: 'Royale Touche', logo: 'RT', category: 'Luxury Laminates', logoPath: '/brands/royal.png' },
     { name: 'Enox', logo: 'E', category: 'Architectural Hardware', logoPath: '/brands/ENOX.webp' },

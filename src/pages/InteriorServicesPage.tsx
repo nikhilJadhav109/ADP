@@ -27,72 +27,6 @@ const CheckCircleIcon = () => (
   </svg>
 );
 
-// Inline SVG for Home
-const HomeIcon = (
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) => (
-  <svg
-    {...props}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-    ></path>
-  </svg>
-);
-
-// Inline SVG for Building - CORRECTED LINE HERE
-const BuildingIcon = (
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) => (
-  <svg
-    {...props}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-4-4h1m-1 4h1"
-    ></path>
-  </svg>
-);
-
-// Inline SVG for Wrench
-const WrenchIcon = (
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) => (
-  <svg
-    {...props}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924-1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"
-    ></path>
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-    ></path>
-  </svg>
-);
-
 const InteriorServicesPage: React.FC = () => {
 
   const process = [
@@ -111,7 +45,7 @@ const InteriorServicesPage: React.FC = () => {
       step: "03",
       title: "Detailed Planning",
       description:
-        "Finalize timelines, material specs, and logistics with contractors.",
+        "Finalize timelines, material specifications, and logistics with contractors.",
     },
     {
       step: "04",
@@ -237,12 +171,12 @@ const InteriorServicesPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <section className="py-16 bg-gray-50 dark:bg-gradient-to-tr from-slate-900 to-slate-700">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
               Trusted <span className="text-teal-600">Brands We Work With</span>
             </h2>
-            <p className="text-center max-w-2xl mx-auto mb-8 text-gray-700 dark:text-gray-300">
+            <p className="text-center max-w-2xl mx-auto mb-10 text-gray-700 dark:text-gray-300">
               Our interiors are built with the finest materials from top-tier
               brands ensuring durability, elegance, and quality.
             </p>

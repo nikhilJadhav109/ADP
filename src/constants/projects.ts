@@ -82,7 +82,7 @@
       category: "Commercial",
       location: "FC Road, Pune, Maharashtra",
       year: "2024",
-      image: "/portfolioImages/commercial1.jpeg",
+      image: "/portfolioImages/cafe.jpg",
       description:
         "A vibrant and contemporary space perfect for casual meetups."
     },

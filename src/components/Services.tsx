@@ -1,8 +1,10 @@
 import React from "react";
 import { Home, Building, Wrench, ArrowRight, Star } from "lucide-react";
 import { motion, easeOut } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Services: React.FC = () => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: Home,
@@ -46,10 +48,7 @@ const Services: React.FC = () => {
   ];
 
   const scrollToContact = () => {
-    const contactSection = document.querySelector("#contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/contact");
   };
 
   const containerVariants = {

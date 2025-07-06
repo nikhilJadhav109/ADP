@@ -69,7 +69,7 @@ const ContactDetails = () => {
         {contactInfo.map((info, index) => (
           <motion.div
             key={index}
-            className="flex items-start gap-4 bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
+            className="flex items-start gap-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
             variants={cardVariants}
             whileHover={{ scale: 1.01 }}
           >
@@ -87,7 +87,8 @@ const ContactDetails = () => {
                 {info.details.map((detail, idx) => (
                   <div
                     key={idx}
-                    className="text-sm text-gray-600 dark:text-gray-300 leading-snug"
+                    className="text-sm text-gray-600 dark:text-gray-300 leading-snug break-all overflow-hidden"
+                    // className="className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-snug break-words break-all overflow-hidden""
                   >
                     {info.action &&
                     (info.title === "Phone" ||

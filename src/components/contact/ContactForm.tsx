@@ -5,6 +5,9 @@ import { CONTACT_INFO } from "../../constants/contact";
 import { GOOGLE_FORM_SUBMIT_URL, WHATSAPP_LOGO } from "../../constants/path";
 import { buildWhatsAppMessage, getWhatsAppUrl } from "../../helper/whatsapp";
 
+// Define the ContactFormProps interface
+interface ContactFormProps {}
+
 const successMessageVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -45,9 +48,11 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const [googleFormStatus, setGoogleFormStatus] = useState("");
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState<"success" | "error" | null>(null);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const whatsAppNumber = CONTACT_INFO.PHONE_NUMBER_1.replace(/\D/g, "");
-  const TIMEOUT_DURATION = 60000;
+  const TIMEOUT_DURATION = 60000; // Reduced timeout for better UX, originally 60000
+
   useEffect(() => {
     if (toastMessage) {
       const timer = setTimeout(() => {
@@ -64,45 +69,92 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error for the field being changed
+    if (errors[e.target.name]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [e.target.name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!formData.name.trim()) {
+      newErrors.name = "Full Name is required.";
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone Number is required.";
+    }
+    if (!formData.projectType) {
+      newErrors.projectType = "Project Type is required.";
+    }
+    // Conditional validation for 'size' based on 'projectType'
+    if (formData.projectType === "Residential Interior" && !formData.size) {
+      newErrors.size = "Size is required for Residential Interior projects.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const resetFormAndState = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      projectType: "",
+      size: "",
+      budget: "",
+      timeline: "",
+      message: "",
+    });
+    setIsSubmitted(false);
+    setIsSubmittingWhatsApp(false);
+    setIsSubmittingGoogleForm(false);
+    setToastMessage("");
+    setToastType(null);
+    setErrors({}); // Clear any validation errors
   };
 
   const handleWhatsAppSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent default form submission
+    if (!validateForm()) {
+      setToastMessage("Please fill in all required fields.");
+      setToastType("error");
+      return;
+    }
+
     setIsSubmittingWhatsApp(true);
 
     const whatsappMessage = buildWhatsAppMessage(formData);
     const whatsappUrl = getWhatsAppUrl(whatsappMessage, whatsAppNumber);
+
     try {
       window.open(whatsappUrl, "_blank");
-      await new Promise((res) => setTimeout(res, 1500));
+      // Add a small delay to allow the browser to initiate WhatsApp
+      await new Promise((res) => setTimeout(res, 500));
       setIsSubmitted(true);
       setToastMessage("WhatsApp opened successfully!");
       setToastType("success");
 
       setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          projectType: "",
-          size: "",
-          budget: "",
-          timeline: "",
-          message: "",
-        });
-        setIsSubmitted(false);
-        setToastMessage("");
-        setToastType(null);
+        resetFormAndState();
       }, TIMEOUT_DURATION);
     } catch (error) {
       console.error("Failed to open WhatsApp:", error);
-      setToastMessage("Failed to open WhatsApp.");
+      setToastMessage(
+        "Failed to open WhatsApp. Please ensure you have WhatsApp installed."
+      );
       setToastType("error");
+      setIsSubmittingWhatsApp(false); // Reset submitting state on error
     }
   };
 
   const handleGoogleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent default form submission
+    if (!validateForm()) {
+      setToastMessage("Please fill in all required fields.");
+      setToastType("error");
+      return;
+    }
+
     setIsSubmittingGoogleForm(true);
     setGoogleFormStatus("Submitting to Google Form...");
 
@@ -135,6 +187,8 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     googleFormData.append(GOOGLE_FORM_FIELD_IDS.email, formData.email);
 
     try {
+      // Using 'no-cors' mode means we won't be able to read the response status,
+      // but the request will still be sent.
       await fetch(GOOGLE_FORM_SUBMIT_URL, {
         method: "POST",
         body: googleFormData,
@@ -146,65 +200,52 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       setToastType("success");
       setIsSubmitted(true);
 
-      // After 10 seconds, reset
       setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          projectType: "",
-          size: "",
-          budget: "",
-          timeline: "",
-          message: "",
-        });
-        setIsSubmitted(false);
-        setIsSubmittingGoogleForm(false);
-        setToastMessage("");
-        setToastType(null);
+        resetFormAndState();
       }, TIMEOUT_DURATION);
     } catch (error) {
       console.error("Error submitting to Google Form:", error);
       setGoogleFormStatus("Failed to submit to Google Form. Please try again.");
       setToastMessage("Failed to send form. Please try again.");
       setToastType("error");
-      setIsSubmittingGoogleForm(false);
+      setIsSubmittingGoogleForm(false); // Reset submitting state on error
     }
   };
 
-  // if (isSubmitted) {
-  //   return (
-  //     <motion.div
-  //       className="text-center py-12 bg-white dark:bg-gray-800 rounded-3xl"
-  //       initial="hidden"
-  //       animate="visible"
-  //       variants={successMessageVariants}
-  //     >
-  //       <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-  //       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-  //         Thank You!
-  //       </h3>
-  //       <p className="text-gray-600 dark:text-gray-300 mb-6 px-4">
-  //         Your message has been processed.
-  //         {/* You can customize this message based on which submission method was used */}
-  //         <br />
-  //         {googleFormStatus && (
-  //           <span className="text-sm italic">{googleFormStatus}</span>
-  //         )}
-  //       </p>
-  //       <div className="flex gap-3 justify-center">
-  //         <motion.a
-  //           href={`tel:${CONTACT_INFO.PHONE_NUMBER_1}`}
-  //           className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-lg"
-  //           whileHover={{ scale: 1.05 }}
-  //           whileTap={{ scale: 0.95 }}
-  //         >
-  //           <span><Phone className="w-8 h-5 mr-2" /> Call Now</span>
-  //         </motion.a>
-  //       </div>
-  //     </motion.div>
-  //   );
-  // }
+  if (isSubmitted) {
+    return (
+      <motion.div
+        className="text-center py-12 bg-white dark:bg-gray-800 rounded-3xl"
+        initial="hidden"
+        animate="visible"
+        variants={successMessageVariants}
+      >
+        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Thank You!
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-6 px-4">
+          Your request has been received and is being processed.
+          <br />
+          Our team will review it and get back to you shortly.
+          <br />
+          {googleFormStatus && (
+            <span className="text-sm italic">{googleFormStatus}</span>
+          )}
+        </p>
+        <div className="flex gap-3 justify-center">
+          <motion.a
+            href={`tel:${CONTACT_INFO.PHONE_NUMBER_1}`}
+            className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-lg flex items-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Phone className="w-5 h-5 mr-2" /> Call Now
+          </motion.a>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <>
@@ -236,9 +277,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             Send Us a Message
           </h3>
           <form className="space-y-4">
-            {" "}
-            {/* Removed onSubmit from here, buttons will have their own */}
-            {/* Form Fields (as in your original code) */}
+            {/* Form Fields */}
             <motion.div variants={formFieldVariants}>
               <label
                 htmlFor="name"
@@ -253,9 +292,16 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm ${
+                  errors.name
+                    ? "border-red-500"
+                    : "border-gray-300 dark:border-gray-600"
+                }`}
                 placeholder="Your full name"
               />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+              )}
             </motion.div>
             <motion.div
               variants={formFieldVariants}
@@ -295,9 +341,16 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm ${
+                    errors.phone
+                      ? "border-red-500"
+                      : "border-gray-300 dark:border-gray-600"
+                  }`}
                   placeholder="+91-9876543210"
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+                )}
               </motion.div>
               <motion.div
                 variants={formFieldVariants}
@@ -315,7 +368,11 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   value={formData.projectType}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm ${
+                    errors.projectType
+                      ? "border-red-500"
+                      : "border-gray-300 dark:border-gray-600"
+                  }`}
                 >
                   <option value="">Select project type</option>
                   <option value="Residential Interior">
@@ -328,16 +385,27 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   </option>
                   <option value="Other">Other</option>
                 </select>
+                {errors.projectType && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.projectType}
+                  </p>
+                )}
               </motion.div>
             </div>
             {/* New "Size" Field - Conditionally Rendered */}
             {formData.projectType === "Residential Interior" && (
-              <motion.div>
+              <motion.div
+                variants={formFieldVariants}
+                transition={{ delay: 0.4 }}
+              >
                 <label
                   htmlFor="size"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                 >
-                  Size
+                  Size{" "}
+                  {formData.projectType === "Residential Interior" && (
+                    <span className="text-red-500">*</span>
+                  )}
                 </label>
                 <select
                   id="size"
@@ -345,7 +413,11 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   value={formData.size}
                   onChange={handleChange}
                   required={formData.projectType === "Residential Interior"}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm ${
+                    errors.size
+                      ? "border-red-500"
+                      : "border-gray-300 dark:border-gray-600"
+                  }`}
                 >
                   <option value="">Select size</option>
                   <option value="1BHK">1 BHK</option>
@@ -360,13 +432,17 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   <option value="Duplex / Penthouse">Duplex / Penthouse</option>
                   <option value="Other">Other</option>
                 </select>
+                {errors.size && (
+                  <p className="text-red-500 text-xs mt-1">{errors.size}</p>
+                )}
               </motion.div>
             )}
             <div className="grid sm:grid-cols-2 gap-4">
               <motion.div
                 variants={formFieldVariants}
                 transition={{
-                  delay: formData.projectType === "residential" ? 0.4 : 0.4,
+                  delay:
+                    formData.projectType === "Residential Interior" ? 0.5 : 0.4, // Adjust delay based on conditional rendering
                 }}
               >
                 <label
@@ -393,7 +469,8 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               <motion.div
                 variants={formFieldVariants}
                 transition={{
-                  delay: formData.projectType === "residential" ? 0.5 : 0.5,
+                  delay:
+                    formData.projectType === "Residential Interior" ? 0.6 : 0.5, // Adjust delay based on conditional rendering
                 }}
               >
                 <label
@@ -428,7 +505,8 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             <motion.div
               variants={formFieldVariants}
               transition={{
-                delay: formData.projectType === "residential" ? 0.6 : 0.6,
+                delay:
+                  formData.projectType === "Residential Interior" ? 0.7 : 0.6, // Adjust delay based on conditional rendering
               }}
             >
               <label
@@ -449,7 +527,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             <div className="flex gap-4 justify-between mt-6">
               {/* WhatsApp Submit Button */}
               <motion.button
-                type="submit" // Type submit will trigger form validation
+                type="button" // IMPORTANT: Change to "button" so it doesn't trigger default form submission
                 onClick={handleWhatsAppSubmit}
                 className="w-1/2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white py-2 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
                 variants={buttonVariants}
@@ -495,7 +573,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               </motion.button>
               {/* Google Form Submit Button */}
               <motion.button
-                type="submit" // Type submit will trigger form validation
+                type="button" // IMPORTANT: Change to "button"
                 onClick={handleGoogleFormSubmit}
                 className="w-1/2 bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white py-2 px-6 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
                 variants={buttonVariants}
@@ -530,17 +608,11 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   </>
                 ) : (
                   <>
-                    <MailIcon className="w-5 h-5 mr-2" />{" "}
-                    Send
+                    <MailIcon className="w-5 h-5 mr-2" /> Send
                   </>
                 )}
               </motion.button>
             </div>
-            {/* {googleFormStatus && (
-              <p className="text-center text-sm mt-2 text-gray-600 dark:text-gray-400">
-                {googleFormStatus}
-              </p>
-            )} */}
           </form>
         </>
       </motion.div>

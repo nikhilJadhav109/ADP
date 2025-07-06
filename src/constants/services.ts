@@ -69,7 +69,7 @@ import { BoxIcon, Building2, BuildingIcon, CookingPot, Home, HomeIcon, Wrench, W
     icon: Building2,
     title: "Commercial Interior Design",
     description:
-      "Create inspiring workspaces that boost productivity and brand presence. Where functionality meets aesthetics for business success.",
+      "Create inspiring workspaces that boost productivity and brand presence, where functionality meets aesthetics for business success.",
     features: [
       "Strategic Workspace & Brand Integration",
       "Retail & Hospitality Design Mastery",
@@ -78,11 +78,11 @@ import { BoxIcon, Building2, BuildingIcon, CookingPot, Home, HomeIcon, Wrench, W
       "Custom Branded Elements",
       "ROI-Focused Design Solutions",
     ],
-    image: "/portfolioImages/SpaciousLivingRoomWithSwingSeat.jpeg",
+    image: "/portfolioImages/office.jpg",
   },
   {
     icon: Wrench,
-    title: "Full Turnkey Interior Solutions",
+    title: "Complete Turnkey Interior Solutions",
     description:
       "Sit back and relax while we handle everything. From concept to completion, experience hassle-free luxury interiors delivered on time.",
     features: [
@@ -97,14 +97,14 @@ import { BoxIcon, Building2, BuildingIcon, CookingPot, Home, HomeIcon, Wrench, W
   },
   {
     icon: CookingPot,
-    title: "Kitchen & Modular Solutions",
+    title: "Modular Kitchen Design",
     description:
       "Design the heart of your home with stunning, functional kitchens. Smart storage meets gourmet aesthetics for culinary excellence.",
     features: [
       "Custom Modular Kitchen Design",
       "Space-Maximizing Storage Solutions",
       "Premium Countertops & Backsplashes",
-      "Soft-Close Drawers & German Hinges",
+      "Tandem Drawers & German Hinges",
       "Built-in Appliance Integration",
       "Easy-Clean & Maintenance-Free Finishes",
     ],

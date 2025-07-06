@@ -3,6 +3,7 @@ import { Target, Heart, Shield } from "lucide-react";
 import { TEAM } from "../constants/team";
 import { AboutPageHelmet } from "../helper/seoProvider";
 import { STATS } from "../constants/stats";
+import { motion } from "framer-motion";
 
 const AboutPage: React.FC = () => {
   const values = [
@@ -26,6 +27,30 @@ const AboutPage: React.FC = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Increased delay for more pronounced staggered effect
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120, // Slightly more rigid spring
+        damping: 12, // Slightly less springy
+        duration: 0.6,
+      },
+    },
+  };
   return (
     <>
       <AboutPageHelmet />
@@ -147,29 +172,46 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {TEAM.map((member, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg text-center"
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" // Adjusted gap for better responsiveness
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }} // Trigger animation when 25% of the component is visible
+            >
+              {TEAM.map((member) => (
+                <motion.div
+                  key={member.name} // Using name as key, assuming unique names; prefer a unique ID if available
+                  className="bg-white dark:bg-gray-900 rounded-xl p-5 md:p-6 shadow-lg text-center transform transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-800" // Enhanced hover effects and border
+                  variants={itemVariants}
                 >
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-2 border-teal-900 dark:border-teal-600"
+                    className="w-28 h-28 rounded-full object-cover object-center mx-auto mb-4 border-2 border-teal-600 dark:border-teal-400 shadow-md" // Increased border width, added shadow
+                    loading="lazy" // Add lazy loading for performance
                   />
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-1 leading-tight">
+                    {" "}
+                    {/* Slightly larger text, bold, tighter line height */}
                     {member.name}
                   </h3>
-                  <p className="text-teal-600 dark:text-teal-400 font-medium mb-3">
+                  <p className="text-teal-700 dark:text-teal-300 font-semibold mb-1 text-base">
+                    {" "}
+                    {/* Adjusted shades for better contrast */}
                     {member.position}
                   </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 italic">
+                    {member.experience}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed max-w-prose mx-auto">
+                    {" "}
+                    {/* Added max-width for readability */}
                     {member.bio}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>

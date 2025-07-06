@@ -24,8 +24,8 @@ const Header: React.FC = () => {
     {
       name: "Services",
       submenu: [
-        { name: "Interior", path: "/services/interior" },
-        { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
+        { name: "Interior Design", path: "/services/interior" },
+        { name: "Modular Furniture", path: "/services/modular" }, // <-- ADD THIS LINE
         { name: "Plywood Supply", path: "/services/plywood-supply" },
       ],
     },
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src={isScrolled || !isHomePage ? DARK_LOGO : LIGHT_LOGO}
+                src={DARK_LOGO}
                 alt="Agrawal Ply Decor Logo"
                 className="w-16 h-16 object-contain transition-all duration-300"
               />
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
               ) : item.submenu ? (
                 <div
                   key={item.name}
-                  className="relative"
+                  className="relative flex items-center justify-center"
                   onMouseEnter={() => setIsServicesHovered(true)}
                   onMouseLeave={() => setIsServicesHovered(false)}
                 >

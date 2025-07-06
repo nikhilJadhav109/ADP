@@ -41,11 +41,9 @@ const LoadingScreen: React.FC = () => {
         {/* Brand Name with Gradient */}
         <div className="mb-2">
           <h1 className="text-4xl font-light text-slate-800 dark:text-slate-200 tracking-wide">
-            Agrawal Ply
+            Agrawal Ply Decor
           </h1>
-          <div className="text-4xl font-medium bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-500 dark:from-teal-400 dark:via-teal-300 dark:to-cyan-300 bg-clip-text text-transparent">
-            Decor
-          </div>
+          
         </div>
 
         <p className="text-slate-500 dark:text-slate-400 text-sm font-light tracking-[0.2em] uppercase mb-8">

@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white"
+            className="text-4xl md:text-5xl font-bold mb-2 text-gray-900 dark:text-white"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}

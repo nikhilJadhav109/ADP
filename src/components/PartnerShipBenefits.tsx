@@ -25,11 +25,10 @@ const PartnerShipBenefits = () => {
     <section className=" bg-white dark:bg-gray-900">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-          Partnership Benefits
+          Why Choose Us
         </h2>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Our strategic partnerships with premium brands ensure you get the best
-          products, pricing, and service for your interior design projects.
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Partnering with top brands, we deliver quality products, competitive prices, and dependable service to ensure your interior design projects exceed expectations.
         </p>
       </div>
 
