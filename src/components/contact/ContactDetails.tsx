@@ -84,29 +84,46 @@ const ContactDetails = () => {
                 {info.title}
               </h4>
               <div className="space-y-1">
-                {info.details.map((detail, idx) => (
-                  <div
-                    key={idx}
-                    className="text-sm text-gray-600 dark:text-gray-300 leading-snug break-all overflow-hidden"
-                    // className="className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-snug break-words break-all overflow-hidden""
-                  >
-                    {info.action &&
-                    (info.title === "Phone" ||
-                      info.title === "Email" ||
-                      info.title === "Address") ? (
-                      <a
-                        href={info.action}
-                        target={info.title === "Address" ? "_blank" : "_self"}
-                        rel="noopener noreferrer"
-                        className="hover:text-teal-600 dark:hover:text-teal-400 underline underline-offset-4 decoration-transparent hover:decoration-current break-words transition-colors"
-                      >
-                        {detail}
-                      </a>
-                    ) : (
-                      detail
-                    )}
-                  </div>
-                ))}
+                {info.details.map((detail, idx) => {
+                  const isLinkable =
+                    info.title === "Phone" ||
+                    info.title === "Email" ||
+                    info.title === "Address";
+
+                  // Determine dynamic action per detail
+                  const action =
+                    info.title === "Phone"
+                      ? `tel:${detail}`
+                      : info.title === "Email"
+                      ? `mailto:${detail}`
+                      : info.title === "Address"
+                      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                          CONTACT_INFO.ADDRESS_LINE_1 +
+                            ", " +
+                            CONTACT_INFO.ADDRESS_LINE_2
+                        )}`
+                      : null;
+
+                  return (
+                    <div
+                      key={idx}
+                      className="text-sm text-gray-600 dark:text-gray-300 leading-snug break-all overflow-hidden"
+                    >
+                      {isLinkable ? (
+                        <a
+                          href={action}
+                          target={info.title === "Address" ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          className="hover:text-teal-600 dark:hover:text-teal-400 underline underline-offset-4 decoration-transparent hover:decoration-current break-words transition-colors"
+                        >
+                          {detail}
+                        </a>
+                      ) : (
+                        detail
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>

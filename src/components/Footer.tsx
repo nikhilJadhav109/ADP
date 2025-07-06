@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <Link to="/">
               <h3 className="text-2xl font-bold mb-4">
-                Agrawal Ply <span className="text-teal-400">Decor</span>
+                Agrawal Ply Decor
               </h3>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
