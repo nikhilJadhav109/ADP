@@ -278,13 +278,12 @@ const PortfolioPage: React.FC = () => {
         </section>
 
         {/* ✅ CTA */}
-        <section className="py-20 bg-teal-600 dark:bg-teal-800 text-white shadow-inner">
+       <section className="py-20 bg-teal-600 dark:bg-teal-800 text-white shadow-inner">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.h2
               className="text-4xl sm:text-5xl font-bold mb-6"
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              animate="visible" // Change from whileInView to animate
               variants={ctaVariants}
             >
               Ready to <span className="text-teal-200">Elevate</span> Your
@@ -293,10 +292,9 @@ const PortfolioPage: React.FC = () => {
             <motion.p
               className="text-xl md:text-2xl mb-10"
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={ctaVariants}
+              animate="visible" // Change from whileInView to animate
               transition={{ delay: 0.2 }}
+              variants={ctaVariants}
             >
               Our expert <strong>interior designers </strong> are ready to turn
               your vision into a stunning reality. Contact us today for a
@@ -305,8 +303,7 @@ const PortfolioPage: React.FC = () => {
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+              animate="visible" // Change from whileInView to animate
               variants={{
                 visible: { transition: { staggerChildren: 0.15 } },
               }}
