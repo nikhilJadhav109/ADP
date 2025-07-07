@@ -54,7 +54,7 @@
       category: "Luxury Homes",
       location: "Aundh, Pune, Maharashtra",
       year: "2024",
-      image: "/portfolioImages/residential1.jpeg",
+      image: "/portfolioImages/readingnook.jpg",
       description: "A perfect blend of comfort and style for quiet moments."
     },
     {
