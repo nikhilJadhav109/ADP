@@ -118,7 +118,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                  src="/about/image.png"
                   alt="Our team at work"
                   className="rounded-2xl shadow-xl"
                 />

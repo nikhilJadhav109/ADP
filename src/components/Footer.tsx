@@ -14,25 +14,22 @@ import { FACEBOOK_LINK, INSTAGRAM_LINK } from "../constants/path";
 const Footer: React.FC = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
-    {
-      name: "Services",
-      path: "/services/interior",
-    },
-    { name: "Interior", path: "/services/interior" },
-    { name: "Modular Services", path: "/services/modular" }, // <-- ADD THIS LINE
+    { name: "Interior Design", path: "/services/interior" },
+    { name: "Modular Services", path: "/services/modular" },
     { name: "Plywood Supply", path: "/services/plywood-supply" },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "About Us", path: "/about" },
+    { name: "Contact Us", path: "/contact" },
   ];
 
   const services = [
-    "Residential Design",
-    "Commercial Spaces",
+    "Residential Interior",
+    "Commercial Interior",
     "Luxury Interiors",
-    "Office Design",
     "Turnkey Solutions",
     "Design Consultation",
+    "Modular Furniture",
+    "Plywood Design",
   ];
 
   return (
@@ -106,15 +103,27 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
-              <a
+              <span>
+                <a
                 href="tel:+91-9823069099"
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
               >
                 <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
                 <span>
-                  +91-9823069099 <br></br> +91-8459758065{" "}
+                  +91-9823069099{" "}
                 </span>
               </a>
+              <a
+                href="tel:+91-8459758065"
+                className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+              >
+                <Phone className="w-4 h-4 mr-3 flex-shrink-0" />
+                <span>
+                  +91-8459758065{" "}
+                </span>
+              </a>
+              </span>
+              
               <a
                 href="mailto:agrawalplydecor@gmail.com"
                 className="flex items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"

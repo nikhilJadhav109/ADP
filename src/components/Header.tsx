@@ -40,6 +40,17 @@ const Header: React.FC = () => {
     },
   ];
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(prefersDark.matches);
+
+    const handleChange = (e) => setIsDarkMode(e.matches);
+    prefersDark.addEventListener('change', handleChange);
+
+    return () => prefersDark.removeEventListener('change', handleChange);
+  }, []);
   const isHomePage = location.pathname === "/";
 
   return (
@@ -47,22 +58,22 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0">
-            <Link to="/" className="flex items-center gap-2">
-              <img
-                src={DARK_LOGO}
-                alt="Agrawal Ply Decor Logo"
-                className="w-16 h-16 object-contain transition-all duration-300"
-              />
-              <span
-                className={`text-lg font-semibold leading-none transition-colors duration-300 ${
-                  isScrolled || !isHomePage
-                    ? "text-gray-900 dark:text-teal-400"
-                    : "text-white dark:text-white"
-                }`}
-              >
-                Agrawal Ply Decor
-              </span>
-            </Link>
+             <Link to="/" className="flex items-center gap-2">
+      <img
+        src={isDarkMode || isScrolled? LIGHT_LOGO : DARK_LOGO}
+        alt="Agrawal Ply Decor Logo"
+        className="w-16 h-16 object-contain transition-all duration-300"
+      />
+      <span
+        className={`text-lg font-semibold leading-none transition-colors duration-300 ${
+          isScrolled || !isHomePage
+            ? "text-gray-900 dark:text-white"
+            : "text-black dark:text-white"
+        }`}
+      >
+        Agrawal Ply Decor
+      </span>
+    </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -76,7 +87,7 @@ const Header: React.FC = () => {
                   className={`font-medium transition-colors duration-300 relative flex items-center ${
                     isScrolled || !isHomePage
                       ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
-                      : "text-white hover:text-teal-400 drop-shadow-md"
+                      : "text-black hover:text-teal-400 drop-shadow-md dark:text-white"
                   }`}
                   title="Download Catalogue"
                   aria-label="Download Company Catalogue"
@@ -97,7 +108,7 @@ const Header: React.FC = () => {
                         ? "text-teal-600 dark:text-teal-400"
                         : isScrolled || !isHomePage
                         ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
-                        : "text-white hover:text-teal-400 drop-shadow-md"
+                        : "text-black hover:text-teal-400 drop-shadow-md dark:text-white"
                     }`}
                   >
                     {item.name}
@@ -118,7 +129,7 @@ const Header: React.FC = () => {
                           className={`block px-4 py-2 text-sm ${
                             isScrolled || !isHomePage
                               ? "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                              : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                              : "text-black dark:dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                           }`}
                           onClick={() => setIsServicesHovered(false)}
                         >
@@ -137,7 +148,7 @@ const Header: React.FC = () => {
                       ? "text-teal-600 dark:text-teal-400"
                       : isScrolled || !isHomePage
                       ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
-                      : "text-white hover:text-teal-400 drop-shadow-md"
+                      : "text-black hover:text-teal-400 drop-shadow-md dark:text-white"
                   }`}
                 >
                   {item.name}

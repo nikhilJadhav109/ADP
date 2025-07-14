@@ -173,7 +173,7 @@ const PortfolioPage: React.FC = () => {
                     exit="exit"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.08, ease: "easeOut" }}
-                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-md border  shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 cursor-pointer"
+                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-md border  shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 cursor-pointer"
                   >
                     {/* Image Container */}
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -193,7 +193,7 @@ const PortfolioPage: React.FC = () => {
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
                       >
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 backdrop-blur-sm text-teal-300 border border-teal-500/30">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/20 backdrop-blur-sm  border border-teal-500/30">
                           {project.category}
                         </span>
                       </motion.div>
@@ -220,17 +220,17 @@ const PortfolioPage: React.FC = () => {
                         transition={{ delay: 0.4 + index * 0.1 }}
                       >
                         <div className="flex-1">
-                          <h3 className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-teal-300 transition-colors duration-300">
+                          <h3 className="text-lg sm:text-xl font-bold mb-1 group-hover:text-teal-900 transition-colors duration-300">
                             {project.title}
                           </h3>
-                          <p className="text-xs sm:text-sm text-gray-400 font-medium">
+                          <p className="text-xs sm:text-sm text-gray-600 font-medium">
                             {project.location}
                           </p>
                         </div>
                       </motion.div>
 
                       <motion.p
-                        className="text-sm text-gray-300 leading-relaxed"
+                        className="text-sm text-gray-600 leading-relaxed"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 + index * 0.1 }}

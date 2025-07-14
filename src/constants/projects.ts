@@ -41,12 +41,12 @@
     },
     {
       id: 5,
-      title: "Modern Commercial Office",
+      title: "Contemporary leadership suite",
       category: "Commercial",
       location: "WTC, Pune, Maharashtra",
       year: "2023",
       image: "/portfolioImages/commercial2.jpeg",
-      description: "Creating memorable first impressions with luxurious hospitality design.",
+      description: "This director's cabin offers a distinctive, upscale environment, engineered for productivity and prestige",
     },
     {
       id: 6,
@@ -97,12 +97,12 @@
   },
   {
     id: 11,
-    title: "Open Plan Living and Dining Space",
+    title: "Innovative spatial harmony",
     category: "Residential",
     location: "Hinjawadi, Pune, Maharashtra",
     year: "2024", 
     image: "/portfolioImages/OpenPlanLivingandDiningSpace.jpeg",
-    description: "Seamless open-plan interior design for modern apartments in Pune."
+    description: "An exceptional open-plan space with an island kitchen showcasing unique design choices that merge style and functionality"
   },
   {
     id: 12,
@@ -227,7 +227,7 @@
     category: "Commercial",
     location: "Shivaji Nagar, Pune, Maharashtra",
     year: "2024",
-    image: "/portfolioImages/GrandCommercialLobby.png",
+    image: "/portfolioImages/commercialDesign.jpg",
     description: "Luxurious commercial lounge design in Pune, perfect for corporate towers."
   },
   {
@@ -241,12 +241,12 @@
   },
   {
     id: 27,
-    title: "Executive Office Chamber",
+    title: "An Opulent Dwelling",
     category: "Commercial",
     location: "Deccan Gymkhana, Pune, Maharashtra",
     year: "2024",
     image: "/portfolioImages/ExecutiveOffice.jpg",
-    description: "Sophisticated executive office interior in Pune with custom wood finishes."
+    description: "Elegantly designed bedroom blending sophisticated design with ultimate comfort"
   },
   {
     id: 28,

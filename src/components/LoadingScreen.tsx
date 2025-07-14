@@ -49,7 +49,7 @@ const LoadingScreen: React.FC = () => {
           </h1>
         </div>
 
-        <p className="text-slate-500 dark:text-slate-400 text-sm font-light tracking-[0.2em] uppercase mb-8">
+        <p className="text-slate-500 dark:text-white text-sm font-light tracking-[0.2em] uppercase mb-8">
           Luxury Interior Design
         </p>
 

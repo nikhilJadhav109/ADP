@@ -173,7 +173,7 @@ const InteriorServicesPage: React.FC = () => {
 
         <section className="py-16 bg-gray-50 dark:bg-gradient-to-tr from-slate-900 to-slate-700">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 dark:text-white">
               Trusted <span className="text-teal-600">Brands We Work With</span>
             </h2>
             <p className="text-center max-w-2xl mx-auto mb-10 text-gray-700 dark:text-gray-300">
