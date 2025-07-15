@@ -256,5 +256,23 @@
     year: "2024",
     image: "/portfolioImages/LuxuryMediaRoom.png",
     description: "Elegant luxury media room design in Pune with ambient star lighting."
+  },
+  {
+    "id": 29,
+    "title": "Contemporary Bedroom Design with Integrated Workspace",
+    "category": "Residential",
+    "location": "Pune, Maharashtra",
+    "year": "2025",
+    "image": "/portfolioImages/ModernBedroomWithWorkspace.jpeg",
+    "description": "A stylish bedroom integrating a comfortable sleep space with a practical work desk."
+  },
+  {
+    "id": 30,
+    "title": "Modern Minimalist Office Interior",
+    "category": "Commercial",
+    "location": "Kharadi, Pune, Maharashtra",
+    "year": "2025",
+    "image": "/portfolioImages/modern-minimalist-office.jpg",
+    "description": "Warmly lit modern office with slatted walls and spacious desks."
   }
 ];
