@@ -68,20 +68,20 @@ const ModularFurnitureOverviewPage: React.FC = () => {
        {
         name: "Panel Saw Cutter",
         description: "Provides highly accurate and clean cuts on large panels of wood, ensuring precise dimensions for all modular components, minimizing waste and errors.",
-        path: "/services/Panel Saw Cutter Machine.jpg", // Using a generic 'path' property
+        path: "/services/panel-saw-machine.jpg", // Using a generic 'path' property
         type: "image", // Explicitly state type
       },
       {
         name: "Edge Bending Machine",
         description: "Ensures seamless and durable edges, protecting against moisture and enhancing aesthetics. This precision machine applies strong adhesive and trims edges for a perfect finish.",
-        path: "/services/Edge Bending Machine.jpg", // Using a generic 'path' property
+        path: "/services/ed.jpg", // Using a generic 'path' property
         type: "image", // Explicitly state type
       },
       {
         name: "Multi Boring Machine",
         description: "Used for precise and accurate drilling of multiple holes simultaneously, crucial for perfect alignment and easy assembly of modular units.",
-        path: "/services/MultiBoringMachine.mp4", // Using a generic 'path' property
-        type: "video", // Explicitly state type
+        path: "/services/multiborings.jpg", // Using a generic 'path' property
+        type: "image", // Explicitly state type
       },
     ],
   };
