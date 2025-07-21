@@ -76,6 +76,15 @@ const ModularFurnitureOverviewPage: React.FC = () => {
     machines: [
       {
         name: "Cold Press",
+        description: "Utilized for laminating and veneering, the cold press applies uniform pressure to bond materials securely, resulting in smooth, strong, and long-lasting surfaces.",
+        path: "/services/cold press machine.webp", // Using a generic 'path' property
+        type: "image", // Explicitly state type
+      },
+       {
+        name: "Panel Saw Cutter",
+        description: "Provides highly accurate and clean cuts on large panels of wood, ensuring precise dimensions for all modular components, minimizing waste and errors.",
+        path: "/services/panel-saw-machine.jpg", // Using a generic 'path' property
+        type: "image", // Explicitly state type
       },
       {
         name: "Edge Bending Machine",
