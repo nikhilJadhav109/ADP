@@ -39,18 +39,7 @@ const Header: React.FC = () => {
       icon: <Download className="w-5 h-5" />,
     },
   ];
-
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDarkMode(prefersDark.matches);
-
-    const handleChange = (e) => setIsDarkMode(e.matches);
-    prefersDark.addEventListener('change', handleChange);
-
-    return () => prefersDark.removeEventListener('change', handleChange);
-  }, []);
+ 
   const isHomePage = location.pathname === "/";
 
   return (
@@ -60,10 +49,16 @@ const Header: React.FC = () => {
           <div className="flex items-center flex-shrink-0">
              <Link to="/" className="flex items-center gap-2">
       <img
-        src={isDarkMode || isScrolled? LIGHT_LOGO : DARK_LOGO}
-        alt="Agrawal Ply Decor Logo"
-        className="w-16 h-16 object-contain transition-all duration-300"
-      />
+  src={DARK_LOGO}
+  alt="Logo"
+  className="w-16 h-16 object-contain transition-all duration-300 dark:hidden"
+/>
+<img
+  src={LIGHT_LOGO}
+  alt="Logo"
+  className="w-16 h-16 object-contain transition-all duration-300 hidden dark:block"
+/>
+
       <span
         className={`text-lg font-semibold leading-none transition-colors duration-300 ${
           isScrolled || !isHomePage
