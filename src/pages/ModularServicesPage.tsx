@@ -3,11 +3,26 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { COMPANY_NAME } from "../constants/seoConfig"; // Assuming you have COMPANY_NAME in seo.ts
 import { JSX } from "react/jsx-runtime";
-
+import { modularProductOfferings } from "../constants/process";
+import { motion } from "framer-motion";
 // --- SVG Icons (keeping only CheckCircleIcon as it's still useful) ---
 const CheckCircleIcon = () => (
   <svg className="w-5 h-5 text-teal-600 dark:text-teal-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
+
 
 const ModularFurnitureOverviewPage: React.FC = () => {
   const whatIsModularFurniture = {
@@ -61,15 +76,6 @@ const ModularFurnitureOverviewPage: React.FC = () => {
     machines: [
       {
         name: "Cold Press",
-        description: "Utilized for laminating and veneering, the cold press applies uniform pressure to bond materials securely, resulting in smooth, strong, and long-lasting surfaces.",
-        path: "/services/cold press machine.webp", // Using a generic 'path' property
-        type: "image", // Explicitly state type
-      },
-       {
-        name: "Panel Saw Cutter",
-        description: "Provides highly accurate and clean cuts on large panels of wood, ensuring precise dimensions for all modular components, minimizing waste and errors.",
-        path: "/services/panel-saw-machine.jpg", // Using a generic 'path' property
-        type: "image", // Explicitly state type
       },
       {
         name: "Edge Bending Machine",
@@ -129,6 +135,8 @@ const ModularFurnitureOverviewPage: React.FC = () => {
           </div>
         </section>
 
+
+
         {/* What is Modular Furniture Section */}
         <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,6 +167,47 @@ const ModularFurnitureOverviewPage: React.FC = () => {
             </div>
           </div>
         </section>
+
+<motion.section
+  className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {modularProductOfferings.title}
+      </h2>
+      <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        {modularProductOfferings.description}
+      </p>
+    </div>
+    <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {modularProductOfferings.products.map((product, index) => (
+        <motion.div
+          key={index}
+          className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          custom={index}
+          variants={cardVariants}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-4 text-center">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+              {product.name}
+            </h3>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.section>
+
+
 
         {/* Advantages of Modular Furniture Section */}
         <section className="py-16 md:py-20 bg-gray-100 dark:bg-gray-800">
