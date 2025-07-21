@@ -68,7 +68,7 @@ export const HOME_PAGE = {
   TITLE: `${COMPANY_NAME} | Turnkey Interior Solutions & High-Quality Raw Materials in Pune`,
   DESCRIPTION: `Transform your space with ${COMPANY_NAME}. We provide complete turnkey interior design solutions and supply high-quality plywood, laminates, and other raw materials in Pune, Maharashtra. Your trusted partner for innovative interiors.`,
   SEO_KEYWORDS: COMMON_SEO_KEYWORDS_STRING, // Using common keywords for home page
-  OG_IMAGE: `${COMPANY_URL}/images/home-og.jpg`, // Generic home page OG image
+  OG_IMAGE: `${COMPANY_URL}/images/favicon.png`, // Generic home page OG image
   TWITTER_IMAGE: `${COMPANY_URL}/images/home-twitter.jpg`, // Generic home page Twitter image
 };
 
