@@ -59,13 +59,13 @@
     },
     {
       id: 7,
-      title: "Executive Boardroom",
+      title: "Opulent Dwelling",
       category: "Residential",
       location: "Shivajinagar, Pune, Maharashtra",
       year: "2021",
       image: "/portfolioImages/residential4.jpeg",
       description:
-        "Elegantly designed bedroom blending sophisticated design with ultimate comfort"
+        "Elegantly designed bedroom blending sophisticated design with ultimate comfort"
     },
     {
       id: 8,
@@ -241,12 +241,12 @@
   },
   {
     id: 27,
-    title: "An Opulent Dwelling",
+    title: "Executive Command Center",
     category: "Commercial",
     location: "Deccan Gymkhana, Pune, Maharashtra",
     year: "2024",
     image: "/portfolioImages/ExecutiveOffice.jpg",
-    description: "Sophisticated design for high-level discussions and presentations."
+    description: "A professional setting designed for important discussions and presentations."
   },
   {
     id: 28,
