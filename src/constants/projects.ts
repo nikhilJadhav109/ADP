@@ -246,7 +246,7 @@
     location: "Deccan Gymkhana, Pune, Maharashtra",
     year: "2024",
     image: "/portfolioImages/ExecutiveOffice.jpg",
-    description: "A professional setting designed for important discussions and presentations."
+    description: "A professional setting designed for important discussions and proposals."
   },
   {
     id: 28,
