@@ -65,7 +65,7 @@
       year: "2021",
       image: "/portfolioImages/residential4.jpeg",
       description:
-        "Sophisticated design for high-level discussions and presentations."
+        "Elegantly designed bedroom blending sophisticated design with ultimate comfort"
     },
     {
       id: 8,
@@ -209,7 +209,7 @@
     category: "Luxury Homes",
     location: "Boat Club Road, Pune, Maharashtra",
     year: "2024",
-    image: "/portfolioImages/LuxuryLivingDining.jpeg",
+    image: "/portfolioImages/lux.jpg",
     description: "Opulent living and dining area design in Pune's luxury homes."
   },
   {
@@ -246,7 +246,7 @@
     location: "Deccan Gymkhana, Pune, Maharashtra",
     year: "2024",
     image: "/portfolioImages/ExecutiveOffice.jpg",
-    description: "Elegantly designed bedroom blending sophisticated design with ultimate comfort"
+    description: "Sophisticated design for high-level discussions and presentations."
   },
   {
     id: 28,

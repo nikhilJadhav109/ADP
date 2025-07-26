@@ -1,54 +1,60 @@
 import React from "react";
-import { Home, Building, Wrench, ArrowRight, Star } from "lucide-react";
+import { Home, LayoutGrid, HardHat, ArrowRight, Star } from "lucide-react"; // Updated icons for new services
 import { motion, easeOut } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const Services: React.FC = () => {
   const navigate = useNavigate();
+
+  // Updated services array with new content and links
   const services = [
     {
-      icon: Home,
-      title: "Residential Design",
+      icon: Home, // Lucide icon for Interior Design
+      title: "Interior Design",
       description:
-        "Transform your home into a luxurious sanctuary with our bespoke residential interior design services. From concept to completion, we handle every detail.",
+        "Transform your living or working space into a masterpiece with our bespoke interior design services, tailored to your unique style and needs.",
       features: [
-        "Custom Furniture Design",
-        "Personalized Space Planning",
-        "Intelligent Lighting Solutions",
-        "Expert Color Consultation",
+        "Conceptualization & Planning",
+        "Material & Finish Selection",
+        "3D Visualization",
+        "Furniture & Decor Sourcing",
       ],
-      badge: "Popular Choice",
+      badge: "Bespoke Creations",
+      link: "/services/interior", // Link to the Interior Design page
     },
     {
-      icon: Building,
-      title: "Commercial Spaces",
+      icon: LayoutGrid, // Lucide icon for Modular Solutions
+      title: "Modular Solutions",
       description:
-        "Create inspiring and productive work environments that reflect your brand identity with our expert commercial interior design.",
+        "Optimize your space with our innovative modular solutions for kitchens, wardrobes, and living areas, offering smart design and efficient functionality.",
       features: [
-        "Dynamic Office Design",
-        "Engaging Retail Spaces",
-        "Sophisticated Hospitality Design",
-        "Seamless Brand Integration",
+        "Custom Modular Kitchens",
+        "Space-Saving Wardrobes",
+        "Integrated Storage Units",
+        "Quick & Efficient Installation",
       ],
-      badge: "Commercial Excellence", // Slightly more descriptive
+      badge: "Smart & Efficient",
+      link: "/services/modular", // Link to the Modular Solutions page
     },
     {
-      icon: Wrench,
-      title: "Turnkey Solutions",
+      icon: HardHat, // Lucide icon for Plywood & Material Supply
+      title: "Plywood & Material Supply",
       description:
-        "Experience complete peace of mind with our end-to-end project management, from initial design to final installation. We manage it all.",
+        "Access a wide range of high-quality plywood, laminates, veneers, and other construction materials for your projects, ensuring durability and aesthetic appeal.",
       features: [
-        "Comprehensive Project Management",
-        "Rigorous Quality Control",
-        "Precise Timeline Coordination",
-        "Flawless Final Installation",
+        "Premium Plywood Varieties",
+        "Extensive Laminate Collection",
+        "Natural Wood Veneers",
+        "Timely Delivery & Support",
       ],
-      badge: "Full Service", // Slightly more descriptive
+      badge: "Quality Materials",
+      link: "/services/plywood-supply", // Link to the Plywood & Material Supply page
     },
   ];
 
-  const scrollToContact = () => {
-    navigate("/contact");
+  // Function to handle navigation to the service page
+  const handleServiceClick = (link: string) => {
+    navigate(link);
   };
 
   const containerVariants = {
@@ -200,7 +206,7 @@ const Services: React.FC = () => {
               </div>
 
               <motion.button
-                onClick={scrollToContact}
+                onClick={() => handleServiceClick(service.link)} // Use the new handler with the service link
                 className="w-full bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-semibold py-3.5 px-6 rounded-xl transition duration-300 shadow-lg hover:shadow-xl transform group-hover:scale-[1.01]" // Slightly larger button, stronger hover effect
                 whileHover={{ scale: 1.03 }} // Adjusted hover scale
                 whileTap={{ scale: 0.97 }} // Adjusted tap scale

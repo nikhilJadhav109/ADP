@@ -173,7 +173,7 @@ const PortfolioPage: React.FC = () => {
                     exit="exit"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.08, ease: "easeOut" }}
-                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-md border  shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 cursor-pointer"
+                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-md border shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 cursor-pointer"
                   >
                     {/* Image Container */}
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -220,17 +220,17 @@ const PortfolioPage: React.FC = () => {
                         transition={{ delay: 0.4 + index * 0.1 }}
                       >
                         <div className="flex-1">
-                          <h3 className="text-lg sm:text-xl font-bold mb-1 group-hover:text-teal-900 transition-colors duration-300">
+                          <h3 className="text-lg sm:text-xl font-bold mb-1 dark:text-[#f8fafc]">
                             {project.title}
                           </h3>
-                          <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                          <p className="text-xs sm:text-sm text-gray-600 font-medium dark:text-[#f1f5f9]">
                             {project.location}
                           </p>
                         </div>
                       </motion.div>
 
                       <motion.p
-                        className="text-sm text-gray-600 leading-relaxed"
+                        className="text-sm text-gray-600 leading-relaxed dark:text-[#c7ccd2]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 + index * 0.1 }}

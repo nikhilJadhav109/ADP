@@ -357,9 +357,9 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 transition={{ delay: 0.3 }}
               >
                 <label
-                  htmlFor="projectType"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
+                htmlFor="projectType"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                   Project Type<span className="text-red-500">*</span>
                 </label>
                 <select
@@ -394,10 +394,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             </div>
             {/* New "Size" Field - Conditionally Rendered */}
             {formData.projectType === "Residential Interior" && (
-              <motion.div
-                variants={formFieldVariants}
-                transition={{ delay: 0.4 }}
-              >
+              <div>
                 <label
                   htmlFor="size"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -412,12 +409,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                   name="size"
                   value={formData.size}
                   onChange={handleChange}
-                  required={formData.projectType === "Residential Interior"}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm ${
-                    errors.size
-                      ? "border-red-500"
-                      : "border-gray-300 dark:border-gray-600"
-                  }`}
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 shadow-sm"
                 >
                   <option value="">Select size</option>
                   <option value="1BHK">1 BHK</option>
@@ -435,15 +427,11 @@ const ContactForm: React.FC<ContactFormProps> = () => {
                 {errors.size && (
                   <p className="text-red-500 text-xs mt-1">{errors.size}</p>
                 )}
-              </motion.div>
+              </div>
             )}
             <div className="grid sm:grid-cols-2 gap-4">
               <motion.div
                 variants={formFieldVariants}
-                transition={{
-                  delay:
-                    formData.projectType === "Residential Interior" ? 0.5 : 0.4, // Adjust delay based on conditional rendering
-                }}
               >
                 <label
                   htmlFor="budget"
