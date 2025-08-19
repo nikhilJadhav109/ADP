@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { ArrowUpRight, Calendar, MapPin, Search } from "lucide-react";
+import { ArrowUpRight, Search } from "lucide-react";
 import { motion, easeOut, Variants, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { PROJECTS } from "../constants/projects";
 import { PortfolioPageHelmet } from "../helper/seoProvider";
 
@@ -251,7 +250,7 @@ const PortfolioPage: React.FC = () => {
                           whileInView={{ width: "100%" }}
                           viewport={{ once: true }}
                           transition={{
-                            delay:  index * 0.1,
+                            delay: index * 0.1,
                             duration: 1.2,
                             ease: "easeOut",
                           }}
@@ -278,7 +277,7 @@ const PortfolioPage: React.FC = () => {
         </section>
 
         {/* ✅ CTA */}
-       <section className="py-20 bg-teal-600 dark:bg-teal-800 text-white shadow-inner">
+        <section className="py-20 bg-teal-600 dark:bg-teal-800 text-white shadow-inner">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.h2
               className="text-4xl sm:text-5xl font-bold mb-6"

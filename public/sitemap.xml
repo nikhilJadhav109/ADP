@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://agrawalplydecor.netlify.app/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://agrawalplydecor.com/</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://agrawalplydecor.netlify.app/services/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://agrawalplydecor.com/services/interior</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://agrawalplydecor.netlify.app/portfolio/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://agrawalplydecor.com/services/modular</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://agrawalplydecor.netlify.app/about/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
+        <loc>https://agrawalplydecor.com/services/plywood-supply</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://agrawalplydecor.netlify.app/brands/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
+        <loc>https://agrawalplydecor.com/portfolio</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://agrawalplydecor.netlify.app/contact/</loc>
-        <lastmod>2025-06-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <loc>https://agrawalplydecor.com/about</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/contact</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/document/catalogue.pdf</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/privacy-policy</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/terms-of-service</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/services</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/introduction</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://agrawalplydecor.com/testimonials</loc>
+        <lastmod>2025-08-18T14:10:38+01:00</lastmod>
+        <priority>1.0</priority>
     </url>
 </urlset>
